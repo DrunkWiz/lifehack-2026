@@ -108,23 +108,43 @@ def extract_products_from_pdf(pdf_bytes: bytes, progress_callback=None) -> list[
     return all_products
 
 
+# Real exports rarely name the column "price" - Shopify uses "Variant Price", others use
+# "Unit Price" or "MSRP". Matching only the exact word leaves price null on most real files,
+# which silently breaks every budget-constrained query ("under S$200").
+PRICE_KEYS = ("price", "variant price", "unit price", "sale price", "retail price", "cost", "msrp")
+NAME_KEYS = ("name", "product", "product name", "title")
+DESC_KEYS = ("description", "desc", "body (html)", "body html", "body")
+
+
+def _clean_price(value) -> str | None:
+    """Keep the currency symbol if one is present, drop stray whitespace, reject junk."""
+    if value is None:
+        return None
+    text = str(value).strip()
+    if not text or text.lower() in ("nan", "none"):
+        return None
+    return text if re.search(r"\d", text) else None
+
+
 def extract_products_from_table(df: pd.DataFrame) -> list[dict]:
     records = df.to_dict(orient="records")
-    reserved_name_keys = {"name", "product", "product name", "title"}
-    reserved_price_keys = {"price"}
-    reserved_desc_keys = {"description", "desc"}
+    reserved_name_keys = set(NAME_KEYS)
+    reserved_price_keys = set(PRICE_KEYS)
+    reserved_desc_keys = set(DESC_KEYS)
 
     products = []
     for r in records:
         lower_map = {str(k).strip().lower(): k for k in r.keys()}
 
-        name_key = next((lower_map[k] for k in reserved_name_keys if k in lower_map), None)
-        price_key = next((lower_map[k] for k in reserved_price_keys if k in lower_map), None)
-        desc_key = next((lower_map[k] for k in reserved_desc_keys if k in lower_map), None)
+        name_key = next((lower_map[k] for k in NAME_KEYS if k in lower_map), None)
+        price_key = next((lower_map[k] for k in PRICE_KEYS if k in lower_map), None)
+        desc_key = next((lower_map[k] for k in DESC_KEYS if k in lower_map), None)
 
         name = r.get(name_key) if name_key else str(list(r.values())[0])
-        price = r.get(price_key) if price_key else None
+        price = _clean_price(r.get(price_key)) if price_key else None
         desc = r.get(desc_key) if desc_key else ""
+        if desc and "<" in str(desc):
+            desc = _strip_html(str(desc))
 
         used_keys = {k for k in (name_key, price_key, desc_key) if k}
         specs = {

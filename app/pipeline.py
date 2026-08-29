@@ -8,7 +8,8 @@ Core logic, in the order the app calls it:
                                 the PRESENT attributes actually support that persona's claims
 5. generate_user_story      -> narrative brief for the chosen persona
 6. generate_product_content -> agent-optimized copy per product, seeded by the story
-7. readiness_score          -> 30% attribute completeness + 70% persona rating (selected persona)
+7. readiness_score          -> content-fixable coverage only (schema completeness + persona
+                                criteria coverage). Fit is reported separately, never blended in.
 """
 
 from llm_utils import call_llm_json, call_llm_text
@@ -128,13 +129,23 @@ def attribute_completeness(products_in_cluster: list[dict], expected_attributes:
     missing_counts = {attr: 0 for attr in expected_attributes}
 
     for p in products_in_cluster:
+        normalized = p.get("specs_normalized") or {}
         specs = p.get("specs") or {}
         spec_keys_lower = {str(k).lower() for k in specs.keys()}
         desc_lower = _s(p.get("description")).lower()
         present = []
         for attr in expected_attributes:
-            attr_lower = attr.lower()
-            found = any(attr_lower in k or k in attr_lower for k in spec_keys_lower) or attr_lower in desc_lower
+            if normalized:
+                # Normalized path: the schema fixed the key names, so this is an exact
+                # lookup rather than substring guesswork.
+                value = normalized.get(attr)
+                found = value is not None and _s(value).strip() != ""
+            else:
+                # FALLBACK 4: product was never normalized (schema call failed, batch failed,
+                # or every value was rejected by verification) - use the original heuristic.
+                attr_lower = attr.lower()
+                found = (any(attr_lower in k or k in attr_lower for k in spec_keys_lower)
+                         or attr_lower in desc_lower)
             if found:
                 present.append(attr)
             else:
@@ -169,7 +180,6 @@ Return strict JSON:
 
 
 def suggest_personas(cluster_name: str, expected_attributes: list[str], present_attrs_by_product: list[dict]):
-    # aggregate which expected attributes are present ANYWHERE in the cluster (for context)
     present_anywhere = set()
     for p in present_attrs_by_product:
         present_anywhere.update(p["present"])
@@ -187,11 +197,20 @@ def suggest_personas(cluster_name: str, expected_attributes: list[str], present_
         # keep only attrs that are actually in our expected list (guard against hallucinated attr names)
         supporting = [a for a in supporting if a in expected_attributes]
         persona["supporting_attributes"] = supporting
-        if supporting:
-            covered = [a for a in supporting if a in present_anywhere]
-            persona["persona_rating_pct"] = round(100 * len(covered) / len(supporting), 1)
-            persona["covered_attributes"] = covered
-            persona["missing_attributes"] = [a for a in supporting if a not in covered]
+
+        if supporting and present_attrs_by_product:
+            # Rated PER PRODUCT, then averaged. The previous version scored against the union
+            # of attributes present anywhere in the cluster, so one product carrying an
+            # attribute credited every other product with it - which inflated the number that
+            # drove 70% of the readiness score.
+            ratios = []
+            for p in present_attrs_by_product:
+                product_present = set(p["present"])
+                ratios.append(len([a for a in supporting if a in product_present]) / len(supporting))
+            persona["persona_rating_pct"] = round(100 * sum(ratios) / len(ratios), 1)
+            # kept for display: what the cluster can support at all, vs never supplied by anyone
+            persona["covered_attributes"] = [a for a in supporting if a in present_anywhere]
+            persona["missing_attributes"] = [a for a in supporting if a not in present_anywhere]
         else:
             persona["persona_rating_pct"] = 0.0
             persona["covered_attributes"] = []
@@ -256,8 +275,18 @@ def generate_product_content(product: dict, cluster_name: str, persona: dict, us
 # 7. READINESS SCORE
 # ---------------------------------------------------------------------------
 
-def readiness_score(attribute_completeness_pct: float, persona_rating_pct: float | None) -> float:
-    """30% attribute completeness + 70% persona rating of the SELECTED persona.
-    Before a persona is selected, persona_rating_pct is None -> treated as 0."""
-    pr = persona_rating_pct or 0.0
-    return round(attribute_completeness_pct * ATTR_WEIGHT + pr * PERSONA_WEIGHT, 1)
+def readiness_score(attribute_completeness_pct: float, persona_coverage_pct: float | None) -> float:
+    """Readiness measures ONLY what content work can fix: can an agent answer the questions
+    this catalog will be asked?
+
+    Two inputs, both coverage: how complete the category schema is, and how much of the
+    selected persona's specific criteria the data can answer. They are averaged, not weighted -
+    there is no arbitrary split left to justify.
+
+    Fit (does the product actually suit the shopper) is deliberately NOT in here. No amount of
+    rewriting makes a 340g shoe lightweight, so folding fit into a content-readiness score
+    would penalise brands for a merchandising fact and make the number unactionable. Fit is
+    reported alongside instead."""
+    if persona_coverage_pct is None:
+        return round(attribute_completeness_pct, 1)
+    return round((attribute_completeness_pct + persona_coverage_pct) / 2, 1)

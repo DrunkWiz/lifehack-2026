@@ -10,6 +10,8 @@ from openai import OpenAI
 
 MODEL_TEXT = "gpt-4o-mini"     # cheap + fast, good enough for structured extraction/generation
 MODEL_VISION = "gpt-4o-mini"   # gpt-4o-mini supports image input too
+MODEL_EMBED = "text-embedding-3-small"   # ~$0.00002/product; 1536-dim
+EMBED_BATCH = 100              # OpenAI accepts large batches; 100 keeps payloads modest
 
 
 @st.cache_resource(show_spinner=False)
@@ -84,3 +86,16 @@ def call_llm_text(system_prompt: str, user_prompt: str, model: str = MODEL_TEXT,
         ],
     )
     return resp.choices[0].message.content
+
+
+def embed_texts(texts: list[str]) -> list[list[float]]:
+    """Embed a list of strings, batched. Used by retrieval.py to index the catalog twice
+    (raw content vs agent-optimized content) and to embed the shopper's query."""
+    client = get_client()
+    out: list[list[float]] = []
+    for start in range(0, len(texts), EMBED_BATCH):
+        # the embeddings endpoint rejects empty strings, so blanks become a single space
+        batch = [t if t and t.strip() else " " for t in texts[start:start + EMBED_BATCH]]
+        resp = client.embeddings.create(model=MODEL_EMBED, input=batch)
+        out.extend(item.embedding for item in resp.data)
+    return out
