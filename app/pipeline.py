@@ -160,7 +160,7 @@ def attribute_completeness(products_in_cluster: list[dict], expected_attributes:
 
 
 # ---------------------------------------------------------------------------
-# 4. PERSONA SUGGESTIONS + RATING
+# 4. PERSONA CANDIDATE SUGGESTIONS (for the brand to pick from, per cluster)
 # ---------------------------------------------------------------------------
 
 PERSONA_SYSTEM_PROMPT = """You suggest realistic buyer personas / shopping intents for a product
@@ -193,9 +193,7 @@ def suggest_personas(cluster_name: str, expected_attributes: list[str], present_
     personas = result.get("personas", []) if isinstance(result, dict) else []
 
     for persona in personas:
-        supporting = persona.get("supporting_attributes", [])
-        # keep only attrs that are actually in our expected list (guard against hallucinated attr names)
-        supporting = [a for a in supporting if a in expected_attributes]
+        supporting = [a for a in persona.get("supporting_attributes", []) if a in expected_attributes]
         persona["supporting_attributes"] = supporting
 
         if supporting and present_attrs_by_product:
@@ -239,9 +237,10 @@ def generate_user_story(cluster_name: str, persona: dict) -> str:
 
 
 # ---------------------------------------------------------------------------
-# 6. AGENT-OPTIMIZED CONTENT GENERATION
+# 6. COMPETITORS (for grounded comparisons) + RICH AGENT CONTENT GENERATION
 # ---------------------------------------------------------------------------
 
+<<<<<<< HEAD
 CONTENT_SYSTEM_PROMPT = """You write agent-optimized product content: copy meant to be read and
 cited by AI shopping assistants answering a specific natural-language buyer intent, NOT
 traditional SEO/marketing copy.
@@ -302,9 +301,67 @@ def _peer_context(product: dict, cluster_products: list[dict] | None) -> list[di
 def generate_product_content(product: dict, cluster_name: str, persona: dict, user_story: str,
                              cluster_products: list[dict] | None = None) -> str:
     peers = _peer_context(product, cluster_products)
+=======
+def competitors_for(product: dict, cluster_members: list[dict], n: int = 3) -> list[dict]:
+    """Closest-priced other products in the same cluster — real siblings, not invented ones."""
+    price = _parse_price(product.get("price"))
+    others = [p for p in cluster_members if p.get("name") != product.get("name")]
+    if price is None:
+        return others[:n]
+    def _distance(p):
+        pp = _parse_price(p.get("price"))
+        return abs(pp - price) if pp is not None else float("inf")
+    others.sort(key=_distance)
+    return others[:n]
+
+
+AGENT_CONTENT_SYSTEM_PROMPT = """You convert one product's catalog data into a structured bundle
+an AI shopping assistant can reason over and a brand can publish. Ground every claim in the data
+given to you — never invent numbers, ratings, or specs that were not provided.
+
+RULES
+
+1. GROUNDING. If a spec is absent, omit any claim that depends on it. An omitted detail is
+   better than a wrong one.
+2. PROVENANCE. For each notable field you write, note whether it is "catalog_spec" (stated in
+   the input) or "inferred" (reasoned from general category knowledge, not stated). Anything
+   inferred that a shopper could act on and be wrong about goes in unsupported_claims too.
+3. NEGATIVE INFORMATION IS MANDATORY. Produce at least two not_for entries — who this product is
+   a poor fit for. Be specific ("runners with wide feet"), not vague ("some people").
+4. USE CASES MUST CITE SPECS. Every why_it_fits should reference a real spec value, not a vague
+   adjective.
+5. COMPARISONS need a tradeoff. Compare only against the real competitor products given to you.
+   "Lighter, but less cushioned" is usable; "better overall" is not.
+6. PERSONAS must include AT LEAST ONE with fit="poor". A bundle where every persona is a strong
+   fit helps rank nothing — that is a required field, not optional.
+
+Return strict JSON:
+{
+  "personas": [{"label": "...", "fit": "strong|partial|poor", "reasoning": "..."}, ...],
+  "not_for": [{"exclusion": "...", "reason": "..."}, ...],
+  "use_cases": [{"scenario": "...", "why_it_fits": "...", "grounded_in": ["spec key", ...]}, ...],
+  "comparisons": [{"against": "competitor product name given to you", "axis": "...",
+                    "direction": "more|less|similar", "tradeoff": "..."}, ...],
+  "narrative": {"one_line_pitch": "...", "best_for": "...", "faq_question": "...", "faq_answer": "..."},
+  "field_sources": [{"field": "short label", "source": "catalog_spec|inferred"}, ...],
+  "unsupported_claims": ["..."]
+}"""
+
+
+def generate_agent_content(product: dict, cluster_name: str, persona: dict, user_story: str,
+                            competitors: list[dict]) -> dict:
+    comp_lines = [
+        f"- {_s(c.get('name'), 'Unnamed')} ({_s(c.get('price'), 'price unknown')}): "
+        f"{c.get('specs') or {}}"
+        for c in competitors
+    ] or ["- (no other products in this cluster to compare against)"]
+
+>>>>>>> 0ca4a108fad2a899173cc437e1a20008d8d2856a
     prompt = (
-        f"Product: {_s(product.get('name'), 'Unnamed product')}\n"
+        f"PRODUCT\n"
+        f"Name: {_s(product.get('name'), 'Unnamed product')}\n"
         f"Price: {_s(product.get('price'), 'N/A')}\n"
+<<<<<<< HEAD
         f"Description on file: {_s(product.get('description'))}\n"
         f"Verified attributes: {_generation_attributes(product)}\n\n"
         f"Cluster/category: {cluster_name}\n"
@@ -312,14 +369,35 @@ def generate_product_content(product: dict, cluster_name: str, persona: dict, us
         f"Comparison-set size: {len(peers) + 1} products including the target\n"
         f"Target persona: {persona['title']} — {persona.get('narrative_seed','')}\n"
         f"User story: {user_story}"
+=======
+        f"Description: {_s(product.get('description'))}\n"
+        f"Specs: {product.get('specs') or {}}\n\n"
+        f"CATEGORY/CLUSTER: {cluster_name}\n"
+        f"SEED PERSONA: {persona.get('title','')} — {persona.get('narrative_seed','')}\n"
+        f"SEED USER STORY: {user_story}\n\n"
+        f"COMPETITOR CONTEXT (real siblings in this cluster):\n" + "\n".join(comp_lines)
+>>>>>>> 0ca4a108fad2a899173cc437e1a20008d8d2856a
     )
-    return call_llm_text(CONTENT_SYSTEM_PROMPT, prompt, temperature=0.6).strip()
+    result = call_llm_json(AGENT_CONTENT_SYSTEM_PROMPT, prompt, temperature=0.4)
+    if not isinstance(result, dict):
+        result = {}
+    # Coerce, don't just default-if-missing: the model can return a key with an
+    # explicit null value, which .setdefault() would not catch.
+    result["personas"] = result.get("personas") or []
+    result["not_for"] = result.get("not_for") or []
+    result["use_cases"] = result.get("use_cases") or []
+    result["comparisons"] = result.get("comparisons") or []
+    result["narrative"] = result.get("narrative") or {}
+    result["field_sources"] = result.get("field_sources") or []
+    result["unsupported_claims"] = result.get("unsupported_claims") or []
+    return result
 
 
 # ---------------------------------------------------------------------------
-# 7. READINESS SCORE
+# 7. RENDER — pure formatting, no further model call
 # ---------------------------------------------------------------------------
 
+<<<<<<< HEAD
 def readiness_score(attribute_completeness_pct: float, persona_coverage_pct: float | None) -> float:
     """Readiness measures ONLY what content work can fix: can an agent answer the questions
     this catalog will be asked?
@@ -335,3 +413,145 @@ def readiness_score(attribute_completeness_pct: float, persona_coverage_pct: flo
     if persona_coverage_pct is None:
         return round(attribute_completeness_pct, 1)
     return round((attribute_completeness_pct + persona_coverage_pct) / 2, 1)
+=======
+def build_raw_passage(product: dict) -> str:
+    """Deterministic, no LLM call: what the catalog says today, formatted the same
+    shape as render_passage() so the Ask tab can test raw content before any
+    generation has run — this is the 'before' half of a live demo."""
+    lines = [_s(product.get("name"), "Unnamed product")]
+    price = _s(product.get("price"))
+    if price:
+        lines.append(f"Price: {price}")
+    desc = _s(product.get("description"))
+    if desc:
+        lines.append(desc)
+    specs = product.get("specs") or {}
+    if specs:
+        lines.append("Specs: " + ", ".join(f"{k}: {v}" for k, v in specs.items()))
+    return "\n".join(lines).strip()
+
+
+def render_passage(agent_content: dict) -> str:
+    n = agent_content.get("narrative", {}) or {}
+    lines = []
+    if n.get("one_line_pitch"):
+        lines.append(n["one_line_pitch"])
+    if n.get("best_for"):
+        lines.append(f"\nBest for: {n['best_for']}")
+    if n.get("faq_question") and n.get("faq_answer"):
+        lines.append(f"\nQ: {n['faq_question']}\nA: {n['faq_answer']}")
+
+    not_for = agent_content.get("not_for") or []
+    if not_for:
+        lines.append("\nNot a fit for:")
+        for item in not_for:
+            lines.append(f"- {item.get('exclusion','')}: {item.get('reason','')}")
+
+    comparisons = agent_content.get("comparisons") or []
+    if comparisons:
+        lines.append("\nHow it compares:")
+        for c in comparisons:
+            lines.append(
+                f"- vs. {c.get('against','')}: {c.get('direction','')} {c.get('axis','')} "
+                f"— {c.get('tradeoff','')}"
+            )
+
+    unsupported = agent_content.get("unsupported_claims") or []
+    if unsupported:
+        lines.append("\n[Needs human review before publishing]")
+        for u in unsupported:
+            lines.append(f"- {u}")
+
+    return "\n".join(lines).strip()
+
+
+# ---------------------------------------------------------------------------
+# 8. READINESS SCORE — deterministic, 5 weighted components
+# ---------------------------------------------------------------------------
+
+def score_components(attribute_completeness_pct: float, agent_content: dict | None) -> dict:
+    attr = round((attribute_completeness_pct or 0.0) / 100, 4)
+
+    if not agent_content:
+        return {"attribute_completeness": attr, "persona_coverage": 0.0,
+                "not_for_coverage": 0.0, "comparative_context": 0.0, "claim_grounding": 0.0}
+
+    personas = agent_content.get("personas") or []
+    labels = {p.get("label", "").strip().lower() for p in personas if p.get("label")}
+    pers = min(len(labels), 4) / 4
+    has_poor_fit = any(p.get("fit") == "poor" for p in personas)
+    if not has_poor_fit or not personas:
+        pers *= 0.7  # penalise all-positive bundles
+
+    not_for = agent_content.get("not_for") or []
+    not_for_score = min(len(not_for), 2) / 2
+
+    comparisons = agent_content.get("comparisons") or []
+    comp = min(sum(1 for c in comparisons if c.get("tradeoff")), 3) / 3
+
+    sources = agent_content.get("field_sources") or []
+    grounded = sum(1 for s in sources if s.get("source") == "catalog_spec")
+    ground = grounded / max(len(sources), 1) if sources else 0.5  # neutral if nothing tagged
+    unsupported = agent_content.get("unsupported_claims") or []
+    ground *= max(0.0, 1 - 0.1 * len(unsupported))
+
+    return {
+        "attribute_completeness": round(attr, 4),
+        "persona_coverage": round(pers, 4),
+        "not_for_coverage": round(not_for_score, 4),
+        "comparative_context": round(comp, 4),
+        "claim_grounding": round(max(ground, 0.0), 4),
+    }
+
+
+def readiness_score(attribute_completeness_pct: float, agent_content: dict | None = None) -> float:
+    parts = score_components(attribute_completeness_pct, agent_content)
+    return round(100 * sum(WEIGHTS[k] * v for k, v in parts.items()), 1)
+
+
+def top_gaps(attribute_completeness_pct: float, agent_content: dict | None, missing_attrs: list[str]) -> list[str]:
+    gaps = []
+    if missing_attrs:
+        gaps.append("Missing filterable attributes: " + ", ".join(missing_attrs))
+    if not agent_content:
+        gaps.append("No persona selected yet — pick one to generate content")
+        return gaps[:5]
+
+    personas = agent_content.get("personas") or []
+    if not any(p.get("fit") == "poor" for p in personas):
+        gaps.append("No 'poor fit' persona — a card that suits everyone ranks for no one")
+    if not agent_content.get("not_for"):
+        gaps.append("No negative information — nothing stops a wrong recommendation")
+    if not any(c.get("tradeoff") for c in (agent_content.get("comparisons") or [])):
+        gaps.append("No comparison states a tradeoff, so agents can't rank this against siblings")
+    if agent_content.get("unsupported_claims"):
+        gaps.append(f"{len(agent_content['unsupported_claims'])} claim(s) flagged unsupported and pending review")
+    gaps.sort(key=lambda g: -len(g))
+    return gaps[:5]
+
+
+# ---------------------------------------------------------------------------
+# 9. ASK — one query against one product's generated content
+# ---------------------------------------------------------------------------
+
+ASK_SYSTEM_PROMPT = """You are an AI shopping assistant deciding whether to recommend a
+product for a shopper's query, based ONLY on the product content given to you.
+Return strict JSON: {"recommend": true|false, "confidence": 0-100, "reason": "one sentence"}
+confidence reflects how well-supported your decision is by the content, not how good the
+product sounds — a vague passage should get a low confidence even if it sounds positive."""
+
+
+def ask_confidence(query: str, product_name: str, passage_text: str) -> dict:
+    prompt = f"Shopper query: {query}\n\nProduct: {product_name}\n\nProduct content:\n{passage_text}"
+    result = call_llm_json(ASK_SYSTEM_PROMPT, prompt, temperature=0.2)
+    if not isinstance(result, dict):
+        result = {}
+    result.setdefault("recommend", False)
+    result.setdefault("confidence", 0)
+    result.setdefault("reason", "")
+    try:
+        result["confidence"] = max(0, min(100, int(result["confidence"])))
+    except (TypeError, ValueError):
+        result["confidence"] = 0
+    return result
+>>>>>>> 0ca4a108fad2a899173cc437e1a20008d8d2856a
