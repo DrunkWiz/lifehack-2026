@@ -3,3 +3,4 @@ streamlit/secrets.toml
 _pycahce_/
 *.pyc
 .streamlit/secrets.toml
+.cache/
