@@ -97,10 +97,12 @@ def extract_products_from_pdf(pdf_bytes: bytes, progress_callback=None) -> list[
 
         products = result.get("products", []) if isinstance(result, dict) else []
         for p in products:
-            p.setdefault("price", None)
-            p.setdefault("description", "")
-            p.setdefault("specs", {})
-            p.setdefault("image_description", None)
+            # Coerce, don't just default-if-missing: the model can return a key
+            # with an explicit null value, which .setdefault() would not catch.
+            p["price"] = p.get("price") or None
+            p["description"] = p.get("description") or ""
+            p["specs"] = p.get("specs") or {}
+            p["image_description"] = p.get("image_description") or None
             p["source_page"] = i + 1
             p["extraction_mode"] = "vision" if used_vision else "text"
         all_products.extend(products)

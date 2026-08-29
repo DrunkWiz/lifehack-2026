@@ -22,19 +22,27 @@ from pipeline import (
     attribute_completeness,
     suggest_personas,
     generate_user_story,
-    generate_product_content,
+    competitors_for,
+    generate_agent_content,
+    build_raw_passage,
+    render_passage,
     readiness_score,
+    score_components,
+    top_gaps,
+    ask_confidence,
+    LABELS,
 )
+from llm_utils import get_spend_summary
 
-st.set_page_config(page_title="Brand Amplifier", layout="wide")
+st.set_page_config(page_title="Brand Enabler", layout="wide")
 
 # ---------------------------------------------------------------------------
 # Session state defaults
 # ---------------------------------------------------------------------------
 defaults = {
-    "products": None,          # list[dict] confirmed products
-    "clusters": None,          # list[{cluster_name, product_indices}]
-    "cluster_data": {},        # cluster_name -> {expected_attrs, avg_completeness, per_product, missing_counts, personas, selected_persona, user_story, content: {product_name: text}}
+    "products": None,
+    "clusters": None,
+    "cluster_data": {},   # cluster_name -> see shape built in Tab 1
     "analysis_done": False,
     "query_input": "I'm training for a half marathon in Singapore's humid weather and need lightweight shoes under S$200.",
     "index_signature": None,   # invalidates the cached indexes when the catalog/content changes
@@ -46,7 +54,7 @@ for k, v in defaults.items():
     if k not in st.session_state:
         st.session_state[k] = v
 
-st.title("🧭 Agent Readiness Copilot")
+st.title("🧭 Brand Enabler")
 st.caption("Upload a product catalog → find AI-recommendation gaps → generate persona-driven, agent-optimized content.")
 
 tab1, tab_ask, tab2, tab3, tab4 = st.tabs([
@@ -63,7 +71,8 @@ tab1, tab_ask, tab2, tab3, tab4 = st.tabs([
 with tab1:
     st.info("Uploaded content is sent to OpenAI's API for processing.", icon="ℹ️")
 
-    uploaded_file = st.file_uploader("Upload catalog (PDF, CSV, XLSX, or JSON)", type=["pdf", "csv", "xlsx", "xls", "json"])
+    uploaded_file = st.file_uploader("Upload catalog (PDF, CSV, XLSX, or JSON)",
+                                      type=["pdf", "csv", "xlsx", "xls", "json"])
 
     if uploaded_file is not None and st.button("Extract products", type="primary"):
         log = RunLog(f"Extracting from {uploaded_file.name}")
@@ -109,9 +118,7 @@ with tab1:
         edited_df = st.data_editor(df, num_rows="dynamic", use_container_width=True, key="edit_products")
 
         if st.button("Confirm & run clustering + gap analysis", type="primary"):
-            # rebuild products list from edited dataframe
             def clean_str(val):
-                # pandas turns blank/edited-out cells into NaN (a float), not "".
                 if val is None or (isinstance(val, float) and pd.isna(val)):
                     return ""
                 return str(val).strip()
@@ -205,7 +212,8 @@ with tab1:
                         "personas": personas,
                         "selected_persona": None,
                         "user_story": None,
-                        "content": {},
+                        "agent_content": {},   # product_name -> structured dict from generate_agent_content
+                        "content": {},         # product_name -> rendered copy-pastable text
                     }
             st.session_state["cluster_data"] = cluster_data
             st.session_state["analysis_done"] = True
@@ -452,12 +460,20 @@ with tab2:
     else:
         cd = st.session_state["cluster_data"]
 
-        # Overall headline score = average of cluster readiness scores
-        cluster_scores = []
-        for name, data in cd.items():
-            persona_rating = data["selected_persona"]["persona_rating_pct"] if data["selected_persona"] else None
-            score = readiness_score(data["avg_completeness"], persona_rating)
-            cluster_scores.append(score)
+        def _product_completeness_pct(data, product_name):
+            for p in data["per_product"]:
+                if p["name"] == product_name:
+                    return p["completeness_pct"]
+            return data["avg_completeness"]
+
+        def _cluster_score(data):
+            scores = []
+            for p in data["per_product"]:
+                agent_content = data["agent_content"].get(p["name"])
+                scores.append(readiness_score(p["completeness_pct"], agent_content))
+            return round(sum(scores) / len(scores), 1) if scores else 0.0
+
+        cluster_scores = [_cluster_score(data) for data in cd.values()]
         overall = round(sum(cluster_scores) / len(cluster_scores), 1) if cluster_scores else 0.0
 
         st.metric("Overall Catalog Readiness Score", f"{overall}%",
@@ -542,10 +558,7 @@ with tab2:
                     st.caption("Knowledge layer: not applied - using raw specs and inferred attributes.")
 
                 missing = [attr for attr, count in data["missing_counts"].items() if count > 0]
-                if missing:
-                    st.markdown(f"**Missing attributes:** {', '.join(missing)}")
-                else:
-                    st.markdown("**Missing attributes:** none 🎉")
+                st.markdown(f"**Missing attributes:** {', '.join(missing) if missing else 'none 🎉'}")
 
                 if persona:
                     st.markdown(f"**Selected persona:** {persona['title']}")
@@ -713,11 +726,114 @@ with tab4:
                     st.caption(f"Persona story: {data['user_story']}")
 
                 for product_name, text in data["content"].items():
+                    ac = data["agent_content"].get(product_name, {})
                     with st.expander(product_name, expanded=False):
                         st.text_area(
                             "Copy-pastable content",
                             value=text,
-                            height=220,
+                            height=260,
                             key=f"content_{name}_{product_name}",
                         )
+                        with st.expander("Structured data (personas, not-for, comparisons)"):
+                            st.json({
+                                "personas": ac.get("personas", []),
+                                "not_for": ac.get("not_for", []),
+                                "use_cases": ac.get("use_cases", []),
+                                "comparisons": ac.get("comparisons", []),
+                                "field_sources": ac.get("field_sources", []),
+                            })
+                        if ac.get("unsupported_claims"):
+                            st.warning("Flagged for human review before publishing:\n\n"
+                                       + "\n".join(f"- {u}" for u in ac["unsupported_claims"]))
                 st.divider()
+
+# ---------------------------------------------------------------------------
+# TAB 5 — Ask (works right after Tab 1 — no persona/content required yet)
+# ---------------------------------------------------------------------------
+with tab5:
+    if not st.session_state["analysis_done"]:
+        st.info("Run extraction + analysis in Tab 1 first.")
+    else:
+        cd = st.session_state["cluster_data"]
+
+        # Every product gets a raw passage (built deterministically, no LLM call,
+        # available immediately after Tab 1). Generated passage only exists once
+        # a persona has been picked and content generated in Tab 3. This lets you
+        # demo the same tab before AND after persona creation.
+        all_products = []
+        for cname, data in cd.items():
+            for product in data["members"]:
+                all_products.append({
+                    "cluster": cname,
+                    "product": product["name"],
+                    "raw_passage": build_raw_passage(product),
+                    "enriched_passage": data["content"].get(product["name"]),
+                })
+
+        any_enriched = any(p["enriched_passage"] for p in all_products)
+
+        st.caption(f"Will check against {len(all_products)} product(s).")
+        mode_options = ["Raw catalog content"]
+        if any_enriched:
+            mode_options += ["Generated content", "Compare both"]
+        default_index = mode_options.index("Compare both") if any_enriched else 0
+        mode = st.radio("Test against", mode_options, index=default_index, horizontal=True)
+        if not any_enriched:
+            st.caption("No generated content yet — this will test raw catalog content only. "
+                       "Generate content in the Personas tab, then re-run the same query here "
+                       "to see the before/after.")
+
+        query = st.text_input("Shopper query",
+                               placeholder="e.g. half marathon shoes for humid weather under S$200")
+
+        if st.button("Run", type="primary") and query.strip():
+            results = []
+            targets = [p for p in all_products if mode != "Generated content" or p["enriched_passage"]]
+            bar = st.progress(0.0)
+            for i, p in enumerate(targets, 1):
+                raw_result = None
+                enriched_result = None
+                if mode in ("Raw catalog content", "Compare both"):
+                    raw_result = ask_confidence(query, p["product"], p["raw_passage"])
+                if mode in ("Generated content", "Compare both") and p["enriched_passage"]:
+                    enriched_result = ask_confidence(query, p["product"], p["enriched_passage"])
+                results.append({
+                    "cluster": p["cluster"], "product": p["product"],
+                    "raw": raw_result, "enriched": enriched_result,
+                })
+                bar.progress(i / len(targets))
+
+            def _sort_key(r):
+                best = r["enriched"] or r["raw"]
+                return -(best["confidence"] if best else 0)
+            results.sort(key=_sort_key)
+            st.session_state["ask_results"] = results
+            st.session_state["ask_mode"] = mode
+
+        def _badge(result):
+            if not result:
+                return "⚪ —"
+            conf = result["confidence"]
+            color = "🟢" if conf >= 70 else "🟡" if conf >= 40 else "🔴"
+            return f"{color} {conf}%"
+
+        if st.session_state.get("ask_results"):
+            st.subheader("Results")
+            shown_mode = st.session_state.get("ask_mode", "Raw catalog content")
+            for r in st.session_state["ask_results"]:
+                with st.container(border=True):
+                    c1, c2 = st.columns([3, 2])
+                    with c1:
+                        st.markdown(f"**{r['product']}**  ·  _{r['cluster']}_")
+                        reason = (r["enriched"] or r["raw"] or {}).get("reason", "")
+                        st.caption(reason)
+                    with c2:
+                        if shown_mode == "Compare both":
+                            st.markdown(f"Raw: {_badge(r['raw'])}   →   Generated: {_badge(r['enriched'])}")
+                            if r["raw"] and r["enriched"]:
+                                delta = r["enriched"]["confidence"] - r["raw"]["confidence"]
+                                st.caption(f"{'+' if delta >= 0 else ''}{delta} points")
+                        elif shown_mode == "Generated content":
+                            st.markdown(_badge(r["enriched"]))
+                        else:
+                            st.markdown(_badge(r["raw"]))
