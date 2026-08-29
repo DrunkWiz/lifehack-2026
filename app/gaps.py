@@ -19,6 +19,12 @@ def _s(val, default: str = "") -> str:
     return default if val is None else str(val)
 
 
+def _attribute_applies(product: dict, attribute: str) -> bool:
+    if "applicable_attributes" not in product:
+        return True
+    return attribute in (product.get("applicable_attributes") or [])
+
+
 def attribute_requests(cluster_data: dict) -> list[dict]:
     """One row per (cluster, attribute) that is missing somewhere, most-missing first."""
     rows = []
@@ -39,8 +45,11 @@ def attribute_requests(cluster_data: dict) -> list[dict]:
                     reasons[criterion["attribute"]].append(f"{persona.get('title','')}: {rationale}")
 
         for attr in schema:
+            applicable_members = [p for p in members if _attribute_applies(p, attr)]
+            if not applicable_members:
+                continue
             missing = [
-                _s(p.get("name"), "Unnamed product") for p in members
+                _s(p.get("name"), "Unnamed product") for p in applicable_members
                 if not _s((p.get("specs_normalized") or {}).get(attr)).strip()
             ]
             if not missing:
@@ -49,8 +58,10 @@ def attribute_requests(cluster_data: dict) -> list[dict]:
                 "cluster": cluster_name,
                 "attribute": attr,
                 "missing_count": len(missing),
-                "total_products": total,
-                "missing_pct": round(100 * len(missing) / total, 1),
+                "total_products": len(applicable_members),
+                "catalog_products": total,
+                "applicable_products": len(applicable_members),
+                "missing_pct": round(100 * len(missing) / len(applicable_members), 1),
                 "needed_because": " | ".join(dict.fromkeys(reasons.get(attr, []))) or
                                   "Expected for this category by buyers and shopping agents",
                 "missing_products": ", ".join(missing),
@@ -68,16 +79,19 @@ def product_requests(cluster_data: dict) -> list[dict]:
             continue
         for product in data.get("members", []):
             normalized = product.get("specs_normalized") or {}
-            missing = [a for a in schema if not _s(normalized.get(a)).strip()]
+            applicable = [a for a in schema if _attribute_applies(product, a)]
+            missing = [a for a in applicable if not _s(normalized.get(a)).strip()]
             if not missing:
                 continue
             rows.append({
                 "cluster": cluster_name,
                 "product": _s(product.get("name"), "Unnamed product"),
                 "missing_count": len(missing),
-                "schema_size": len(schema),
-                "completeness_pct": round(100 * (len(schema) - len(missing)) / len(schema), 1),
+                "schema_size": len(applicable),
+                "completeness_pct": round(100 * (len(applicable) - len(missing)) /
+                                          len(applicable), 1) if applicable else 100.0,
                 "missing_attributes": ", ".join(missing),
+                "not_applicable_attributes": ", ".join(a for a in schema if a not in applicable),
             })
     rows.sort(key=lambda r: (-r["missing_count"], r["cluster"], r["product"]))
     return rows

@@ -47,6 +47,13 @@ reasoning on their behalf, would need in order to choose between these products.
 Rules:
 - 8 to 12 attributes. Decision-relevant only, no filler, no marketing fields.
 - Base them on what this category actually requires AND what these records plausibly contain.
+- Prefer attributes evidenced somewhere in the supplied records or broadly decision-relevant to
+  multiple products in the cluster.
+- Do not introduce a specialized optional mechanism that is absent from every supplied record
+  merely because some products in the wider market might offer it. Optional subtype features are
+  not universal catalog requirements.
+- When the cluster contains heterogeneous product types, shared attributes may remain in the
+  schema, but product-specific applicability will be decided separately.
 - snake_case names, no units in the name unless the unit IS the attribute (weight_grams is
   good; weight_of_the_shoe is not).
 - Do not include: name, title, price, sku, url, image, brand. Those are handled separately.
@@ -73,6 +80,46 @@ def infer_schema(cluster_name: str, sample_products: list[dict]) -> list[str]:
         return []
     schema = result.get("schema") or []
     return [str(a).strip() for a in schema if str(a).strip()][:12]
+
+
+APPLICABILITY_SYSTEM_PROMPT = """Decide which attributes from a fixed category schema are
+meaningful for each individual product type.
+
+Applicability is not the same as presence. An attribute is applicable when it would make sense
+for the brand to supply that fact for this exact kind of product, even if the current record is
+missing it. Mark an attribute not applicable when the concept does not reasonably belong to that
+product type. Do not force a broad accessory schema onto unrelated accessories. For example,
+helmet certification is not a missing specification for ski poles, and an avalanche-airbag field
+is not a missing specification for ordinary goggles.
+
+Use only the supplied schema names. Return every product index exactly once.
+Return strict JSON:
+{"products": [{"index": 0, "applicable_attributes": ["exact_schema_name", ...]}, ...]}"""
+
+
+def infer_applicability(cluster_name: str, schema: list[str], products: list[dict]) -> list[list[str]]:
+    listing = "\n\n".join(
+        f"[index: {i}]\nName: {_s(p.get('name'), 'Unnamed')}\n"
+        f"Description: {_s(p.get('description'))[:300]}\nRaw fields: {p.get('specs') or {}}"
+        for i, p in enumerate(products)
+    )
+    result = call_llm_json(
+        APPLICABILITY_SYSTEM_PROMPT,
+        f"Category: {cluster_name}\nSchema: {schema}\n\nProducts:\n{listing}",
+        temperature=0.0,
+    )
+    if not isinstance(result, dict):
+        return []
+    output = [None for _ in products]
+    for item in result.get("products", []) or []:
+        try:
+            index = int(item.get("index"))
+        except (TypeError, ValueError):
+            continue
+        if 0 <= index < len(products):
+            supplied = item.get("applicable_attributes") or []
+            output[index] = [attribute for attribute in schema if attribute in supplied]
+    return output if all(item is not None for item in output) else []
 
 
 # ---------------------------------------------------------------------------
@@ -168,7 +215,8 @@ def normalize_cluster(cluster_name: str, products: list[dict], progress=None) ->
     Returns stats: {schema, normalized_count, total, rejected_values, failed_batches}.
     An empty schema means normalization was skipped - callers fall back to the old path."""
     stats = {"schema": [], "normalized_count": 0, "total": len(products),
-             "rejected_values": 0, "failed_batches": 0}
+             "rejected_values": 0, "failed_batches": 0,
+             "applicability_inferred": False}
     if not products:
         return stats
 
@@ -176,6 +224,19 @@ def normalize_cluster(cluster_name: str, products: list[dict], progress=None) ->
     if not schema:
         return stats                      # FALLBACK 1: no schema -> skip entirely
     stats["schema"] = schema
+
+    try:
+        applicability = infer_applicability(cluster_name, schema, products)
+    except Exception:
+        applicability = []
+    if applicability:
+        stats["applicability_inferred"] = True
+        for product, applicable in zip(products, applicability):
+            product["applicable_attributes"] = applicable
+    else:
+        # Safe fallback preserves the old behavior if classification fails.
+        for product in products:
+            product["applicable_attributes"] = list(schema)
 
     batches = [products[i:i + BATCH_SIZE] for i in range(0, len(products), BATCH_SIZE)]
     for b_idx, batch in enumerate(batches):

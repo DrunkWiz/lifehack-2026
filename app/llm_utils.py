@@ -26,6 +26,7 @@ EMBED_BATCH = 100              # OpenAI accepts large batches; 100 keeps payload
 PRICING = {
     "gpt-4o-mini": {"in": 0.15, "out": 0.60},
     "gpt-4o": {"in": 2.50, "out": 10.00},
+    "text-embedding-3-small": {"in": 0.02, "out": 0.00},
 }
 
 CACHE_DIR = pathlib.Path(".cache/completions")
@@ -50,7 +51,8 @@ def _load_ledger() -> dict:
             return json.loads(LEDGER_PATH.read_text(encoding="utf-8"))
         except (json.JSONDecodeError, OSError):
             pass
-    return {"calls": 0, "cached": 0, "usd": 0.0}
+    return {"calls": 0, "cached": 0, "usd": 0.0,
+            "input_tokens": 0, "output_tokens": 0}
 
 
 def _save_ledger(ledger: dict) -> None:
@@ -66,6 +68,8 @@ def _record_spend(model: str, prompt_tokens: int, completion_tokens: int) -> Non
     cost = prompt_tokens / 1e6 * price["in"] + completion_tokens / 1e6 * price["out"]
     ledger["calls"] = ledger.get("calls", 0) + 1
     ledger["usd"] = ledger.get("usd", 0.0) + cost
+    ledger["input_tokens"] = ledger.get("input_tokens", 0) + prompt_tokens
+    ledger["output_tokens"] = ledger.get("output_tokens", 0) + completion_tokens
     _save_ledger(ledger)
 
 
@@ -81,7 +85,15 @@ def _check_budget() -> None:
 
 
 def get_spend_summary() -> dict:
-    return _load_ledger()
+    summary = _load_ledger()
+    summary["budget_usd"] = _default_budget()
+    try:
+        summary["api_key_configured"] = bool(st.secrets.get("OPENAI_API_KEY"))
+    except Exception:
+        summary["api_key_configured"] = False
+    summary["text_model"] = MODEL_TEXT
+    summary["embedding_model"] = MODEL_EMBED
+    return summary
 
 
 def _cache_key(*parts: str) -> str:
@@ -210,7 +222,11 @@ def call_llm_text(system_prompt: str, user_prompt: str, model: str = MODEL_TEXT,
             {"role": "user", "content": user_prompt},
         ],
     )
-    return resp.choices[0].message.content
+    text = resp.choices[0].message.content
+    if resp.usage:
+        _record_spend(model, resp.usage.prompt_tokens, resp.usage.completion_tokens)
+    _cache_set(key, {"text": text})
+    return text
 
 
 def embed_texts(texts: list[str]) -> list[list[float]]:
@@ -219,13 +235,11 @@ def embed_texts(texts: list[str]) -> list[list[float]]:
     client = get_client()
     out: list[list[float]] = []
     for start in range(0, len(texts), EMBED_BATCH):
+        _check_budget()
         # the embeddings endpoint rejects empty strings, so blanks become a single space
         batch = [t if t and t.strip() else " " for t in texts[start:start + EMBED_BATCH]]
         resp = client.embeddings.create(model=MODEL_EMBED, input=batch)
         out.extend(item.embedding for item in resp.data)
+        if resp.usage:
+            _record_spend(MODEL_EMBED, resp.usage.prompt_tokens, 0)
     return out
-    text = resp.choices[0].message.content
-    if resp.usage:
-        _record_spend(model, resp.usage.prompt_tokens, resp.usage.completion_tokens)
-    _cache_set(key, {"text": text})
-    return text

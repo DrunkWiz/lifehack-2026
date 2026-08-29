@@ -1,11 +1,12 @@
 import hashlib
 import json
+from pathlib import Path
 
 import streamlit as st
 import pandas as pd
 
 from extraction import load_catalog_file
-from normalization import normalize_cluster
+from normalization import normalize_cluster, infer_applicability
 from fit import generate_fit_criteria, evaluate_fit
 import gaps
 import export
@@ -30,7 +31,7 @@ from pipeline import (
     score_components,
     top_gaps,
     ask_confidence,
-    LABELS,
+    suggest_shopper_queries,
 )
 from llm_utils import get_spend_summary
 
@@ -49,13 +50,40 @@ defaults = {
     "raw_index": None,
     "optimized_index": None,
     "query_result": None,
+    "suggested_queries": None,
 }
 for k, v in defaults.items():
     if k not in st.session_state:
         st.session_state[k] = v
 
+if "api_usage_baseline" not in st.session_state:
+    usage = get_spend_summary()
+    st.session_state["api_usage_baseline"] = {
+        key: usage.get(key, 0)
+        for key in ("calls", "cached", "usd", "input_tokens", "output_tokens")
+    }
+
 st.title("🧭 Brand Enabler")
 st.caption("Upload a product catalog → find AI-recommendation gaps → generate persona-driven, agent-optimized content.")
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+DEMO_CATALOGS = {
+    "Running shoes": PROJECT_ROOT / "data" / "shopify_running_shoes.csv",
+    "Facial skincare": PROJECT_ROOT / "data" / "shopify_facial_skincare.csv",
+}
+
+
+def _set_extracted_products(products: list[dict]) -> None:
+    """Install a newly loaded catalog and clear results belonging to the previous one."""
+    st.session_state["products"] = products
+    st.session_state["clusters"] = None
+    st.session_state["cluster_data"] = {}
+    st.session_state["analysis_done"] = False
+    st.session_state["index_signature"] = None
+    st.session_state["raw_index"] = None
+    st.session_state["optimized_index"] = None
+    st.session_state["query_result"] = None
+    st.session_state["suggested_queries"] = None
 
 tab1, tab_ask, tab2, tab3, tab4 = st.tabs([
     "1️⃣ Upload & Extract",
@@ -70,6 +98,28 @@ tab1, tab_ask, tab2, tab3, tab4 = st.tabs([
 # ---------------------------------------------------------------------------
 with tab1:
     st.info("Uploaded content is sent to OpenAI's API for processing.", icon="ℹ️")
+
+    st.subheader("Try a demo catalog")
+    st.caption("Load a prepared Shopify export, review the extracted products, then run the same analysis used for uploads.")
+    demo_cols = st.columns(2)
+    for col, (demo_name, demo_path) in zip(demo_cols, DEMO_CATALOGS.items()):
+        with col:
+            with st.container(border=True):
+                st.markdown(f"**{demo_name}**")
+                st.caption("20 products · Shopify CSV")
+                if st.button(f"Load {demo_name} demo", key=f"demo_{demo_name}", use_container_width=True):
+                    log = RunLog(f"Loading {demo_name} demo")
+                    try:
+                        with demo_path.open("rb") as demo_file:
+                            products = load_catalog_file(demo_file)
+                        _set_extracted_products(products)
+                        log.done(f"Loaded {len(products)} demo products")
+                        st.success(f"{demo_name} demo loaded. Review the products below, then run analysis.")
+                    except Exception as e:
+                        log.fail(str(e))
+
+    st.divider()
+    st.subheader("Or upload your own catalog")
 
     uploaded_file = st.file_uploader("Upload catalog (PDF, CSV, XLSX, or JSON)",
                                       type=["pdf", "csv", "xlsx", "xls", "json"])
@@ -87,10 +137,7 @@ with tab1:
                 products = load_catalog_file(uploaded_file, progress_callback=progress_cb)
             else:
                 products = load_catalog_file(uploaded_file)
-            st.session_state["products"] = products
-            st.session_state["clusters"] = None
-            st.session_state["cluster_data"] = {}
-            st.session_state["analysis_done"] = False
+            _set_extracted_products(products)
             modes = {}
             for p in products:
                 m = p.get("extraction_mode", "table")
@@ -145,6 +192,7 @@ with tab1:
                     "specs": specs,
                 })
             st.session_state["products"] = rebuilt
+            st.session_state["suggested_queries"] = None
 
             log = RunLog(f"Analyzing {len(rebuilt)} products")
             log.step(0.03, f"Clustering {len(rebuilt)} products by similarity")
@@ -180,6 +228,16 @@ with tab1:
                     # The inferred schema IS the expected-attribute list. If normalization
                     # was skipped, fall back to asking for expected attributes the old way.
                     expected_attrs = norm_stats["schema"] or determine_expected_attributes(name, members)
+                    if expected_attrs and not all("applicable_attributes" in p for p in members):
+                        try:
+                            applicability = infer_applicability(name, expected_attrs, members)
+                        except Exception:
+                            applicability = []
+                        for index, product in enumerate(members):
+                            product["applicable_attributes"] = (
+                                applicability[index] if applicability else list(expected_attrs)
+                            )
+                        norm_stats["applicability_inferred"] = bool(applicability)
                     avg_completeness, per_product, missing_counts = attribute_completeness(members, expected_attrs)
                     log.note(f"[{name}] attribute completeness {avg_completeness}%")
 
@@ -228,10 +286,9 @@ with tab1:
 # over the generated content — so the difference in what an assistant would recommend
 # is visible side by side, rather than asserted.
 
-EXAMPLE_QUERIES = [
-    "I'm training for a half marathon in Singapore's humid weather and need lightweight shoes under S$200.",
-    "Find me a sustainable skincare routine for oily skin that takes less than 5 minutes every morning.",
-    "I need something hard-wearing for daily commuting that still looks smart enough for the office.",
+DEMO_QUERY_EXAMPLES = [
+    ("👟 Running Shoes demo", "I'm training for a half marathon in Singapore's humid weather and need lightweight shoes under S$200."),
+    ("🧴 Facial Skincare demo", "Find me a sustainable skincare routine for oily skin that takes less than 5 minutes every morning."),
 ]
 
 
@@ -242,7 +299,8 @@ def _set_query(text: str):
 def _content_signature(cluster_data: dict) -> str:
     """Changes whenever the catalog or the generated content changes, so the cached
     embeddings are rebuilt instead of silently going stale."""
-    parts = []
+    # Bump when index text construction changes so active sessions do not reuse stale vectors.
+    parts = ["index-v4-deterministic-constraint-facts"]
     for cluster_name, data in cluster_data.items():
         for product in data.get("members", []):
             parts.append(f"{cluster_name}|{product.get('name')}|{len(str(product.get('specs') or {}))}")
@@ -259,21 +317,28 @@ def _build_indexes(cluster_data: dict):
     Before side would search the whole catalog while the After side searched a subset,
     and the After side would be forced to return whatever it had regardless of fit."""
     raw_entries, optimized_entries = [], []
+    indexed_names = set()
     for cluster_name, data in cluster_data.items():
         content_map = data.get("content") or {}
         for product in data.get("members", []):
             name = str(product.get("name") or "Unnamed product")
             generated = content_map.get(name)
-            if not generated:
+            if not generated or name in indexed_names:
                 continue  # excluded from BOTH sides, never just one
+            indexed_names.add(name)
             key = f"{cluster_name}::{name}"
+            facts = dict(product.get("specs_normalized") or {})
+            facts["price"] = product.get("price")
+            facts["category"] = cluster_name
             raw_entries.append({
                 "key": key, "name": name, "cluster": cluster_name,
                 "text": product_to_raw_text(product),
+                "attributes": facts,
             })
             optimized_entries.append({
                 "key": key, "name": name, "cluster": cluster_name,
                 "text": product_to_optimized_text(product, generated),
+                "attributes": facts,
             })
     return build_index(raw_entries), build_index(optimized_entries)
 
@@ -304,16 +369,28 @@ def _generate_all(cluster_data: dict, progress=None):
         if not data.get("user_story"):
             data["user_story"] = generate_user_story(cluster_name, persona)
         content = dict(data.get("content") or {})
+        agent_content = dict(data.get("agent_content") or {})
         for product in data.get("members", []):
             if product.get("name") in content:
                 continue
-            content[product["name"]] = generate_product_content(
-                product, cluster_name, persona, data["user_story"]
+            structured = generate_agent_content(
+                product,
+                cluster_name,
+                persona,
+                data["user_story"],
+                competitors_for(product, data.get("members", [])),
             )
+            agent_content[product["name"]] = structured
+            content[product["name"]] = render_passage(structured)
+        data["agent_content"] = agent_content
         data["content"] = content
 
 
 def _render_hits(hits: list, empty_message: str):
+    def safe_markdown(value) -> str:
+        # Streamlit Markdown treats paired dollar signs as a LaTeX expression.
+        return str(value).replace("$", r"\$")
+
     if not hits:
         st.caption(empty_message)
         return
@@ -322,11 +399,24 @@ def _render_hits(hits: list, empty_message: str):
         st.markdown(f"**{hit['final_rank']}. {hit['name']}** {marker}")
         st.caption(f"{hit.get('cluster','')} · similarity {hit['score']}")
         if hit.get("reason"):
-            st.write(hit["reason"])
+            st.write(safe_markdown(hit["reason"]))
         if hit.get("cited_attributes"):
             st.markdown("**Cited:** " + ", ".join(f"`{a}`" for a in hit["cited_attributes"]))
+        checks = hit.get("constraint_checks") or []
+        if checks:
+            icons = {"pass": "✅", "fail": "❌", "unknown": "❓"}
+            st.markdown("**Hard-constraint checks:** " + " · ".join(
+                f"{icons.get(check.get('status'), '❓')} {safe_markdown(check.get('requirement', ''))}"
+                for check in checks
+            ))
+        if hit.get("failed_requirements"):
+            st.markdown("**Does not meet:** " + ", ".join(
+                safe_markdown(item) for item in hit["failed_requirements"]
+            ))
         if hit.get("unanswered"):
-            st.markdown("**Content can't answer:** " + ", ".join(hit["unanswered"]))
+            st.markdown("**Content can't answer:** " + ", ".join(
+                safe_markdown(item) for item in hit["unanswered"]
+            ))
         st.divider()
 
 
@@ -383,16 +473,43 @@ with tab_ask:
 
         st.text_input("What is the shopper asking for?", key="query_input")
 
-        st.caption("Or try one of these:")
-        example_cols = st.columns(len(EXAMPLE_QUERIES))
-        for i, (col, example) in enumerate(zip(example_cols, EXAMPLE_QUERIES)):
-            with col:
-                st.button(
-                    example[:46] + "…",
-                    key=f"example_query_{i}",
-                    on_click=_set_query,
-                    args=(example,),
-                )
+        st.markdown("#### Questions for the sample data")
+        st.caption("These fixed examples are designed for the two demo catalogs available in Upload & Extract (Tab 1).")
+        demo_query_cols = st.columns(2)
+        for i, (label, example) in enumerate(DEMO_QUERY_EXAMPLES):
+            with demo_query_cols[i]:
+                with st.container(border=True):
+                    st.caption(label)
+                    st.button(
+                        example,
+                        key=f"demo_query_{i}",
+                        on_click=_set_query,
+                        args=(example,),
+                        use_container_width=True,
+                    )
+
+        if st.session_state.get("suggested_queries") is None:
+            try:
+                with st.spinner("Creating questions for this catalog..."):
+                    st.session_state["suggested_queries"] = suggest_shopper_queries(cd)
+            except Exception:
+                st.session_state["suggested_queries"] = []
+
+        fixed_text = {example for _, example in DEMO_QUERY_EXAMPLES}
+        smart_queries = [query for query in (st.session_state.get("suggested_queries") or [])
+                         if query not in fixed_text]
+        if smart_queries:
+            st.markdown("#### Suggested from the current catalog")
+            smart_cols = st.columns(len(smart_queries))
+            for i, (col, example) in enumerate(zip(smart_cols, smart_queries)):
+                with col:
+                    st.button(
+                        example,
+                        key=f"smart_query_{i}",
+                        on_click=_set_query,
+                        args=(example,),
+                        use_container_width=True,
+                    )
 
         if st.button("Run query", type="primary", disabled=not has_content):
             query = st.session_state["query_input"].strip()
@@ -432,6 +549,37 @@ with tab_ask:
         if result:
             st.divider()
             st.markdown(f"**Query:** _{result['query']}_")
+
+            intent = result.get("intent") or {}
+            task = intent.get("task") or {}
+            contexts = intent.get("context") or []
+            constraints = intent.get("constraints") or []
+            hard_constraints = [c for c in constraints if c.get("strength") == "hard"]
+            preferences = [c for c in constraints if c.get("strength") != "hard"]
+            derived_needs = intent.get("derived_needs") or []
+
+            def _intent_text(items, primary_key, fallback="Not stated"):
+                values = [str(item.get(primary_key) or item.get("source_text") or "").strip()
+                          for item in items]
+                return " · ".join(value for value in values if value) or fallback
+
+            st.markdown("#### Query understanding")
+            intent_cols = st.columns(5)
+            summaries = [
+                ("Task", task.get("source_text") or task.get("goal") or "Not identified"),
+                ("Context", _intent_text(contexts, "value")),
+                ("Hard constraints", _intent_text(hard_constraints, "source_text", "None")),
+                ("Preferences", _intent_text(preferences, "source_text", "None")),
+                ("Derived needs", _intent_text(derived_needs, "need", "None")),
+            ]
+            for col, (label, value) in zip(intent_cols, summaries):
+                with col:
+                    with st.container(border=True):
+                        st.caption(label)
+                        st.write(str(value).replace("$", r"\$"))
+
+            with st.expander("View full interpretation details"):
+                st.json(intent)
 
             moves = [m for m in result["movement"] if m["before"] != m["after"]]
             if moves:
@@ -495,12 +643,13 @@ with tab2:
                 f"**{head['attributes_needed']} attributes** need supplying across "
                 f"**{head['products_affected']} of {head['total_products']} products**. "
                 f"Biggest single gap: `{worst['attribute']}`, missing on "
-                f"{worst['missing_count']}/{worst['total_products']} in {worst['cluster']}."
+                f"{worst['missing_count']}/{worst['applicable_products']} applicable products "
+                f"in {worst['cluster']}."
             )
             attr_rows = gaps.attribute_requests(cd)
             prod_rows = gaps.product_requests(cd)
             st.dataframe(
-                pd.DataFrame(attr_rows)[["cluster", "attribute", "missing_count",
+                pd.DataFrame(attr_rows)[["cluster", "attribute", "applicable_products", "missing_count",
                                           "missing_pct", "needed_because"]],
                 use_container_width=True, hide_index=True,
             )
@@ -524,8 +673,7 @@ with tab2:
         for name, data in cd.items():
             persona = data["selected_persona"]
             pf = (persona or {}).get("fit")
-            persona_coverage = pf["coverage_pct"] if pf else None
-            score = readiness_score(data["avg_completeness"], persona_coverage)
+            score = _cluster_score(data)
 
             with st.container(border=True):
                 c1, c2, c3, c4 = st.columns([2, 1, 1, 1])
@@ -553,6 +701,8 @@ with tab2:
                         bits.append(f"{ns['rejected_values']} unverifiable value(s) dropped")
                     if ns.get("failed_batches"):
                         bits.append(f"{ns['failed_batches']} batch(es) failed - raw specs kept")
+                    if ns.get("applicability_inferred"):
+                        bits.append("attribute relevance mapped per product")
                     st.caption("Knowledge layer: " + " · ".join(bits))
                 else:
                     st.caption("Knowledge layer: not applied - using raw specs and inferred attributes.")
@@ -592,6 +742,8 @@ with tab2:
                             f"- **{p['name']}** — {p['completeness_pct']}% "
                             f"(missing: {', '.join(p['missing']) if p['missing'] else 'none'})"
                         )
+                        if p.get("not_applicable"):
+                            st.caption("   not applicable: " + ", ".join(p["not_applicable"]))
                         norm = (by_name.get(p["name"], {}) or {}).get("specs_normalized")
                         if norm:
                             st.caption("   extracted: " + " · ".join(f"`{k}`: {v}" for k, v in norm.items()))
@@ -655,13 +807,23 @@ with tab3:
                     log.note(f"Story: {story}")
 
                     content_map = {}
+                    agent_content_map = {}
                     total = len(data["members"])
                     for i, product in enumerate(data["members"]):
                         pname = str(product.get("name", "Unnamed product"))
                         grounded = "verified attributes" if product.get("specs_normalized") else "raw specs"
                         log.step(0.1 + 0.9 * (i / max(total, 1)),
                                  f"{i + 1}/{total} — {pname} (from {grounded})")
-                        content_map[pname] = generate_product_content(product, name, chosen_persona, story)
+                        structured = generate_agent_content(
+                            product,
+                            name,
+                            chosen_persona,
+                            story,
+                            competitors_for(product, data["members"]),
+                        )
+                        agent_content_map[pname] = structured
+                        content_map[pname] = render_passage(structured)
+                    data["agent_content"] = agent_content_map
                     data["content"] = content_map
                     log.done(f"Wrote content for {total} products in {name}")
                     st.success("Story + content generated — see the Generated Content tab.")
@@ -747,93 +909,26 @@ with tab4:
                                        + "\n".join(f"- {u}" for u in ac["unsupported_claims"]))
                 st.divider()
 
-# ---------------------------------------------------------------------------
-# TAB 5 — Ask (works right after Tab 1 — no persona/content required yet)
-# ---------------------------------------------------------------------------
-with tab5:
-    if not st.session_state["analysis_done"]:
-        st.info("Run extraction + analysis in Tab 1 first.")
+# Render last so calls made during this run are reflected immediately.
+usage = get_spend_summary()
+baseline = st.session_state["api_usage_baseline"]
+session_calls = max(0, usage.get("calls", 0) - baseline.get("calls", 0))
+session_cached = max(0, usage.get("cached", 0) - baseline.get("cached", 0))
+session_cost = max(0.0, usage.get("usd", 0.0) - baseline.get("usd", 0.0))
+session_input = max(0, usage.get("input_tokens", 0) - baseline.get("input_tokens", 0))
+session_output = max(0, usage.get("output_tokens", 0) - baseline.get("output_tokens", 0))
+
+with st.sidebar:
+    st.header("API usage")
+    if usage.get("api_key_configured"):
+        st.success("API key configured", icon="🔐")
     else:
-        cd = st.session_state["cluster_data"]
+        st.error("API key not configured", icon="🔒")
+    st.caption("The key itself is never displayed.")
 
-        # Every product gets a raw passage (built deterministically, no LLM call,
-        # available immediately after Tab 1). Generated passage only exists once
-        # a persona has been picked and content generated in Tab 3. This lets you
-        # demo the same tab before AND after persona creation.
-        all_products = []
-        for cname, data in cd.items():
-            for product in data["members"]:
-                all_products.append({
-                    "cluster": cname,
-                    "product": product["name"],
-                    "raw_passage": build_raw_passage(product),
-                    "enriched_passage": data["content"].get(product["name"]),
-                })
+    c1, c2 = st.columns(2)
+    c1.metric("Live calls", session_calls)
+    c2.metric("Cache hits", session_cached)
+    st.metric("Estimated session cost", f"US${session_cost:.4f}")
+    st.caption(f"Tokens this session: {session_input:,} input · {session_output:,} output")
 
-        any_enriched = any(p["enriched_passage"] for p in all_products)
-
-        st.caption(f"Will check against {len(all_products)} product(s).")
-        mode_options = ["Raw catalog content"]
-        if any_enriched:
-            mode_options += ["Generated content", "Compare both"]
-        default_index = mode_options.index("Compare both") if any_enriched else 0
-        mode = st.radio("Test against", mode_options, index=default_index, horizontal=True)
-        if not any_enriched:
-            st.caption("No generated content yet — this will test raw catalog content only. "
-                       "Generate content in the Personas tab, then re-run the same query here "
-                       "to see the before/after.")
-
-        query = st.text_input("Shopper query",
-                               placeholder="e.g. half marathon shoes for humid weather under S$200")
-
-        if st.button("Run", type="primary") and query.strip():
-            results = []
-            targets = [p for p in all_products if mode != "Generated content" or p["enriched_passage"]]
-            bar = st.progress(0.0)
-            for i, p in enumerate(targets, 1):
-                raw_result = None
-                enriched_result = None
-                if mode in ("Raw catalog content", "Compare both"):
-                    raw_result = ask_confidence(query, p["product"], p["raw_passage"])
-                if mode in ("Generated content", "Compare both") and p["enriched_passage"]:
-                    enriched_result = ask_confidence(query, p["product"], p["enriched_passage"])
-                results.append({
-                    "cluster": p["cluster"], "product": p["product"],
-                    "raw": raw_result, "enriched": enriched_result,
-                })
-                bar.progress(i / len(targets))
-
-            def _sort_key(r):
-                best = r["enriched"] or r["raw"]
-                return -(best["confidence"] if best else 0)
-            results.sort(key=_sort_key)
-            st.session_state["ask_results"] = results
-            st.session_state["ask_mode"] = mode
-
-        def _badge(result):
-            if not result:
-                return "⚪ —"
-            conf = result["confidence"]
-            color = "🟢" if conf >= 70 else "🟡" if conf >= 40 else "🔴"
-            return f"{color} {conf}%"
-
-        if st.session_state.get("ask_results"):
-            st.subheader("Results")
-            shown_mode = st.session_state.get("ask_mode", "Raw catalog content")
-            for r in st.session_state["ask_results"]:
-                with st.container(border=True):
-                    c1, c2 = st.columns([3, 2])
-                    with c1:
-                        st.markdown(f"**{r['product']}**  ·  _{r['cluster']}_")
-                        reason = (r["enriched"] or r["raw"] or {}).get("reason", "")
-                        st.caption(reason)
-                    with c2:
-                        if shown_mode == "Compare both":
-                            st.markdown(f"Raw: {_badge(r['raw'])}   →   Generated: {_badge(r['enriched'])}")
-                            if r["raw"] and r["enriched"]:
-                                delta = r["enriched"]["confidence"] - r["raw"]["confidence"]
-                                st.caption(f"{'+' if delta >= 0 else ''}{delta} points")
-                        elif shown_mode == "Generated content":
-                            st.markdown(_badge(r["enriched"]))
-                        else:
-                            st.markdown(_badge(r["raw"]))

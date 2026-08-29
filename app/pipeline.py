@@ -12,11 +12,22 @@ Core logic, in the order the app calls it:
                                 criteria coverage). Fit is reported separately, never blended in.
 """
 
+import re
+
 from llm_utils import call_llm_json, call_llm_text
 
 BATCH_SIZE = 20
 ATTR_WEIGHT = 0.30
 PERSONA_WEIGHT = 0.70
+
+# Deterministic readiness-score weights. These sum to 1.0.
+WEIGHTS = {
+    "attribute_completeness": 0.25,
+    "persona_coverage": 0.20,
+    "not_for_coverage": 0.15,
+    "comparative_context": 0.15,
+    "claim_grounding": 0.25,
+}
 
 
 def _s(val, default: str = "") -> str:
@@ -30,6 +41,20 @@ def _s(val, default: str = "") -> str:
     except TypeError:
         pass
     return str(val)
+
+
+def _parse_price(value) -> float | None:
+    """Extract the first numeric price from values such as 'S$189' or '$1,299.00'."""
+    text = _s(value).strip()
+    if not text:
+        return None
+    match = re.search(r"\d[\d,]*(?:\.\d+)?", text)
+    if not match:
+        return None
+    try:
+        return float(match.group(0).replace(",", ""))
+    except ValueError:
+        return None
 
 
 # ---------------------------------------------------------------------------
@@ -131,10 +156,15 @@ def attribute_completeness(products_in_cluster: list[dict], expected_attributes:
     for p in products_in_cluster:
         normalized = p.get("specs_normalized") or {}
         specs = p.get("specs") or {}
+        applicable = ([a for a in expected_attributes if a in p["applicable_attributes"]]
+                      if "applicable_attributes" in p else list(expected_attributes))
+        applicable_set = set(applicable)
         spec_keys_lower = {str(k).lower() for k in specs.keys()}
         desc_lower = _s(p.get("description")).lower()
         present = []
         for attr in expected_attributes:
+            if attr not in applicable_set:
+                continue
             if normalized:
                 # Normalized path: the schema fixed the key names, so this is an exact
                 # lookup rather than substring guesswork.
@@ -150,9 +180,10 @@ def attribute_completeness(products_in_cluster: list[dict], expected_attributes:
                 present.append(attr)
             else:
                 missing_counts[attr] += 1
-        pct = round(100 * len(present) / len(expected_attributes), 1)
+        pct = round(100 * len(present) / len(applicable), 1) if applicable else 100.0
         per_product.append({"name": _s(p.get("name"), "Unnamed product"), "present": present,
-                             "missing": [a for a in expected_attributes if a not in present],
+                             "missing": [a for a in applicable if a not in present],
+                             "not_applicable": [a for a in expected_attributes if a not in applicable_set],
                              "completeness_pct": pct})
 
     cluster_avg = round(sum(p["completeness_pct"] for p in per_product) / len(per_product), 1) if per_product else 0.0
@@ -240,68 +271,6 @@ def generate_user_story(cluster_name: str, persona: dict) -> str:
 # 6. COMPETITORS (for grounded comparisons) + RICH AGENT CONTENT GENERATION
 # ---------------------------------------------------------------------------
 
-<<<<<<< HEAD
-CONTENT_SYSTEM_PROMPT = """You write agent-optimized product content: copy meant to be read and
-cited by AI shopping assistants answering a specific natural-language buyer intent, NOT
-traditional SEO/marketing copy.
-
-Ground every claim in the target product data and peer-product context given to you. You may
-derive useful suitability or limitation claims from those facts, but make the reasoning explicit
-(for example, low weight + high ventilation -> suited to hot-weather training). Never invent
-numbers, ratings, specs, or comparisons. A comparison is allowed only when the relevant target
-and peer values are present; name the attribute or scope that proves it. Treat the supplied peers
-as the comparison set, not the whole market. Do not call something "best" or "better" without
-evidence.
-
-Write, in this order, as plain text with clear line breaks (no markdown headers):
-1. A 2-3 sentence semantic passage answering the persona's need directly. Include a grounded
-   derived suitability claim and, when peer data supports it, one concrete cluster-relative
-   comparison.
-2. "Best for:" one line naming the scenario/persona this product suits.
-3. "Not for:" one line naming a limitation that follows from the supplied data. If no limitation
-   can be supported, say "Not for: No specific limitation established by the available data."
-4. Three short FAQ-style Q&As covering different query angles such as fit/use case, conditions,
-   price/value, durability, or comparison. Only cover angles supported by the supplied data.
-
-Keep it concise, concrete, and free of generic marketing fluff ("premium quality", "amazing")."""
-
-
-def _generation_attributes(product: dict) -> dict:
-    """Prefer the normalized knowledge layer over raw catalog fields.
-
-    Raw specs on a real export are mostly noise - Handle, Published, Variant SKU, Image Src,
-    SEO Title - plus whatever delimited blob the brand's attributes were buried in. Feeding
-    that to the writer produces vaguer copy and invites it to treat junk as a product fact.
-    Normalized attributes are clean, verified against the source, and consistently named."""
-    normalized = product.get("specs_normalized") or {}
-    if normalized:
-        return {k: v for k, v in normalized.items() if v is not None and _s(v).strip()}
-    return product.get("specs") or {}
-
-
-def _peer_context(product: dict, cluster_products: list[dict] | None) -> list[dict]:
-    """Return compact, verified records for other products in the target's cluster."""
-    peers = []
-    target_name = _s(product.get("name"), "Unnamed product")
-    for peer in cluster_products or []:
-        peer_name = _s(peer.get("name"), "Unnamed product")
-        if peer is product or peer_name == target_name:
-            continue
-        record = {
-            "name": peer_name,
-            "price": _s(peer.get("price"), "N/A"),
-            "verified_attributes": _generation_attributes(peer),
-        }
-        # Empty peer records cannot substantiate a comparison and only waste context.
-        if record["price"] != "N/A" or record["verified_attributes"]:
-            peers.append(record)
-    return peers
-
-
-def generate_product_content(product: dict, cluster_name: str, persona: dict, user_story: str,
-                             cluster_products: list[dict] | None = None) -> str:
-    peers = _peer_context(product, cluster_products)
-=======
 def competitors_for(product: dict, cluster_members: list[dict], n: int = 3) -> list[dict]:
     """Closest-priced other products in the same cluster — real siblings, not invented ones."""
     price = _parse_price(product.get("price"))
@@ -356,27 +325,16 @@ def generate_agent_content(product: dict, cluster_name: str, persona: dict, user
         for c in competitors
     ] or ["- (no other products in this cluster to compare against)"]
 
->>>>>>> 0ca4a108fad2a899173cc437e1a20008d8d2856a
     prompt = (
         f"PRODUCT\n"
         f"Name: {_s(product.get('name'), 'Unnamed product')}\n"
         f"Price: {_s(product.get('price'), 'N/A')}\n"
-<<<<<<< HEAD
-        f"Description on file: {_s(product.get('description'))}\n"
-        f"Verified attributes: {_generation_attributes(product)}\n\n"
-        f"Cluster/category: {cluster_name}\n"
-        f"Other products in this cluster (the complete permitted comparison set): {peers}\n"
-        f"Comparison-set size: {len(peers) + 1} products including the target\n"
-        f"Target persona: {persona['title']} — {persona.get('narrative_seed','')}\n"
-        f"User story: {user_story}"
-=======
         f"Description: {_s(product.get('description'))}\n"
         f"Specs: {product.get('specs') or {}}\n\n"
         f"CATEGORY/CLUSTER: {cluster_name}\n"
         f"SEED PERSONA: {persona.get('title','')} — {persona.get('narrative_seed','')}\n"
         f"SEED USER STORY: {user_story}\n\n"
         f"COMPETITOR CONTEXT (real siblings in this cluster):\n" + "\n".join(comp_lines)
->>>>>>> 0ca4a108fad2a899173cc437e1a20008d8d2856a
     )
     result = call_llm_json(AGENT_CONTENT_SYSTEM_PROMPT, prompt, temperature=0.4)
     if not isinstance(result, dict):
@@ -397,23 +355,6 @@ def generate_agent_content(product: dict, cluster_name: str, persona: dict, user
 # 7. RENDER — pure formatting, no further model call
 # ---------------------------------------------------------------------------
 
-<<<<<<< HEAD
-def readiness_score(attribute_completeness_pct: float, persona_coverage_pct: float | None) -> float:
-    """Readiness measures ONLY what content work can fix: can an agent answer the questions
-    this catalog will be asked?
-
-    Two inputs, both coverage: how complete the category schema is, and how much of the
-    selected persona's specific criteria the data can answer. They are averaged, not weighted -
-    there is no arbitrary split left to justify.
-
-    Fit (does the product actually suit the shopper) is deliberately NOT in here. No amount of
-    rewriting makes a 340g shoe lightweight, so folding fit into a content-readiness score
-    would penalise brands for a merchandising fact and make the number unactionable. Fit is
-    reported alongside instead."""
-    if persona_coverage_pct is None:
-        return round(attribute_completeness_pct, 1)
-    return round((attribute_completeness_pct + persona_coverage_pct) / 2, 1)
-=======
 def build_raw_passage(product: dict) -> str:
     """Deterministic, no LLM call: what the catalog says today, formatted the same
     shape as render_passage() so the Ask tab can test raw content before any
@@ -531,7 +472,51 @@ def top_gaps(attribute_completeness_pct: float, agent_content: dict | None, miss
 
 
 # ---------------------------------------------------------------------------
-# 9. ASK — one query against one product's generated content
+# 9. CATALOG-AWARE DEMO QUERIES
+# ---------------------------------------------------------------------------
+
+SUGGESTED_QUERIES_SYSTEM_PROMPT = """Create three realistic questions a shopper might ask an
+AI assistant about the supplied catalog. The questions are demo inputs for testing product
+recommendations, not questions about the catalog itself.
+
+Rules:
+- Use only product categories and decision factors supported by the catalog summary.
+- Write natural first-person shopping requests, not keyword searches.
+- Each question should combine a task, useful context, at least one hard constraint, and one
+  preference so ranking requires reasoning.
+- Make the three questions meaningfully different. Include a known catalog gap in at most one
+  question so the demo can also expose missing information.
+- Do not mention a specific product name or invent exact product facts.
+- Keep each question to one sentence.
+
+Return strict JSON: {"queries": ["...", "...", "..."]}"""
+
+
+def suggest_shopper_queries(cluster_data: dict) -> list[str]:
+    summary = []
+    for cluster_name, data in cluster_data.items():
+        members = data.get("members") or []
+        summary.append({
+            "category": cluster_name,
+            "product_count": len(members),
+            "sample_prices": [_s(p.get("price")) for p in members[:8] if _s(p.get("price"))],
+            "available_attributes": data.get("expected_attrs") or [],
+            "missing_attributes": [key for key, count in (data.get("missing_counts") or {}).items()
+                                   if count],
+            "shopper_intents": [p.get("narrative_seed") or p.get("title")
+                                for p in (data.get("personas") or [])],
+        })
+    result = call_llm_json(
+        SUGGESTED_QUERIES_SYSTEM_PROMPT,
+        f"Catalog summary:\n{summary}",
+        temperature=0.5,
+    )
+    queries = result.get("queries", []) if isinstance(result, dict) else []
+    return [str(query).strip() for query in queries if str(query).strip()][:3]
+
+
+# ---------------------------------------------------------------------------
+# 10. ASK — one query against one product's generated content
 # ---------------------------------------------------------------------------
 
 ASK_SYSTEM_PROMPT = """You are an AI shopping assistant deciding whether to recommend a
@@ -554,4 +539,3 @@ def ask_confidence(query: str, product_name: str, passage_text: str) -> dict:
     except (TypeError, ValueError):
         result["confidence"] = 0
     return result
->>>>>>> 0ca4a108fad2a899173cc437e1a20008d8d2856a
