@@ -1,0 +1,193 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agent Card",
+  "description": "Machine-reasonable representation of a product for AI shopping assistants. Category-agnostic core + category-specific extension block.",
+  "type": "object",
+  "required": ["id", "identity", "hard_constraints", "use_cases", "personas", "not_for", "comparisons", "narrative", "provenance"],
+  "properties": {
+
+    "id": { "type": "string", "description": "SKU or stable product ID" },
+
+    "identity": {
+      "type": "object",
+      "required": ["title", "brand", "category", "price"],
+      "properties": {
+        "title": { "type": "string" },
+        "brand": { "type": "string" },
+        "category": { "type": "string", "description": "Top-level taxonomy node, e.g. footwear.running" },
+        "price": {
+          "type": "object",
+          "properties": {
+            "amount": { "type": "number" },
+            "currency": { "type": "string", "default": "SGD" },
+            "band": { "type": "string", "enum": ["budget", "mid", "premium", "luxury"] }
+          }
+        },
+        "availability": { "type": "string", "enum": ["in_stock", "low_stock", "out_of_stock"] }
+      }
+    },
+
+    "hard_constraints": {
+      "type": "object",
+      "description": "Filterable facts with units. An agent runs SQL/filters on these BEFORE semantic ranking. Never free text.",
+      "properties": {
+        "numeric": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["key", "value", "unit"],
+            "properties": {
+              "key": { "type": "string", "description": "e.g. weight, heel_drop, volume" },
+              "value": { "type": "number" },
+              "unit": { "type": "string", "description": "e.g. g, mm, ml" }
+            }
+          }
+        },
+        "categorical": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["key", "values"],
+            "properties": {
+              "key": { "type": "string", "description": "e.g. surface, skin_type, closure" },
+              "values": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        },
+        "situational_tags": {
+          "type": "array",
+          "description": "The bridge between lifestyle queries and specs. e.g. humid_climate, long_haul_flight, morning_routine_under_5min",
+          "items": { "type": "string" }
+        }
+      }
+    },
+
+    "use_cases": {
+      "type": "array",
+      "description": "Natural language jobs-to-be-done. This is what embeds and matches intent queries.",
+      "items": {
+        "type": "object",
+        "required": ["scenario", "why_it_fits", "confidence"],
+        "properties": {
+          "scenario": { "type": "string", "description": "e.g. 'Half marathon training in tropical humidity'" },
+          "why_it_fits": { "type": "string", "description": "Grounded in a specific spec. Must cite a hard_constraint key." },
+          "grounded_in": { "type": "array", "items": { "type": "string" } },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      }
+    },
+
+    "personas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "fit", "reasoning"],
+        "properties": {
+          "label": { "type": "string", "description": "e.g. 'First-time half marathoner, 4-5 runs/week'" },
+          "fit": { "type": "string", "enum": ["strong", "partial", "poor"] },
+          "reasoning": { "type": "string" },
+          "experience_level": { "type": "string", "enum": ["beginner", "intermediate", "advanced", "any"] }
+        }
+      }
+    },
+
+    "not_for": {
+      "type": "array",
+      "description": "NEGATIVE INFORMATION. The single most valuable field and the one no marketer writes. Prevents bad recommendations.",
+      "items": {
+        "type": "object",
+        "required": ["exclusion", "reason"],
+        "properties": {
+          "exclusion": { "type": "string", "description": "e.g. 'Runners with wide feet (E+)'" },
+          "reason": { "type": "string" },
+          "source": { "type": "string", "enum": ["spec", "review_consensus", "inferred"] }
+        }
+      }
+    },
+
+    "comparisons": {
+      "type": "array",
+      "description": "Relative positioning. Agents reason comparatively; absolute claims are useless for ranking.",
+      "items": {
+        "type": "object",
+        "required": ["against", "axis", "direction"],
+        "properties": {
+          "against": { "type": "string", "description": "Competitor or sibling SKU" },
+          "axis": { "type": "string", "description": "e.g. cushioning, price, breathability" },
+          "direction": { "type": "string", "enum": ["more", "less", "similar"] },
+          "magnitude": { "type": "string" },
+          "tradeoff": { "type": "string", "description": "What you give up for this difference" }
+        }
+      }
+    },
+
+    "narrative": {
+      "type": "object",
+      "description": "Persuasive layer. Short, quotable, per-intent. What the agent can actually say back to the shopper.",
+      "properties": {
+        "one_line_pitch": { "type": "string", "maxLength": 160 },
+        "intent_variants": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "intent": { "type": "string" },
+              "copy": { "type": "string", "maxLength": 300 }
+            }
+          }
+        }
+      }
+    },
+
+    "category_extension": {
+      "type": "object",
+      "description": "Category-specific block, driven by a config file. Core schema above never changes; only this does.",
+      "additionalProperties": true
+    },
+
+    "provenance": {
+      "type": "object",
+      "description": "Every generated field traces back. This is the trust/compliance story.",
+      "required": ["field_sources"],
+      "properties": {
+        "field_sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["field_path", "source"],
+            "properties": {
+              "field_path": { "type": "string" },
+              "source": { "type": "string", "enum": ["catalog_spec", "review_derived", "inferred", "brand_asset"] },
+              "evidence": { "type": "string" }
+            }
+          }
+        },
+        "unsupported_claims": {
+          "type": "array",
+          "description": "Flagged for human review before publishing. Compliance win.",
+          "items": { "type": "string" }
+        },
+        "enriched_at": { "type": "string", "format": "date-time" },
+        "model": { "type": "string" }
+      }
+    },
+
+    "readiness": {
+      "type": "object",
+      "properties": {
+        "score": { "type": "number", "minimum": 0, "maximum": 100 },
+        "components": {
+          "type": "object",
+          "properties": {
+            "attribute_completeness": { "type": "number" },
+            "use_case_coverage": { "type": "number" },
+            "persona_coverage": { "type": "number" },
+            "comparative_context": { "type": "number" },
+            "claim_grounding": { "type": "number" }
+          }
+        },
+        "top_gaps": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

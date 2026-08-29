@@ -1,0 +1,36 @@
+category: skincare.facial
+label: Facial skincare
+required_numeric: [volume_ml, routine_time_min, ph]
+required_categorical: [skin_type, key_actives, fragrance_free, comedogenic_rating]
+situational_vocabulary:
+  - oily_skin_humid_climate
+  - morning_routine_under_5min
+  - sensitive_barrier_repair
+  - layerable_under_spf
+  - night_routine
+  - post_procedure_recovery
+  - maskne_prone
+  - air_conditioned_office
+  - travel_cabin_size
+  - refillable_low_waste
+persona_axes: [skin_type, sensitivity, routine_complexity_tolerance, sustainability_priority]
+common_exclusions: [pregnancy, active_retinoid_use, fragrance_sensitivity, dry_skin]
+
+# Only these keys are allowed to ELIMINATE a product. Fragrance is a hard stop
+# for someone who reacts to it; skin type is a preference that ranks.
+hard_filter_keys: [fragrance_free]
+
+category_cues: [skin, skincare, face, facial, complexion, moisturiser, moisturizer,
+                serum, cleanser, cleanse, sunscreen, spf, toner, acne, breakout,
+                breakouts, pores, wrinkles, barrier, routine, retinol, retinoid,
+                pigmentation, dermatologist, peel, blemish]
+
+constraint_synonyms:
+  skin_type: {oily: [oily skin, oily, greasy skin, shiny skin, sebum, excess oil], dry: [dry, flaky, tight], combination: [combination, combo, t-zone], sensitive: [sensitive, reactive, easily irritated, rosacea], normal: [normal]}
+  fragrance_free: {"true": [fragrance free, fragrance-free, unscented, no fragrance,
+                            without fragrance, free of fragrance, fragrance sensitive,
+                            allergic to fragrance, no added scent],
+                   "false": [lightly scented, with fragrance, fragranced]}
+numeric_intents:
+  routine_time_min: {quick: below, fast: below, "under 5": below, busy: below}
+  volume_ml: {travel: below, "cabin": below}

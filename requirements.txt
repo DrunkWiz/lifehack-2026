@@ -1,0 +1,21 @@
+# core
+pydantic>=2.6
+jsonschema>=4.21
+PyYAML>=6.0
+numpy>=1.26
+pandas>=2.1
+python-dotenv>=1.0
+
+# llm + embeddings (optional at runtime; pipeline falls back to the local provider)
+openai>=1.40
+
+# demo ui
+streamlit>=1.33
+
+# dev
+pytest>=8.0
+
+# catalogue ingestion: PDF text, PDF page rendering, spreadsheets
+pdfplumber>=0.11
+pymupdf>=1.24
+openpyxl>=3.1

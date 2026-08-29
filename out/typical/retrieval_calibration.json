@@ -1,0 +1,7 @@
+{
+  "embed_provider": "openai",
+  "queries": 264,
+  "percentile": 5,
+  "min_score_raw": 0.3649,
+  "min_score_enriched": 0.4094
+}

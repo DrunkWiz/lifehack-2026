@@ -1,0 +1,1586 @@
+[
+  {
+    "query": "I'm looking for running shoes suitable for everyday road runs in a hot and humid climate.",
+    "gold": "kestrel-drift-3",
+    "category": "footwear.running",
+    "tag": "daily_training"
+  },
+  {
+    "query": "Can you recommend comfortable shoes for someone new to running on paved surfaces?",
+    "gold": "kestrel-drift-3",
+    "category": "footwear.running",
+    "tag": "humid_climate"
+  },
+  {
+    "query": "I need lightweight trainers with good breathability to keep my feet cool during summer runs.",
+    "gold": "kestrel-drift-3",
+    "category": "footwear.running",
+    "tag": "beginner_friendly"
+  },
+  {
+    "query": "What are some well-cushioned running sneakers that support a neutral arch for daily workouts?",
+    "gold": "kestrel-drift-3",
+    "category": "footwear.running",
+    "tag": "daily_training"
+  },
+  {
+    "query": "Help me find laced running shoes designed for road running with balanced cushioning.",
+    "gold": "kestrel-drift-3",
+    "category": "footwear.running",
+    "tag": "humid_climate"
+  },
+  {
+    "query": "I'm training regularly on asphalt and need shoes that won't weigh me down but still provide comfort.",
+    "gold": "kestrel-drift-3",
+    "category": "footwear.running",
+    "tag": "beginner_friendly"
+  },
+  {
+    "query": "Which running shoes offer an 8mm heel drop and are ideal for beginner runners?",
+    "gold": "kestrel-drift-3",
+    "category": "footwear.running",
+    "tag": "daily_training"
+  },
+  {
+    "query": "I want shoes with standard width that can handle humid weather but don’t have extra stiff plates.",
+    "gold": "kestrel-drift-3",
+    "category": "footwear.running",
+    "tag": "humid_climate"
+  },
+  {
+    "query": "I need running shoes that can handle sweaty conditions on city streets.",
+    "gold": "kestrel-drift-3-wide",
+    "category": "footwear.running",
+    "tag": "humid_climate"
+  },
+  {
+    "query": "Looking for comfortable trainers for everyday runs with wide toe space.",
+    "gold": "kestrel-drift-3-wide",
+    "category": "footwear.running",
+    "tag": "daily_training"
+  },
+  {
+    "query": "What are some good neutral running sneakers for training on pavement?",
+    "gold": "kestrel-drift-3-wide",
+    "category": "footwear.running",
+    "tag": "wide_feet"
+  },
+  {
+    "query": "Can you recommend breathable shoes for humid weather and neutral arches?",
+    "gold": "kestrel-drift-3-wide",
+    "category": "footwear.running",
+    "tag": "humid_climate"
+  },
+  {
+    "query": "I want well-cushioned road shoes that aren't too heavy and fit wide feet.",
+    "gold": "kestrel-drift-3-wide",
+    "category": "footwear.running",
+    "tag": "daily_training"
+  },
+  {
+    "query": "Help me find lace-up running shoes with balanced support for daily use.",
+    "gold": "kestrel-drift-3-wide",
+    "category": "footwear.running",
+    "tag": "wide_feet"
+  },
+  {
+    "query": "Which shoes work best for regular jogs on hard surfaces with a moderate heel drop?",
+    "gold": "kestrel-drift-3-wide",
+    "category": "footwear.running",
+    "tag": "humid_climate"
+  },
+  {
+    "query": "Are there any lightweight, wide-fit runners suitable for humid climates under $200?",
+    "gold": "kestrel-drift-3-wide",
+    "category": "footwear.running",
+    "tag": "daily_training"
+  },
+  {
+    "query": "What are good lightweight running shoes for long road races that keep my feet cool?",
+    "gold": "kestrel-vapourline",
+    "category": "footwear.running",
+    "tag": "road_long_distance"
+  },
+  {
+    "query": "I'm training for a tempo run and need narrow shoes with firm support on paved roads.",
+    "gold": "kestrel-vapourline",
+    "category": "footwear.running",
+    "tag": "tempo"
+  },
+  {
+    "query": "Can you suggest racing shoes with a carbon plate that fit narrow feet and have a secure lace closure?",
+    "gold": "kestrel-vapourline",
+    "category": "footwear.running",
+    "tag": "race_day"
+  },
+  {
+    "query": "Looking for neutral arch support running shoes for speed workouts on the road with high breathability.",
+    "gold": "kestrel-vapourline",
+    "category": "footwear.running",
+    "tag": "road_long_distance"
+  },
+  {
+    "query": "I need firm cushioned shoes for fast road runs that feel responsive and weigh less than 200 grams.",
+    "gold": "kestrel-vapourline",
+    "category": "footwear.running",
+    "tag": "tempo"
+  },
+  {
+    "query": "Which road running shoes have a low heel drop and a stiff plate suitable for race day performance?",
+    "gold": "kestrel-vapourline",
+    "category": "footwear.running",
+    "tag": "race_day"
+  },
+  {
+    "query": "Do you have narrow trainers that offer firm cushioning and excellent airflow for marathon pace runs?",
+    "gold": "kestrel-vapourline",
+    "category": "footwear.running",
+    "tag": "road_long_distance"
+  },
+  {
+    "query": "I want lightweight, lace-up running shoes with a carbon plate designed for tempo runs on asphalt.",
+    "gold": "kestrel-vapourline",
+    "category": "footwear.running",
+    "tag": "tempo"
+  },
+  {
+    "query": "I'm looking for running shoes with good stability for my overpronation and flat feet.",
+    "gold": "meridian-atlas-stability",
+    "category": "footwear.running",
+    "tag": "overpronation"
+  },
+  {
+    "query": "I need wide running shoes that can handle daily training on roads without feeling too bulky.",
+    "gold": "meridian-atlas-stability",
+    "category": "footwear.running",
+    "tag": "flat_feet"
+  },
+  {
+    "query": "What are some cushioned running shoes suitable for a heavier runner who needs support?",
+    "gold": "meridian-atlas-stability",
+    "category": "footwear.running",
+    "tag": "daily_training"
+  },
+  {
+    "query": "Can you help me find lace-up running shoes with medium breathability for road runs?",
+    "gold": "meridian-atlas-stability",
+    "category": "footwear.running",
+    "tag": "heavier_runner"
+  },
+  {
+    "query": "I want shoes with a balanced cushioning and about a 10mm heel drop for everyday jogging.",
+    "gold": "meridian-atlas-stability",
+    "category": "footwear.running",
+    "tag": "overpronation"
+  },
+  {
+    "query": "Do you have comfortable wide-fit running shoes that offer stability for overpronation?",
+    "gold": "meridian-atlas-stability",
+    "category": "footwear.running",
+    "tag": "flat_feet"
+  },
+  {
+    "query": "I'm training daily on pavement and need running shoes designed for heavier runners with flat feet.",
+    "gold": "meridian-atlas-stability",
+    "category": "footwear.running",
+    "tag": "daily_training"
+  },
+  {
+    "query": "What road running shoes provide good arch support and moderate cushioning without a stiff plate?",
+    "gold": "meridian-atlas-stability",
+    "category": "footwear.running",
+    "tag": "heavier_runner"
+  },
+  {
+    "query": "I need running shoes that help correct my overpronation on pavement during humid weather.",
+    "gold": "meridian-atlas-gt",
+    "category": "footwear.running",
+    "tag": "humid_climate"
+  },
+  {
+    "query": "Looking for tempo shoes with firm cushioning that keep my feet cool in hot, sticky climates.",
+    "gold": "meridian-atlas-gt",
+    "category": "footwear.running",
+    "tag": "overpronation"
+  },
+  {
+    "query": "What are some stable arch support running shoes for training on the road in warm conditions?",
+    "gold": "meridian-atlas-gt",
+    "category": "footwear.running",
+    "tag": "tempo"
+  },
+  {
+    "query": "Can you suggest lightweight road runners with a breathable upper and lace closure for daily runs?",
+    "gold": "meridian-atlas-gt",
+    "category": "footwear.running",
+    "tag": "humid_climate"
+  },
+  {
+    "query": "I'm searching for running shoes with an 8mm heel drop that provide firm support for overpronation.",
+    "gold": "meridian-atlas-gt",
+    "category": "footwear.running",
+    "tag": "overpronation"
+  },
+  {
+    "query": "Which shoes are best for mid-distance tempo runs on asphalt in a humid environment?",
+    "gold": "meridian-atlas-gt",
+    "category": "footwear.running",
+    "tag": "tempo"
+  },
+  {
+    "query": "I want a pair of stability runners with a nylon plate that fit my standard width feet comfortably.",
+    "gold": "meridian-atlas-gt",
+    "category": "footwear.running",
+    "tag": "humid_climate"
+  },
+  {
+    "query": "Show me running shoes designed for firm cushioning and high breathability for use in hot, sweaty weather.",
+    "gold": "meridian-atlas-gt",
+    "category": "footwear.running",
+    "tag": "overpronation"
+  },
+  {
+    "query": "I'm looking for wide running shoes with strong arch support because I overpronate badly and run on roads.",
+    "gold": "meridian-fathom-mc",
+    "category": "footwear.running",
+    "tag": "heavier_runner"
+  },
+  {
+    "query": "Can you recommend walking shoes that provide firm cushioning and help control motion for heavier people?",
+    "gold": "meridian-fathom-mc",
+    "category": "footwear.running",
+    "tag": "walking"
+  },
+  {
+    "query": "I need lace-up shoes suitable for road running that accommodate wider feet and offer a higher heel drop.",
+    "gold": "meridian-fathom-mc",
+    "category": "footwear.running",
+    "tag": "severe_overpronation"
+  },
+  {
+    "query": "Are there any running shoes with minimal breathability but solid support for severe overpronation?",
+    "gold": "meridian-fathom-mc",
+    "category": "footwear.running",
+    "tag": "heavier_runner"
+  },
+  {
+    "query": "What shoes would you suggest for someone who walks a lot on pavement, has wide feet, and requires motion control?",
+    "gold": "meridian-fathom-mc",
+    "category": "footwear.running",
+    "tag": "walking"
+  },
+  {
+    "query": "I'm a heavier runner searching for firm-cushioned shoes without any plates, ideal for road surfaces.",
+    "gold": "meridian-fathom-mc",
+    "category": "footwear.running",
+    "tag": "severe_overpronation"
+  },
+  {
+    "query": "Do you have any wide-footed road running shoes that focus on stability for severe overpronation?",
+    "gold": "meridian-fathom-mc",
+    "category": "footwear.running",
+    "tag": "heavier_runner"
+  },
+  {
+    "query": "Looking for lace-up footwear with a 12mm heel drop, good for walking and motion control, with firm cushioning.",
+    "gold": "meridian-fathom-mc",
+    "category": "footwear.running",
+    "tag": "walking"
+  },
+  {
+    "query": "I need shoes that can handle slippery trails during my weekend hikes.",
+    "gold": "northbound-ridgeline",
+    "category": "footwear.running",
+    "tag": "trail_use"
+  },
+  {
+    "query": "Looking for running shoes with good grip for wet and uneven terrain.",
+    "gold": "northbound-ridgeline",
+    "category": "footwear.running",
+    "tag": "wet_road_grip"
+  },
+  {
+    "query": "What are some lightweight shoes suitable for trail running with balanced cushioning?",
+    "gold": "northbound-ridgeline",
+    "category": "footwear.running",
+    "tag": "hiking_crossover"
+  },
+  {
+    "query": "Can you recommend neutral arch support shoes for training on natural trails?",
+    "gold": "northbound-ridgeline",
+    "category": "footwear.running",
+    "tag": "trail_use"
+  },
+  {
+    "query": "I want comfortable trail shoes with medium breathability for long runs in humid weather.",
+    "gold": "northbound-ridgeline",
+    "category": "footwear.running",
+    "tag": "wet_road_grip"
+  },
+  {
+    "query": "Show me lace-up footwear that works for both trail running and casual hiking.",
+    "gold": "northbound-ridgeline",
+    "category": "footwear.running",
+    "tag": "hiking_crossover"
+  },
+  {
+    "query": "I'm searching for trail shoes with a moderate heel drop that won't strain my calves.",
+    "gold": "northbound-ridgeline",
+    "category": "footwear.running",
+    "tag": "trail_use"
+  },
+  {
+    "query": "Need standard width trail shoes under $250 that provide stable footing without being too heavy.",
+    "gold": "northbound-ridgeline",
+    "category": "footwear.running",
+    "tag": "wet_road_grip"
+  },
+  {
+    "query": "I'm training for a trail marathon in rainy and cold conditions and need shoes that can handle slippery paths.",
+    "gold": "northbound-ridgeline-gtx",
+    "category": "footwear.running",
+    "tag": "cold_climate"
+  },
+  {
+    "query": "Looking for running shoes suitable for trails with good arch support but not too much breathability because I run in chilly weather.",
+    "gold": "northbound-ridgeline-gtx",
+    "category": "footwear.running",
+    "tag": "trail_use"
+  },
+  {
+    "query": "What are some balanced cushioning trail shoes that can keep my feet warm and dry in damp, cold climates?",
+    "gold": "northbound-ridgeline-gtx",
+    "category": "footwear.running",
+    "tag": "wet_weather"
+  },
+  {
+    "query": "I want trail running shoes with laces and standard width, comfortable for neutral arches, and suitable for wet environments.",
+    "gold": "northbound-ridgeline-gtx",
+    "category": "footwear.running",
+    "tag": "cold_climate"
+  },
+  {
+    "query": "Can you suggest running shoes with moderate heel drop and low breathability for trail runs in cold, wet weather?",
+    "gold": "northbound-ridgeline-gtx",
+    "category": "footwear.running",
+    "tag": "trail_use"
+  },
+  {
+    "query": "I have neutral arches and run mostly on uneven terrain in cold, rainy weather—any recommendations?",
+    "gold": "northbound-ridgeline-gtx",
+    "category": "footwear.running",
+    "tag": "wet_weather"
+  },
+  {
+    "query": "Are there lightweight trail running shoes with balanced cushioning and minimal ventilation for running in cold, wet conditions?",
+    "gold": "northbound-ridgeline-gtx",
+    "category": "footwear.running",
+    "tag": "cold_climate"
+  },
+  {
+    "query": "Looking for standard width trail shoes with a 6mm heel drop and enough insulation for cold, wet running conditions.",
+    "gold": "northbound-ridgeline-gtx",
+    "category": "footwear.running",
+    "tag": "trail_use"
+  },
+  {
+    "query": "I need running shoes that can handle long road runs in hot and humid weather.",
+    "gold": "vela-aero-9",
+    "category": "footwear.running",
+    "tag": "humid_climate"
+  },
+  {
+    "query": "Looking for lightweight shoes with firm cushioning for fast tempo runs on pavement.",
+    "gold": "vela-aero-9",
+    "category": "footwear.running",
+    "tag": "road_long_distance"
+  },
+  {
+    "query": "What are some good neutral arch running shoes with high breathability for warm climates?",
+    "gold": "vela-aero-9",
+    "category": "footwear.running",
+    "tag": "tempo"
+  },
+  {
+    "query": "Do you have lace-up running shoes suitable for training in humid conditions?",
+    "gold": "vela-aero-9",
+    "category": "footwear.running",
+    "tag": "humid_climate"
+  },
+  {
+    "query": "I want shoes with a nylon plate for stability during extended road runs.",
+    "gold": "vela-aero-9",
+    "category": "footwear.running",
+    "tag": "road_long_distance"
+  },
+  {
+    "query": "Can you recommend road running shoes weighing around 230 grams with moderate heel drop?",
+    "gold": "vela-aero-9",
+    "category": "footwear.running",
+    "tag": "tempo"
+  },
+  {
+    "query": "I’m training for long-distance runs and need shoes that offer firm support without being bulky.",
+    "gold": "vela-aero-9",
+    "category": "footwear.running",
+    "tag": "humid_climate"
+  },
+  {
+    "query": "Which running shoes provide good airflow and a standard width for comfortable hot weather runs?",
+    "gold": "vela-aero-9",
+    "category": "footwear.running",
+    "tag": "road_long_distance"
+  },
+  {
+    "query": "I need lightweight running shoes with good arch support for road races in hot, humid weather.",
+    "gold": "vela-aero-9-elite",
+    "category": "footwear.running",
+    "tag": "race_day"
+  },
+  {
+    "query": "What are the best narrow-fitting shoes to help me improve my tempo runs on pavement?",
+    "gold": "vela-aero-9-elite",
+    "category": "footwear.running",
+    "tag": "tropical_training"
+  },
+  {
+    "query": "Looking for firm-cushioned shoes with carbon plates to boost my speed during race day.",
+    "gold": "vela-aero-9-elite",
+    "category": "footwear.running",
+    "tag": "tempo"
+  },
+  {
+    "query": "Can you recommend breathable road running shoes with a low heel drop for faster training sessions?",
+    "gold": "vela-aero-9-elite",
+    "category": "footwear.running",
+    "tag": "race_day"
+  },
+  {
+    "query": "I want lace-up shoes that are comfortable for neutral arch runners and suited for tropical climates.",
+    "gold": "vela-aero-9-elite",
+    "category": "footwear.running",
+    "tag": "tropical_training"
+  },
+  {
+    "query": "Which shoes are ideal for someone focusing on tempo runs but needs a narrow fit and firm cushioning?",
+    "gold": "vela-aero-9-elite",
+    "category": "footwear.running",
+    "tag": "tempo"
+  },
+  {
+    "query": "Help me find high-performance shoes that weigh under 200 grams and offer good support on asphalt.",
+    "gold": "vela-aero-9-elite",
+    "category": "footwear.running",
+    "tag": "race_day"
+  },
+  {
+    "query": "I’m training for a marathon in a warm climate and need shoes with excellent breathability and a carbon plate.",
+    "gold": "vela-aero-9-elite",
+    "category": "footwear.running",
+    "tag": "tropical_training"
+  },
+  {
+    "query": "I need running shoes that keep my feet cool during humid morning jogs.",
+    "gold": "vela-halo-breeze",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor"
+  },
+  {
+    "query": "Looking for well-cushioned sneakers for daily treadmill workouts at the gym.",
+    "gold": "vela-halo-breeze",
+    "category": "footwear.running",
+    "tag": "humid_climate"
+  },
+  {
+    "query": "What are some good neutral arch runners for road and indoor use?",
+    "gold": "vela-halo-breeze",
+    "category": "footwear.running",
+    "tag": "daily_training"
+  },
+  {
+    "query": "I want breathable running shoes with a balanced feel for everyday training.",
+    "gold": "vela-halo-breeze",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor"
+  },
+  {
+    "query": "Help me find lightweight shoes with an 8mm heel drop suitable for city streets.",
+    "gold": "vela-halo-breeze",
+    "category": "footwear.running",
+    "tag": "humid_climate"
+  },
+  {
+    "query": "Can you suggest lace-up trainers that aren’t too wide but comfortable for regular runs?",
+    "gold": "vela-halo-breeze",
+    "category": "footwear.running",
+    "tag": "daily_training"
+  },
+  {
+    "query": "Which shoes work best for frequent indoor treadmill sessions in warm climates?",
+    "gold": "vela-halo-breeze",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor"
+  },
+  {
+    "query": "Show me road running shoes with moderate cushioning for consistent daily use.",
+    "gold": "vela-halo-breeze",
+    "category": "footwear.running",
+    "tag": "humid_climate"
+  },
+  {
+    "query": "I'm training for my first 5K and need comfortable shoes for running on city roads.",
+    "gold": "terrafirma-anchor",
+    "category": "footwear.running",
+    "tag": "beginner_friendly"
+  },
+  {
+    "query": "I run daily on a treadmill and want cushioned shoes that are not too heavy.",
+    "gold": "terrafirma-anchor",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor"
+  },
+  {
+    "query": "Looking for affordable running shoes with good arch support for neutral feet.",
+    "gold": "terrafirma-anchor",
+    "category": "footwear.running",
+    "tag": "budget_daily"
+  },
+  {
+    "query": "Need lace-up running shoes with balanced cushioning for my indoor workouts.",
+    "gold": "terrafirma-anchor",
+    "category": "footwear.running",
+    "tag": "beginner_friendly"
+  },
+  {
+    "query": "What shoes do you recommend for someone just starting to run on paved surfaces?",
+    "gold": "terrafirma-anchor",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor"
+  },
+  {
+    "query": "I want breathable shoes that provide moderate support and fit a standard width.",
+    "gold": "terrafirma-anchor",
+    "category": "footwear.running",
+    "tag": "budget_daily"
+  },
+  {
+    "query": "Searching for lightweight running shoes with a 10mm heel drop suitable for daily use.",
+    "gold": "terrafirma-anchor",
+    "category": "footwear.running",
+    "tag": "beginner_friendly"
+  },
+  {
+    "query": "Can you find me budget-friendly trainers for indoor road running with no stiff plate?",
+    "gold": "terrafirma-anchor",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor"
+  },
+  {
+    "query": "I need comfortable running shoes that help with overpronation for my daily road runs.",
+    "gold": "terrafirma-anchor-plus",
+    "category": "footwear.running",
+    "tag": "overpronation"
+  },
+  {
+    "query": "Looking for wide running shoes with good arch support for stability and medium breathability.",
+    "gold": "terrafirma-anchor-plus",
+    "category": "footwear.running",
+    "tag": "beginner_friendly"
+  },
+  {
+    "query": "What are some beginner-friendly running shoes that don’t have a carbon plate and offer balanced cushioning?",
+    "gold": "terrafirma-anchor-plus",
+    "category": "footwear.running",
+    "tag": "budget_daily"
+  },
+  {
+    "query": "Can you suggest stable running shoes suitable for wide feet that I can use on paved surfaces?",
+    "gold": "terrafirma-anchor-plus",
+    "category": "footwear.running",
+    "tag": "overpronation"
+  },
+  {
+    "query": "I want lace-up running shoes with a higher heel drop around 10mm for my training routine.",
+    "gold": "terrafirma-anchor-plus",
+    "category": "footwear.running",
+    "tag": "beginner_friendly"
+  },
+  {
+    "query": "Searching for affordable training shoes for walking and running on the road with decent breathability.",
+    "gold": "terrafirma-anchor-plus",
+    "category": "footwear.running",
+    "tag": "budget_daily"
+  },
+  {
+    "query": "Are there any lightweight stability shoes with balanced cushioning for someone new to running?",
+    "gold": "terrafirma-anchor-plus",
+    "category": "footwear.running",
+    "tag": "overpronation"
+  },
+  {
+    "query": "Do you have running footwear that supports overpronation and offers wide sizing without a stiff plate?",
+    "gold": "terrafirma-anchor-plus",
+    "category": "footwear.running",
+    "tag": "beginner_friendly"
+  },
+  {
+    "query": "I'm looking for running shoes that are comfortable for daily gym workouts and treadmill running.",
+    "gold": "terrafirma-loop-treadmill",
+    "category": "footwear.running",
+    "tag": "budget_daily"
+  },
+  {
+    "query": "Can you suggest neutral arch running shoes that work well on roads and indoor surfaces?",
+    "gold": "terrafirma-loop-treadmill",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor"
+  },
+  {
+    "query": "I need breathable shoes with balanced cushioning for my regular jogging sessions.",
+    "gold": "terrafirma-loop-treadmill",
+    "category": "footwear.running",
+    "tag": "gym_crossover"
+  },
+  {
+    "query": "What are good laceless running shoes for standard width feet under $150?",
+    "gold": "terrafirma-loop-treadmill",
+    "category": "footwear.running",
+    "tag": "budget_daily"
+  },
+  {
+    "query": "Help me find lightweight running shoes suitable for both treadmill and outdoor runs.",
+    "gold": "terrafirma-loop-treadmill",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor"
+  },
+  {
+    "query": "I want shoes with a 9mm heel drop that offer good support without stiff plates.",
+    "gold": "terrafirma-loop-treadmill",
+    "category": "footwear.running",
+    "tag": "gym_crossover"
+  },
+  {
+    "query": "Are there any running shoes that combine high breathability and moderate stack height for training?",
+    "gold": "terrafirma-loop-treadmill",
+    "category": "footwear.running",
+    "tag": "budget_daily"
+  },
+  {
+    "query": "Looking for affordable neutral running shoes with standard width for everyday use.",
+    "gold": "terrafirma-loop-treadmill",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor"
+  },
+  {
+    "query": "I need running shoes that keep my feet cool and dry during hot, humid workouts.",
+    "gold": "halcyon-zephyr-lt",
+    "category": "footwear.running",
+    "tag": "travel_light_packing"
+  },
+  {
+    "query": "Looking for narrow shoes with firm cushioning for faster tempo runs on pavement.",
+    "gold": "halcyon-zephyr-lt",
+    "category": "footwear.running",
+    "tag": "humid_climate"
+  },
+  {
+    "query": "What are some lightweight lace-up shoes suitable for neutral runners training in tropical weather?",
+    "gold": "halcyon-zephyr-lt",
+    "category": "footwear.running",
+    "tag": "tempo"
+  },
+  {
+    "query": "Can you find road running shoes with high breathability and no stiff plates for travel?",
+    "gold": "halcyon-zephyr-lt",
+    "category": "footwear.running",
+    "tag": "travel_light_packing"
+  },
+  {
+    "query": "I want shoes that support neutral arches and feel responsive for quick pace training.",
+    "gold": "halcyon-zephyr-lt",
+    "category": "footwear.running",
+    "tag": "humid_climate"
+  },
+  {
+    "query": "Do you have firm cushioned shoes with a moderate heel drop for running intervals on the road?",
+    "gold": "halcyon-zephyr-lt",
+    "category": "footwear.running",
+    "tag": "tempo"
+  },
+  {
+    "query": "Searching for a pair of narrow running shoes that pack light for trips and handle humidity well.",
+    "gold": "halcyon-zephyr-lt",
+    "category": "footwear.running",
+    "tag": "travel_light_packing"
+  },
+  {
+    "query": "Which lightweight, breathable road shoes provide a snug fit for someone who likes firm support?",
+    "gold": "halcyon-zephyr-lt",
+    "category": "footwear.running",
+    "tag": "humid_climate"
+  },
+  {
+    "query": "I'm looking for comfortable shoes to wear during my recovery runs on pavement.",
+    "gold": "halcyon-meander",
+    "category": "footwear.running",
+    "tag": "recovery_run"
+  },
+  {
+    "query": "Can you recommend some cushioned running shoes suitable for someone just starting out?",
+    "gold": "halcyon-meander",
+    "category": "footwear.running",
+    "tag": "walking"
+  },
+  {
+    "query": "I need breathable sneakers with good arch support for walking and light jogging.",
+    "gold": "halcyon-meander",
+    "category": "footwear.running",
+    "tag": "beginner_friendly"
+  },
+  {
+    "query": "What shoes do you suggest for road running that aren't too heavy and provide plush cushioning?",
+    "gold": "halcyon-meander",
+    "category": "footwear.running",
+    "tag": "recovery_run"
+  },
+  {
+    "query": "I'm training for daily walks and want shoes with a snug lace closure and medium breathability.",
+    "gold": "halcyon-meander",
+    "category": "footwear.running",
+    "tag": "walking"
+  },
+  {
+    "query": "Are there neutral arch running shoes that feel soft underfoot for less experienced runners?",
+    "gold": "halcyon-meander",
+    "category": "footwear.running",
+    "tag": "beginner_friendly"
+  },
+  {
+    "query": "What's a good option for a standard-width shoe with a high heel drop for recovery workouts?",
+    "gold": "halcyon-meander",
+    "category": "footwear.running",
+    "tag": "recovery_run"
+  },
+  {
+    "query": "Help me find lightweight runners designed for road surfaces that offer extra comfort during cooldowns.",
+    "gold": "halcyon-meander",
+    "category": "footwear.running",
+    "tag": "walking"
+  },
+  {
+    "query": "What are good running shoes for short road runs that also work well in the gym?",
+    "gold": "halcyon-crossover-gym",
+    "category": "footwear.running",
+    "tag": "short_runs"
+  },
+  {
+    "query": "I'm looking for firm-cushioned running shoes with neutral arch support for treadmill workouts.",
+    "gold": "halcyon-crossover-gym",
+    "category": "footwear.running",
+    "tag": "gym_crossover"
+  },
+  {
+    "query": "Can you recommend lightweight running shoes with a 6mm heel drop for easy short runs?",
+    "gold": "halcyon-crossover-gym",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor"
+  },
+  {
+    "query": "I need breathable, lace-up running shoes with standard width for indoor and outdoor use.",
+    "gold": "halcyon-crossover-gym",
+    "category": "footwear.running",
+    "tag": "short_runs"
+  },
+  {
+    "query": "Which running shoes provide medium breathability and firm cushioning for training indoors?",
+    "gold": "halcyon-crossover-gym",
+    "category": "footwear.running",
+    "tag": "gym_crossover"
+  },
+  {
+    "query": "Are there running shoes suitable for quick gym sessions and short runs without a stiff plate?",
+    "gold": "halcyon-crossover-gym",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor"
+  },
+  {
+    "query": "What comfortable running shoes with standard fit and neutral support work best on roads?",
+    "gold": "halcyon-crossover-gym",
+    "category": "footwear.running",
+    "tag": "short_runs"
+  },
+  {
+    "query": "Looking for moderately cushioned running shoes under $160 for daily short-distance running.",
+    "gold": "halcyon-crossover-gym",
+    "category": "footwear.running",
+    "tag": "gym_crossover"
+  },
+  {
+    "query": "I need a quick morning moisturizer that won't make my face greasy in Singapore's humid weather.",
+    "gold": "lumenlab-clarity-gel",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Looking for a fragrance-free gel moisturizer safe for pregnancy with ingredients that help control oil.",
+    "gold": "lumenlab-clarity-gel",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf"
+  },
+  {
+    "query": "What’s a good lightweight face moisturizer I can apply under sunscreen without feeling sticky?",
+    "gold": "lumenlab-clarity-gel",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate"
+  },
+  {
+    "query": "Can you suggest a vegan moisturizer suitable for combination skin that won’t clog pores?",
+    "gold": "lumenlab-clarity-gel",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "I want a moisturizer for oily skin that absorbs quickly and fits into a 5-minute skincare routine.",
+    "gold": "lumenlab-clarity-gel",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf"
+  },
+  {
+    "query": "Is there a gel-based moisturizer with niacinamide and zinc that’s gentle and pregnancy-safe?",
+    "gold": "lumenlab-clarity-gel",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate"
+  },
+  {
+    "query": "Help me find a low-comedogenic moisturizer that feels light and is good for humid climates.",
+    "gold": "lumenlab-clarity-gel",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Looking for a pH-balanced gel moisturizer for oily skin that layers well with other products.",
+    "gold": "lumenlab-clarity-gel",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf"
+  },
+  {
+    "query": "What’s a lightweight sunscreen I can use quickly in the morning that won’t clog my oily, sensitive skin?",
+    "gold": "lumenlab-dawn-spf50",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "I need a fragrance-free SPF 50 sunscreen that’s safe to layer under makeup in a humid climate.",
+    "gold": "lumenlab-dawn-spf50",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate"
+  },
+  {
+    "query": "Can you suggest a vegan, pregnancy-safe facial sunscreen suitable for combination skin?",
+    "gold": "lumenlab-dawn-spf50",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf"
+  },
+  {
+    "query": "Looking for a fluid-textured sunblock with zinc oxide that doesn’t feel sticky or heavy on my face.",
+    "gold": "lumenlab-dawn-spf50",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Is there a non-comedogenic SPF 50 sunscreen that works well for sensitive skin and can be applied in under 5 minutes?",
+    "gold": "lumenlab-dawn-spf50",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate"
+  },
+  {
+    "query": "What’s a good SPF product with low irritation for daily use on normal to oily skin that won’t interfere with my moisturizer and SPF combo?",
+    "gold": "lumenlab-dawn-spf50",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf"
+  },
+  {
+    "query": "I want a facial sunscreen with a pH close to 6 that’s fragrance-free and effective in humid weather.",
+    "gold": "lumenlab-dawn-spf50",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Can you recommend a sunscreen that’s easy to apply, suitable for sensitive skin, and vegan without any refill option?",
+    "gold": "lumenlab-dawn-spf50",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate"
+  },
+  {
+    "query": "I need a gentle face wash that won't clog my pores and is safe during pregnancy.",
+    "gold": "lumenlab-reset-cleanser",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste"
+  },
+  {
+    "query": "What’s a quick morning cleanser suitable for oily skin in a humid climate?",
+    "gold": "lumenlab-reset-cleanser",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate"
+  },
+  {
+    "query": "Looking for a fragrance-free gel cleanser that’s vegan and eco-friendly.",
+    "gold": "lumenlab-reset-cleanser",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Can you help me find a daytime face wash that works well for combination skin and has a pH close to skin’s natural level?",
+    "gold": "lumenlab-reset-cleanser",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste"
+  },
+  {
+    "query": "I want a low-waste refillable cleanser that I can use daily without feeling greasy.",
+    "gold": "lumenlab-reset-cleanser",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate"
+  },
+  {
+    "query": "Which gel cleanser is best for someone with normal to oily skin who wants a product with glycerin?",
+    "gold": "lumenlab-reset-cleanser",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Do you have any pregnancy-safe facial cleansers that cleanse thoroughly but are gentle?",
+    "gold": "lumenlab-reset-cleanser",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste"
+  },
+  {
+    "query": "Searching for an affordable vegan facial cleanser that fits into a 5-minute morning routine.",
+    "gold": "lumenlab-reset-cleanser",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate"
+  },
+  {
+    "query": "I'm looking for a fragrance-free night cream to help smooth fine lines without clogging my pores.",
+    "gold": "lumenlab-night-retinal",
+    "category": "skincare.facial",
+    "tag": "fine_lines"
+  },
+  {
+    "query": "Do you have a vegan retinol cream that works well for oily or combination skin types?",
+    "gold": "lumenlab-night-retinal",
+    "category": "skincare.facial",
+    "tag": "texture_refining"
+  },
+  {
+    "query": "I need a gentle nighttime treatment cream with ceramides to improve my skin texture.",
+    "gold": "lumenlab-night-retinal",
+    "category": "skincare.facial",
+    "tag": "night_routine"
+  },
+  {
+    "query": "Can you suggest a non-comedogenic facial cream suitable for normal skin that reduces wrinkles?",
+    "gold": "lumenlab-night-retinal",
+    "category": "skincare.facial",
+    "tag": "fine_lines"
+  },
+  {
+    "query": "What's a good overnight facial treatment to refine skin texture that won't irritate sensitive skin?",
+    "gold": "lumenlab-night-retinal",
+    "category": "skincare.facial",
+    "tag": "texture_refining"
+  },
+  {
+    "query": "I'm searching for a 30ml anti-aging cream with low irritation potential for my nightly skincare routine.",
+    "gold": "lumenlab-night-retinal",
+    "category": "skincare.facial",
+    "tag": "night_routine"
+  },
+  {
+    "query": "Is there a retinol-based cream safe for everyday use that hydrates as well as minimizes fine lines?",
+    "gold": "lumenlab-night-retinal",
+    "category": "skincare.facial",
+    "tag": "fine_lines"
+  },
+  {
+    "query": "Looking for a quick-absorbing night cream under $70 that targets fine lines and uneven skin texture.",
+    "gold": "lumenlab-night-retinal",
+    "category": "skincare.facial",
+    "tag": "texture_refining"
+  },
+  {
+    "query": "I'm looking for a gentle moisturizer to repair my skin barrier after a facial treatment that I can use overnight.",
+    "gold": "sable-barrier-balm",
+    "category": "skincare.facial",
+    "tag": "sensitive_barrier_repair"
+  },
+  {
+    "query": "What’s a good fragrance-free balm moisturizer for dry and sensitive skin that won’t clog pores?",
+    "gold": "sable-barrier-balm",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office"
+  },
+  {
+    "query": "I work in an air-conditioned office and need a nourishing night cream that supports barrier repair.",
+    "gold": "sable-barrier-balm",
+    "category": "skincare.facial",
+    "tag": "post_procedure_recovery"
+  },
+  {
+    "query": "Can you suggest a pregnancy-safe night moisturizer with ceramides and squalane for sensitive skin?",
+    "gold": "sable-barrier-balm",
+    "category": "skincare.facial",
+    "tag": "night_routine"
+  },
+  {
+    "query": "I want a calming, non-irritating balm to help my skin recover after a dermatological procedure.",
+    "gold": "sable-barrier-balm",
+    "category": "skincare.facial",
+    "tag": "sensitive_barrier_repair"
+  },
+  {
+    "query": "Which moisturizer would you recommend for dry, sensitive skin that’s free of fragrance and light enough for night use?",
+    "gold": "sable-barrier-balm",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office"
+  },
+  {
+    "query": "I need a low-comedogenic balm that strengthens the skin barrier and feels rich but not greasy.",
+    "gold": "sable-barrier-balm",
+    "category": "skincare.facial",
+    "tag": "post_procedure_recovery"
+  },
+  {
+    "query": "Looking for a sensitive skin balm moisturizer with cholesterol and ceramides that’s safe during pregnancy.",
+    "gold": "sable-barrier-balm",
+    "category": "skincare.facial",
+    "tag": "night_routine"
+  },
+  {
+    "query": "I spend a lot of time in air-conditioned offices and need a gentle face cleanser for dry, sensitive skin.",
+    "gold": "sable-cream-cleanser",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office"
+  },
+  {
+    "query": "Looking for a fragrance-free cream cleanser that won't irritate my sensitive skin at night.",
+    "gold": "sable-cream-cleanser",
+    "category": "skincare.facial",
+    "tag": "sensitive_barrier_repair"
+  },
+  {
+    "query": "I want a pregnancy-safe facial cleanser that helps repair my skin barrier without causing breakouts.",
+    "gold": "sable-cream-cleanser",
+    "category": "skincare.facial",
+    "tag": "night_routine"
+  },
+  {
+    "query": "Can you suggest a mild cream cleanser with glycerin and oat lipid for my sensitive skin routine?",
+    "gold": "sable-cream-cleanser",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office"
+  },
+  {
+    "query": "Need a low-comedogenic face cleanser suitable for quick morning or night use on dry skin.",
+    "gold": "sable-cream-cleanser",
+    "category": "skincare.facial",
+    "tag": "sensitive_barrier_repair"
+  },
+  {
+    "query": "What cleanser would you recommend for someone with dry, sensitive skin prone to irritation who prefers fragrance-free products?",
+    "gold": "sable-cream-cleanser",
+    "category": "skincare.facial",
+    "tag": "night_routine"
+  },
+  {
+    "query": "Looking for a pH-balanced cream cleanser that feels soothing and non-drying for sensitive skin.",
+    "gold": "sable-cream-cleanser",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office"
+  },
+  {
+    "query": "I want a gentle facial cleanser that works well after a day in an air-conditioned environment and supports barrier repair.",
+    "gold": "sable-cream-cleanser",
+    "category": "skincare.facial",
+    "tag": "sensitive_barrier_repair"
+  },
+  {
+    "query": "I'm looking for a fragrance-free night cream that soothes very dry skin after long hours in an air-conditioned office.",
+    "gold": "sable-rich-night",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office"
+  },
+  {
+    "query": "Which cream would help me with dry and sensitive skin, preferably one that's safe to use during pregnancy?",
+    "gold": "sable-rich-night",
+    "category": "skincare.facial",
+    "tag": "very_dry_skin"
+  },
+  {
+    "query": "Can you suggest a nourishing moisturizer with ceramides and squalane for my nighttime skincare?",
+    "gold": "sable-rich-night",
+    "category": "skincare.facial",
+    "tag": "night_routine"
+  },
+  {
+    "query": "I need a rich cream that hydrates dry skin overnight but doesn’t feel greasy or heavy.",
+    "gold": "sable-rich-night",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office"
+  },
+  {
+    "query": "What's a good non-vegan moisturizer with shea butter that’s gentle enough for dry skin and has a low risk of causing breakouts?",
+    "gold": "sable-rich-night",
+    "category": "skincare.facial",
+    "tag": "very_dry_skin"
+  },
+  {
+    "query": "I'm searching for a 50ml night cream that can improve skin barrier repair after exposure to dry indoor air.",
+    "gold": "sable-rich-night",
+    "category": "skincare.facial",
+    "tag": "night_routine"
+  },
+  {
+    "query": "Can you recommend a moisturizer with a balanced pH around 5.4 that’s specifically designed for very dry skin?",
+    "gold": "sable-rich-night",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office"
+  },
+  {
+    "query": "Is there a cream I can use nightly that moisturizes deeply but absorbs quickly, taking less than 5 minutes to apply?",
+    "gold": "sable-rich-night",
+    "category": "skincare.facial",
+    "tag": "very_dry_skin"
+  },
+  {
+    "query": "I need a quick treatment to clear up blackheads without a heavy or greasy feel.",
+    "gold": "clearfield-bha-toner",
+    "category": "skincare.facial",
+    "tag": "maskne_prone"
+  },
+  {
+    "query": "Looking for a vegan-friendly skincare product that helps control oil in humid weather.",
+    "gold": "clearfield-bha-toner",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate"
+  },
+  {
+    "query": "What can I use to treat mask-related breakouts without fragrance or irritation?",
+    "gold": "clearfield-bha-toner",
+    "category": "skincare.facial",
+    "tag": "blackheads"
+  },
+  {
+    "query": "Is there a gentle yet effective option to reduce blackheads for my combination skin?",
+    "gold": "clearfield-bha-toner",
+    "category": "skincare.facial",
+    "tag": "maskne_prone"
+  },
+  {
+    "query": "I want a liquid treatment for oily skin that won’t clog pores or cause breakouts.",
+    "gold": "clearfield-bha-toner",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate"
+  },
+  {
+    "query": "Can you recommend something safe for daily use to manage oily areas and prevent blackheads?",
+    "gold": "clearfield-bha-toner",
+    "category": "skincare.facial",
+    "tag": "blackheads"
+  },
+  {
+    "query": "I’m looking for an affordable skincare fix that acts fast but isn’t suitable for pregnancy.",
+    "gold": "clearfield-bha-toner",
+    "category": "skincare.facial",
+    "tag": "maskne_prone"
+  },
+  {
+    "query": "Need a lightweight, fragrance-free solution to improve skin texture during my morning routine.",
+    "gold": "clearfield-bha-toner",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate"
+  },
+  {
+    "query": "I have oily skin and live in a humid city; what’s a quick facial cleanser that won’t clog my pores?",
+    "gold": "clearfield-foam-wash",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Can you recommend a fragrance-free foaming face wash that helps with mask-induced breakouts?",
+    "gold": "clearfield-foam-wash",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate"
+  },
+  {
+    "query": "I need a vegan cleanser that’s gentle but effective for oily skin, and I want to keep my morning routine under 5 minutes.",
+    "gold": "clearfield-foam-wash",
+    "category": "skincare.facial",
+    "tag": "maskne_prone"
+  },
+  {
+    "query": "What’s a salicylic acid cleanser with a low pH that’s safe to use daily for acne-prone skin?",
+    "gold": "clearfield-foam-wash",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Looking for an oil-control face wash that foams well and won’t irritate my sensitive, maskne-prone skin.",
+    "gold": "clearfield-foam-wash",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate"
+  },
+  {
+    "query": "I want a non-comedogenic, fragrance-free foaming cleanser that works well for oily skin but is not safe during pregnancy.",
+    "gold": "clearfield-foam-wash",
+    "category": "skincare.facial",
+    "tag": "maskne_prone"
+  },
+  {
+    "query": "Is there a quick foaming facial wash under $30 suitable for oily skin in humid weather?",
+    "gold": "clearfield-foam-wash",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Can you suggest a vegan face cleanser with salicylic acid that doesn’t come with a refill option?",
+    "gold": "clearfield-foam-wash",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate"
+  },
+  {
+    "query": "I'm looking for a lightweight sunscreen that won't clog my pores and is safe to use during pregnancy.",
+    "gold": "clearfield-mattifying-spf",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Can you recommend a vegan-friendly facial sunscreen that absorbs quickly and works well in humid weather?",
+    "gold": "clearfield-mattifying-spf",
+    "category": "skincare.facial",
+    "tag": "travel_cabin_size"
+  },
+  {
+    "query": "I need a travel-sized sunscreen with SPF 30 that's good for oily or combination skin.",
+    "gold": "clearfield-mattifying-spf",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate"
+  },
+  {
+    "query": "What's a good fluid sunscreen I can apply in under 5 minutes as part of my morning routine?",
+    "gold": "clearfield-mattifying-spf",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Do you have a fragrance-containing sunscreen that's gentle on sensitive skin, suitable for oily types?",
+    "gold": "clearfield-mattifying-spf",
+    "category": "skincare.facial",
+    "tag": "travel_cabin_size"
+  },
+  {
+    "query": "I'm after a non-refillable, vegan sunscreen that helps control shine in hot, humid climates.",
+    "gold": "clearfield-mattifying-spf",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate"
+  },
+  {
+    "query": "Can you suggest a pregnancy-safe sunscreen with a low comedogenic rating for daily use?",
+    "gold": "clearfield-mattifying-spf",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Looking for a sunscreen with silica to help mattify my skin but still feels light and fluid on the face.",
+    "gold": "clearfield-mattifying-spf",
+    "category": "skincare.facial",
+    "tag": "travel_cabin_size"
+  },
+  {
+    "query": "I'm looking for a gentle facial mist to refresh my skin during long hours in an air-conditioned office.",
+    "gold": "petal-rosewater-mist",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office"
+  },
+  {
+    "query": "Can you suggest a quick morning skincare product that hydrates without feeling heavy?",
+    "gold": "petal-rosewater-mist",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste"
+  },
+  {
+    "query": "I need a vegan facial treatment that's safe to use while pregnant and suitable for dry skin.",
+    "gold": "petal-rosewater-mist",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Is there a low-waste, refillable facial mist with soothing ingredients that won’t clog my pores?",
+    "gold": "petal-rosewater-mist",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office"
+  },
+  {
+    "query": "What’s a fragrance-light hydrating spray I can use in under 5 minutes before makeup?",
+    "gold": "petal-rosewater-mist",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste"
+  },
+  {
+    "query": "Do you have a treatment product with natural rose water that’s good for combination skin?",
+    "gold": "petal-rosewater-mist",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "I’m searching for a gentle mist with a balanced pH that helps keep my skin comfortable all day.",
+    "gold": "petal-rosewater-mist",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office"
+  },
+  {
+    "query": "Can you recommend a vegan skincare product under $30 that’s perfect for a simple daily routine?",
+    "gold": "petal-rosewater-mist",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste"
+  },
+  {
+    "query": "I'm looking for a nighttime facial oil that hydrates very dry skin after long hours in an air-conditioned office.",
+    "gold": "petal-bloom-oil",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office"
+  },
+  {
+    "query": "Can you recommend a vegan treatment oil that’s safe to use during pregnancy for my dry skin?",
+    "gold": "petal-bloom-oil",
+    "category": "skincare.facial",
+    "tag": "night_routine"
+  },
+  {
+    "query": "What’s a good facial oil with vitamin E to restore moisture overnight without feeling greasy?",
+    "gold": "petal-bloom-oil",
+    "category": "skincare.facial",
+    "tag": "very_dry_skin"
+  },
+  {
+    "query": "I need a nourishing oil treatment for normal to dry skin that won’t clog my pores too much.",
+    "gold": "petal-bloom-oil",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office"
+  },
+  {
+    "query": "Is there an effective nighttime oil that contains rosehip oil and can be applied quickly before bed?",
+    "gold": "petal-bloom-oil",
+    "category": "skincare.facial",
+    "tag": "night_routine"
+  },
+  {
+    "query": "I want a hydrating facial treatment with a light scent to use on my dry skin at night.",
+    "gold": "petal-bloom-oil",
+    "category": "skincare.facial",
+    "tag": "very_dry_skin"
+  },
+  {
+    "query": "Can you suggest a vegan facial oil for dry skin that is suitable for sensitive skin and pregnancy?",
+    "gold": "petal-bloom-oil",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office"
+  },
+  {
+    "query": "Looking for a nourishing oil-based treatment for dry skin that absorbs well and can fit into a 2-minute night routine.",
+    "gold": "petal-bloom-oil",
+    "category": "skincare.facial",
+    "tag": "night_routine"
+  },
+  {
+    "query": "I'm looking for a gentle moisturizer that I can use quickly in the morning before applying sunscreen.",
+    "gold": "petal-gentle-gel",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf"
+  },
+  {
+    "query": "Do you have any fragrance-free, vegan moisturizers suitable for sensitive skin that absorb quickly?",
+    "gold": "petal-gentle-gel",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste"
+  },
+  {
+    "query": "I need a lightweight gel-cream moisturizer that won’t clog my pores and works well under SPF.",
+    "gold": "petal-gentle-gel",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Can you recommend a refillable moisturizer that’s safe to use during pregnancy?",
+    "gold": "petal-gentle-gel",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf"
+  },
+  {
+    "query": "What’s a good low-waste facial moisturizer for combination skin with hydrating ingredients like glycerin?",
+    "gold": "petal-gentle-gel",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste"
+  },
+  {
+    "query": "I want a moisturizer with a clean formula that fits into a morning routine under 5 minutes.",
+    "gold": "petal-gentle-gel",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Is there a calming, vegan moisturizer with panthenol that won’t irritate my normal skin?",
+    "gold": "petal-gentle-gel",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf"
+  },
+  {
+    "query": "Can you find me a moisturizer with a pH close to skin’s natural level, suitable for sensitive skin and fragrance-free?",
+    "gold": "petal-gentle-gel",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste"
+  },
+  {
+    "query": "What’s a quick, fragrance-free serum to reduce dark spots in my oily skin routine?",
+    "gold": "fifth-vitc-serum",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "I need a vegan-friendly morning serum safe for pregnancy that works well under sunscreen.",
+    "gold": "fifth-vitc-serum",
+    "category": "skincare.facial",
+    "tag": "hyperpigmentation"
+  },
+  {
+    "query": "Can you recommend a lightweight vitamin C serum that won’t clog combination skin?",
+    "gold": "fifth-vitc-serum",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf"
+  },
+  {
+    "query": "Looking for a serum with strong antioxidants to brighten my skin without fragrance.",
+    "gold": "fifth-vitc-serum",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "What serum can I add to my 5-minute skincare routine to target hyperpigmentation?",
+    "gold": "fifth-vitc-serum",
+    "category": "skincare.facial",
+    "tag": "hyperpigmentation"
+  },
+  {
+    "query": "Are there any pregnancy-safe serums with ferulic acid for oily, sensitive skin?",
+    "gold": "fifth-vitc-serum",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf"
+  },
+  {
+    "query": "I want a low-comedogenic serum with l-ascorbic acid for normal skin that layers well under SPF.",
+    "gold": "fifth-vitc-serum",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Is there a vegan serum with a serum-like texture that works quickly in the morning routine?",
+    "gold": "fifth-vitc-serum",
+    "category": "skincare.facial",
+    "tag": "hyperpigmentation"
+  },
+  {
+    "query": "I need a quick morning eye treatment that won’t irritate my sensitive skin.",
+    "gold": "fifth-peptide-eye",
+    "category": "skincare.facial",
+    "tag": "fine_lines"
+  },
+  {
+    "query": "Looking for a fragrance-free gel to reduce fine lines around my eyes during travel.",
+    "gold": "fifth-peptide-eye",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "What’s a good vegan eye care product safe for pregnancy with caffeine to wake up tired eyes?",
+    "gold": "fifth-peptide-eye",
+    "category": "skincare.facial",
+    "tag": "travel_cabin_size"
+  },
+  {
+    "query": "Can you find a compact eye cream that's gentle on dry skin and works well in under five minutes?",
+    "gold": "fifth-peptide-eye",
+    "category": "skincare.facial",
+    "tag": "fine_lines"
+  },
+  {
+    "query": "I want a non-comedogenic eye treatment that’s easy to use daily and comes in a small size for my carry-on.",
+    "gold": "fifth-peptide-eye",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Is there a lightweight eye gel that targets fine lines and is suitable for combination skin?",
+    "gold": "fifth-peptide-eye",
+    "category": "skincare.facial",
+    "tag": "travel_cabin_size"
+  },
+  {
+    "query": "I’m searching for a sensitive-skin friendly eye product with peptides that I can apply quickly in the morning.",
+    "gold": "fifth-peptide-eye",
+    "category": "skincare.facial",
+    "tag": "fine_lines"
+  },
+  {
+    "query": "What’s an effective fragrance-free, caffeine-infused eye treatment under $60 for my travel skincare kit?",
+    "gold": "fifth-peptide-eye",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "I need a quick morning moisturizer that won't clog my skin and is safe to use during pregnancy.",
+    "gold": "fifth-refill-moisturiser",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office"
+  },
+  {
+    "query": "Looking for a fragrance-free lotion that works well for dry and combination skin in an air-conditioned office.",
+    "gold": "fifth-refill-moisturiser",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Can you help me find a refillable moisturizer with hydrating ingredients like squalane and ceramides?",
+    "gold": "fifth-refill-moisturiser",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste"
+  },
+  {
+    "query": "What's a low-waste, vegan facial lotion suitable for someone with normal skin who wants a 5-minute routine?",
+    "gold": "fifth-refill-moisturiser",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office"
+  },
+  {
+    "query": "I want a lightweight moisturizer that absorbs quickly and keeps my skin balanced throughout the day.",
+    "gold": "fifth-refill-moisturiser",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  },
+  {
+    "query": "Is there a pregnancy-safe, fragrance-free lotion that I can use daily without worrying about breakouts?",
+    "gold": "fifth-refill-moisturiser",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste"
+  },
+  {
+    "query": "I'm searching for a vegan moisturizer with a gentle pH around 5.5 that's easy to apply before heading out.",
+    "gold": "fifth-refill-moisturiser",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office"
+  },
+  {
+    "query": "Do you have any refillable, low-comedogenic moisturizers that hydrate well without feeling greasy?",
+    "gold": "fifth-refill-moisturiser",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min"
+  }
+]

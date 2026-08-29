@@ -1,0 +1,6637 @@
+[
+  {
+    "query": "I'm looking for running shoes suitable for everyday road runs in a hot and humid climate.",
+    "gold": "kestrel-drift-3",
+    "category": "footwear.running",
+    "tag": "daily_training",
+    "raw": [
+      "terrafirma-loop-treadmill",
+      "halcyon-zephyr-lt",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "vela-halo-breeze",
+      "halcyon-crossover-gym",
+      "terrafirma-loop-treadmill"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-gt",
+      "meridian-atlas-stability",
+      "vela-halo-breeze"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {humid_climate, oily_skin_humid_climate, road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "Can you recommend comfortable shoes for someone new to running on paved surfaces?",
+    "gold": "kestrel-drift-3",
+    "category": "footwear.running",
+    "tag": "humid_climate",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "terrafirma-loop-treadmill"
+    ],
+    "enriched": [
+      "terrafirma-loop-treadmill",
+      "halcyon-meander",
+      "terrafirma-anchor"
+    ],
+    "enriched_sql": [
+      "terrafirma-loop-treadmill",
+      "halcyon-meander",
+      "terrafirma-anchor"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "I need lightweight trainers with good breathability to keep my feet cool during summer runs.",
+    "gold": "kestrel-drift-3",
+    "category": "footwear.running",
+    "tag": "beginner_friendly",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "vela-halo-breeze",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched": [
+      "vela-halo-breeze",
+      "kestrel-vapourline",
+      "northbound-scree-lite"
+    ],
+    "enriched_sql": [
+      "vela-halo-breeze",
+      "kestrel-vapourline",
+      "halcyon-zephyr-lt"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "What are some well-cushioned running sneakers that support a neutral arch for daily workouts?",
+    "gold": "kestrel-drift-3",
+    "category": "footwear.running",
+    "tag": "daily_training",
+    "raw": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "terrafirma-anchor"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "halcyon-meander",
+      "halcyon-crossover-gym"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "halcyon-meander",
+      "halcyon-crossover-gym"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ neutral (boost)"
+    ]
+  },
+  {
+    "query": "Help me find laced running shoes designed for road running with balanced cushioning.",
+    "gold": "kestrel-drift-3",
+    "category": "footwear.running",
+    "tag": "humid_climate",
+    "raw": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "halcyon-meander",
+      "terrafirma-anchor-plus",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "halcyon-meander"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "I'm training regularly on asphalt and need shoes that won't weigh me down but still provide comfort.",
+    "gold": "kestrel-drift-3",
+    "category": "footwear.running",
+    "tag": "beginner_friendly",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "kestrel-cloudstep-2",
+      "terrafirma-loop-treadmill"
+    ],
+    "enriched": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "terrafirma-loop-treadmill"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "vela-aero-9",
+      "terrafirma-anchor-plus"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {tropical_training} (boost)"
+    ]
+  },
+  {
+    "query": "Which running shoes offer an 8mm heel drop and are ideal for beginner runners?",
+    "gold": "kestrel-drift-3",
+    "category": "footwear.running",
+    "tag": "daily_training",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "kestrel-drift-3"
+    ],
+    "enriched": [
+      "halcyon-meander",
+      "terrafirma-anchor-plus",
+      "kestrel-drift-3"
+    ],
+    "enriched_sql": [
+      "halcyon-meander",
+      "terrafirma-anchor-plus",
+      "kestrel-drift-3"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {beginner_friendly} (boost)"
+    ]
+  },
+  {
+    "query": "I want shoes with standard width that can handle humid weather but don’t have extra stiff plates.",
+    "gold": "kestrel-drift-3",
+    "category": "footwear.running",
+    "tag": "humid_climate",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "halcyon-meander",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "northbound-scree-lite"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "meridian-atlas-gt",
+      "vela-halo-breeze"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "I need running shoes that can handle sweaty conditions on city streets.",
+    "gold": "kestrel-drift-3-wide",
+    "category": "footwear.running",
+    "tag": "humid_climate",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "terrafirma-loop-treadmill",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "northbound-scree-lite",
+      "terrafirma-loop-treadmill",
+      "northbound-ridgeline"
+    ],
+    "enriched_sql": [
+      "terrafirma-loop-treadmill",
+      "meridian-atlas-stability",
+      "halcyon-crossover-gym"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road"
+    ]
+  },
+  {
+    "query": "Looking for comfortable trainers for everyday runs with wide toe space.",
+    "gold": "kestrel-drift-3-wide",
+    "category": "footwear.running",
+    "tag": "daily_training",
+    "raw": [
+      "kestrel-drift-3-wide",
+      "terrafirma-loop-treadmill",
+      "terrafirma-anchor"
+    ],
+    "enriched": [
+      "terrafirma-loop-treadmill",
+      "kestrel-drift-3-wide",
+      "terrafirma-anchor"
+    ],
+    "enriched_sql": [
+      "terrafirma-loop-treadmill",
+      "kestrel-drift-3-wide",
+      "terrafirma-anchor"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "What are some good neutral running sneakers for training on pavement?",
+    "gold": "kestrel-drift-3-wide",
+    "category": "footwear.running",
+    "tag": "wide_feet",
+    "raw": [
+      "meridian-atlas-gt",
+      "halcyon-zephyr-lt",
+      "northbound-scree-lite"
+    ],
+    "enriched": [
+      "terrafirma-loop-treadmill",
+      "terrafirma-anchor-plus",
+      "halcyon-crossover-gym"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "terrafirma-loop-treadmill",
+      "terrafirma-anchor-plus"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "arch_support ~ neutral (boost)",
+      "tags ∈ {tropical_training} (boost)"
+    ]
+  },
+  {
+    "query": "Can you recommend breathable shoes for humid weather and neutral arches?",
+    "gold": "kestrel-drift-3-wide",
+    "category": "footwear.running",
+    "tag": "humid_climate",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "kestrel-cloudstep-2",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "meridian-atlas-stability",
+      "meridian-atlas-gt",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "meridian-atlas-gt",
+      "vela-halo-breeze"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ neutral (boost)",
+      "tags ∈ {humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "I want well-cushioned road shoes that aren't too heavy and fit wide feet.",
+    "gold": "kestrel-drift-3-wide",
+    "category": "footwear.running",
+    "tag": "daily_training",
+    "raw": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "halcyon-meander",
+      "terrafirma-anchor-plus",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "kestrel-drift-3-wide"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "width = wide",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "Help me find lace-up running shoes with balanced support for daily use.",
+    "gold": "kestrel-drift-3-wide",
+    "category": "footwear.running",
+    "tag": "wide_feet",
+    "raw": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "terrafirma-anchor"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "terrafirma-anchor"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "terrafirma-anchor"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "Which shoes work best for regular jogs on hard surfaces with a moderate heel drop?",
+    "gold": "kestrel-drift-3-wide",
+    "category": "footwear.running",
+    "tag": "humid_climate",
+    "raw": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "kestrel-drift-3"
+    ],
+    "enriched": [
+      "halcyon-meander",
+      "halcyon-crossover-gym",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched_sql": [
+      "halcyon-meander",
+      "halcyon-crossover-gym",
+      "terrafirma-anchor-plus"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "Are there any lightweight, wide-fit runners suitable for humid climates under $200?",
+    "gold": "kestrel-drift-3-wide",
+    "category": "footwear.running",
+    "tag": "daily_training",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "halcyon-meander",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched": [
+      "vela-halo-breeze",
+      "kestrel-vapourline",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched_sql": [
+      "vela-halo-breeze",
+      "kestrel-drift-3-wide",
+      "terrafirma-loop-treadmill"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "price <= SGD 200",
+      "tags ∈ {humid_climate, oily_skin_humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "What are good lightweight running shoes for long road races that keep my feet cool?",
+    "gold": "kestrel-vapourline",
+    "category": "footwear.running",
+    "tag": "road_long_distance",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt",
+      "kestrel-vapourline"
+    ],
+    "enriched": [
+      "kestrel-vapourline",
+      "halcyon-zephyr-lt",
+      "vela-aero-9-elite"
+    ],
+    "enriched_sql": [
+      "kestrel-vapourline",
+      "halcyon-zephyr-lt",
+      "vela-aero-9-elite"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {race_day, road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "I'm training for a tempo run and need narrow shoes with firm support on paved roads.",
+    "gold": "kestrel-vapourline",
+    "category": "footwear.running",
+    "tag": "tempo",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "terrafirma-anchor-plus",
+      "vela-aero-9"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "meridian-atlas-gt"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {road_long_distance, tropical_training, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "Can you suggest racing shoes with a carbon plate that fit narrow feet and have a secure lace closure?",
+    "gold": "kestrel-vapourline",
+    "category": "footwear.running",
+    "tag": "race_day",
+    "raw": [
+      "kestrel-vapourline",
+      "vela-aero-9",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "kestrel-vapourline",
+      "vela-aero-9-elite",
+      "vela-aero-9"
+    ],
+    "enriched_sql": [
+      "kestrel-vapourline",
+      "vela-aero-9-elite",
+      "vela-aero-9"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "Looking for neutral arch support running shoes for speed workouts on the road with high breathability.",
+    "gold": "kestrel-vapourline",
+    "category": "footwear.running",
+    "tag": "road_long_distance",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "vela-aero-9",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched": [
+      "meridian-atlas-stability",
+      "meridian-atlas-gt",
+      "vela-aero-9"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "meridian-atlas-gt",
+      "terrafirma-anchor-plus"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "arch_support ~ neutral (boost)",
+      "tags ∈ {high_mileage_week, road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "I need firm cushioned shoes for fast road runs that feel responsive and weigh less than 200 grams.",
+    "gold": "kestrel-vapourline",
+    "category": "footwear.running",
+    "tag": "tempo",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt",
+      "kestrel-vapourline"
+    ],
+    "enriched": [
+      "kestrel-vapourline",
+      "halcyon-meander",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched_sql": [
+      "halcyon-meander",
+      "terrafirma-anchor-plus",
+      "vela-aero-9"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "price <= SGD 200",
+      "surface = road",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "Which road running shoes have a low heel drop and a stiff plate suitable for race day performance?",
+    "gold": "kestrel-vapourline",
+    "category": "footwear.running",
+    "tag": "race_day",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "kestrel-vapourline",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "kestrel-vapourline",
+      "kestrel-cloudstep-2",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched_sql": [
+      "kestrel-vapourline",
+      "terrafirma-anchor-plus",
+      "vela-aero-9-elite"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {race_day, road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "Do you have narrow trainers that offer firm cushioning and excellent airflow for marathon pace runs?",
+    "gold": "kestrel-vapourline",
+    "category": "footwear.running",
+    "tag": "road_long_distance",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "terrafirma-loop-treadmill",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched": [
+      "kestrel-vapourline",
+      "terrafirma-loop-treadmill",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched_sql": [
+      "kestrel-vapourline",
+      "terrafirma-loop-treadmill",
+      "halcyon-zephyr-lt"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "I want lightweight, lace-up running shoes with a carbon plate designed for tempo runs on asphalt.",
+    "gold": "kestrel-vapourline",
+    "category": "footwear.running",
+    "tag": "tempo",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "vela-aero-9",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched": [
+      "vela-aero-9",
+      "halcyon-zephyr-lt",
+      "kestrel-vapourline"
+    ],
+    "enriched_sql": [
+      "vela-aero-9",
+      "halcyon-zephyr-lt",
+      "kestrel-vapourline"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "I'm looking for running shoes with good stability for my overpronation and flat feet.",
+    "gold": "meridian-atlas-stability",
+    "category": "footwear.running",
+    "tag": "overpronation",
+    "raw": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "enriched": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-fathom-mc"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ stability (boost)"
+    ]
+  },
+  {
+    "query": "I need wide running shoes that can handle daily training on roads without feeling too bulky.",
+    "gold": "meridian-atlas-stability",
+    "category": "footwear.running",
+    "tag": "flat_feet",
+    "raw": [
+      "kestrel-drift-3-wide",
+      "halcyon-zephyr-lt",
+      "terrafirma-loop-treadmill"
+    ],
+    "enriched": [
+      "kestrel-drift-3-wide",
+      "terrafirma-anchor-plus",
+      "halcyon-crossover-gym"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "kestrel-drift-3-wide"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {road_long_distance, tropical_training, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "What are some cushioned running shoes suitable for a heavier runner who needs support?",
+    "gold": "meridian-atlas-stability",
+    "category": "footwear.running",
+    "tag": "daily_training",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "vela-halo-max"
+    ],
+    "enriched": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched_sql": [
+      "halcyon-meander",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "Can you help me find lace-up running shoes with medium breathability for road runs?",
+    "gold": "meridian-atlas-stability",
+    "category": "footwear.running",
+    "tag": "heavier_runner",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "vela-halo-breeze",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched": [
+      "vela-halo-breeze",
+      "kestrel-vapourline",
+      "vela-aero-9"
+    ],
+    "enriched_sql": [
+      "vela-halo-breeze",
+      "meridian-atlas-gt",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "I want shoes with a balanced cushioning and about a 10mm heel drop for everyday jogging.",
+    "gold": "meridian-atlas-stability",
+    "category": "footwear.running",
+    "tag": "overpronation",
+    "raw": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "vela-halo-max"
+    ],
+    "enriched": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "halcyon-crossover-gym"
+    ],
+    "enriched_sql": [
+      "halcyon-meander",
+      "halcyon-crossover-gym",
+      "terrafirma-anchor-plus"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "Do you have comfortable wide-fit running shoes that offer stability for overpronation?",
+    "gold": "meridian-atlas-stability",
+    "category": "footwear.running",
+    "tag": "flat_feet",
+    "raw": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "kestrel-drift-3-wide"
+    ],
+    "enriched": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-fathom-mc"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-fathom-mc"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ stability (boost)"
+    ]
+  },
+  {
+    "query": "I'm training daily on pavement and need running shoes designed for heavier runners with flat feet.",
+    "gold": "meridian-atlas-stability",
+    "category": "footwear.running",
+    "tag": "daily_training",
+    "raw": [
+      "terrafirma-loop-treadmill",
+      "terrafirma-anchor-plus",
+      "terrafirma-anchor"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "terrafirma-loop-treadmill",
+      "terrafirma-anchor"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "arch_support ~ stability (boost)",
+      "tags ∈ {tropical_training} (boost)"
+    ]
+  },
+  {
+    "query": "What road running shoes provide good arch support and moderate cushioning without a stiff plate?",
+    "gold": "meridian-atlas-stability",
+    "category": "footwear.running",
+    "tag": "heavier_runner",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "I need running shoes that help correct my overpronation on pavement during humid weather.",
+    "gold": "meridian-atlas-gt",
+    "category": "footwear.running",
+    "tag": "humid_climate",
+    "raw": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched": [
+      "meridian-atlas-stability",
+      "meridian-atlas-gt",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "meridian-atlas-gt",
+      "terrafirma-anchor-plus"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "arch_support ~ stability (boost)",
+      "tags ∈ {humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "Looking for tempo shoes with firm cushioning that keep my feet cool in hot, sticky climates.",
+    "gold": "meridian-atlas-gt",
+    "category": "footwear.running",
+    "tag": "overpronation",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "kestrel-cloudstep-2",
+      "vela-aero-9"
+    ],
+    "enriched": [
+      "vela-aero-9",
+      "meridian-atlas-stability",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "meridian-atlas-gt",
+      "vela-halo-breeze"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "What are some stable arch support running shoes for training on the road in warm conditions?",
+    "gold": "meridian-atlas-gt",
+    "category": "footwear.running",
+    "tag": "tempo",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "terrafirma-anchor-plus",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {road_long_distance, tropical_training, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "Can you suggest lightweight road runners with a breathable upper and lace closure for daily runs?",
+    "gold": "meridian-atlas-gt",
+    "category": "footwear.running",
+    "tag": "humid_climate",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "vela-halo-breeze",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched": [
+      "vela-halo-breeze",
+      "terrafirma-loop-treadmill",
+      "kestrel-vapourline"
+    ],
+    "enriched_sql": [
+      "vela-halo-breeze",
+      "terrafirma-loop-treadmill",
+      "kestrel-vapourline"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "I'm searching for running shoes with an 8mm heel drop that provide firm support for overpronation.",
+    "gold": "meridian-atlas-gt",
+    "category": "footwear.running",
+    "tag": "overpronation",
+    "raw": [
+      "terrafirma-anchor-plus",
+      "kestrel-cloudstep-2",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "meridian-fathom-mc",
+      "meridian-atlas-stability"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ stability (boost)"
+    ]
+  },
+  {
+    "query": "Which shoes are best for mid-distance tempo runs on asphalt in a humid environment?",
+    "gold": "meridian-atlas-gt",
+    "category": "footwear.running",
+    "tag": "tempo",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "terrafirma-loop-treadmill",
+      "vela-aero-9"
+    ],
+    "enriched": [
+      "meridian-atlas-gt",
+      "meridian-atlas-stability",
+      "vela-aero-9"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-gt",
+      "meridian-atlas-stability",
+      "vela-halo-breeze"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {humid_climate, road_long_distance} (boost)"
+    ]
+  },
+  {
+    "query": "I want a pair of stability runners with a nylon plate that fit my standard width feet comfortably.",
+    "gold": "meridian-atlas-gt",
+    "category": "footwear.running",
+    "tag": "humid_climate",
+    "raw": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "enriched": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-fathom-mc"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ stability (boost)"
+    ]
+  },
+  {
+    "query": "Show me running shoes designed for firm cushioning and high breathability for use in hot, sweaty weather.",
+    "gold": "meridian-atlas-gt",
+    "category": "footwear.running",
+    "tag": "overpronation",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "kestrel-cloudstep-2",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "vela-halo-breeze",
+      "northbound-scree-lite",
+      "kestrel-vapourline"
+    ],
+    "enriched_sql": [
+      "vela-halo-breeze",
+      "meridian-atlas-gt",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {high_mileage_week} (boost)"
+    ]
+  },
+  {
+    "query": "I'm looking for wide running shoes with strong arch support because I overpronate badly and run on roads.",
+    "gold": "meridian-fathom-mc",
+    "category": "footwear.running",
+    "tag": "heavier_runner",
+    "raw": [
+      "terrafirma-anchor-plus",
+      "kestrel-cloudstep-2",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "meridian-fathom-mc"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "arch_support ~ stability (boost)",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "Can you recommend walking shoes that provide firm cushioning and help control motion for heavier people?",
+    "gold": "meridian-fathom-mc",
+    "category": "footwear.running",
+    "tag": "walking",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "meridian-fathom-mc"
+    ],
+    "enriched": [
+      "meridian-fathom-mc",
+      "terrafirma-anchor-plus",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched_sql": [
+      "meridian-fathom-mc",
+      "terrafirma-anchor-plus",
+      "halcyon-meander"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "I need lace-up shoes suitable for road running that accommodate wider feet and offer a higher heel drop.",
+    "gold": "meridian-fathom-mc",
+    "category": "footwear.running",
+    "tag": "severe_overpronation",
+    "raw": [
+      "kestrel-drift-3-wide",
+      "kestrel-cloudstep-2",
+      "vela-halo-max"
+    ],
+    "enriched": [
+      "kestrel-drift-3-wide",
+      "terrafirma-anchor-plus",
+      "vela-halo-max"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "kestrel-drift-3-wide",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {high_mileage_week, road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "Are there any running shoes with minimal breathability but solid support for severe overpronation?",
+    "gold": "meridian-fathom-mc",
+    "category": "footwear.running",
+    "tag": "heavier_runner",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "enriched_sql": [
+      "meridian-fathom-mc",
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ motion_control (boost)"
+    ]
+  },
+  {
+    "query": "What shoes would you suggest for someone who walks a lot on pavement, has wide feet, and requires motion control?",
+    "gold": "meridian-fathom-mc",
+    "category": "footwear.running",
+    "tag": "walking",
+    "raw": [
+      "meridian-fathom-mc",
+      "kestrel-cloudstep-2",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched": [
+      "meridian-fathom-mc",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability"
+    ],
+    "enriched_sql": [
+      "meridian-fathom-mc",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "width = wide",
+      "arch_support ~ motion_control (boost)"
+    ]
+  },
+  {
+    "query": "I'm a heavier runner searching for firm-cushioned shoes without any plates, ideal for road surfaces.",
+    "gold": "meridian-fathom-mc",
+    "category": "footwear.running",
+    "tag": "severe_overpronation",
+    "raw": [
+      "terrafirma-anchor-plus",
+      "halcyon-meander",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "halcyon-meander",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "Do you have any wide-footed road running shoes that focus on stability for severe overpronation?",
+    "gold": "meridian-fathom-mc",
+    "category": "footwear.running",
+    "tag": "heavier_runner",
+    "raw": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "meridian-fathom-mc"
+    ],
+    "enriched": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-fathom-mc"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-fathom-mc"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "arch_support ~ motion_control (boost)",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "Looking for lace-up footwear with a 12mm heel drop, good for walking and motion control, with firm cushioning.",
+    "gold": "meridian-fathom-mc",
+    "category": "footwear.running",
+    "tag": "walking",
+    "raw": [
+      "meridian-fathom-mc",
+      "kestrel-cloudstep-2",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "meridian-fathom-mc",
+      "kestrel-cloudstep-2",
+      "vela-halo-max"
+    ],
+    "enriched_sql": [
+      "meridian-fathom-mc",
+      "terrafirma-anchor-plus",
+      "halcyon-meander"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ motion_control (boost)"
+    ]
+  },
+  {
+    "query": "I need shoes that can handle slippery trails during my weekend hikes.",
+    "gold": "northbound-ridgeline",
+    "category": "footwear.running",
+    "tag": "trail_use",
+    "raw": [
+      "northbound-ridgeline-gtx",
+      "northbound-scree-lite",
+      "northbound-ridgeline"
+    ],
+    "enriched": [
+      "northbound-ridgeline",
+      "northbound-scree-lite",
+      "northbound-ridgeline-gtx"
+    ],
+    "enriched_sql": [
+      "northbound-ridgeline",
+      "northbound-ridgeline-gtx",
+      "terrafirma-anchor-plus"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "Looking for running shoes with good grip for wet and uneven terrain.",
+    "gold": "northbound-ridgeline",
+    "category": "footwear.running",
+    "tag": "wet_road_grip",
+    "raw": [
+      "northbound-ridgeline-gtx",
+      "terrafirma-anchor-plus",
+      "terrafirma-loop-treadmill"
+    ],
+    "enriched": [
+      "northbound-ridgeline",
+      "northbound-ridgeline-gtx",
+      "northbound-scree-lite"
+    ],
+    "enriched_sql": [
+      "northbound-ridgeline",
+      "northbound-ridgeline-gtx",
+      "terrafirma-anchor-plus"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "What are some lightweight shoes suitable for trail running with balanced cushioning?",
+    "gold": "northbound-ridgeline",
+    "category": "footwear.running",
+    "tag": "hiking_crossover",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "northbound-scree-lite",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "northbound-ridgeline",
+      "northbound-scree-lite",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched_sql": [
+      "northbound-ridgeline",
+      "halcyon-meander",
+      "halcyon-zephyr-lt"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "Can you recommend neutral arch support shoes for training on natural trails?",
+    "gold": "northbound-ridgeline",
+    "category": "footwear.running",
+    "tag": "trail_use",
+    "raw": [
+      "northbound-scree-lite",
+      "northbound-ridgeline",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched": [
+      "northbound-ridgeline",
+      "northbound-scree-lite",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "northbound-ridgeline",
+      "terrafirma-anchor-plus"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ neutral (boost)",
+      "tags ∈ {tropical_training} (boost)"
+    ]
+  },
+  {
+    "query": "I want comfortable trail shoes with medium breathability for long runs in humid weather.",
+    "gold": "northbound-ridgeline",
+    "category": "footwear.running",
+    "tag": "wet_road_grip",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "northbound-scree-lite",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched": [
+      "northbound-scree-lite",
+      "vela-halo-breeze",
+      "northbound-ridgeline"
+    ],
+    "enriched_sql": [
+      "vela-halo-breeze",
+      "meridian-atlas-gt",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "Show me lace-up footwear that works for both trail running and casual hiking.",
+    "gold": "northbound-ridgeline",
+    "category": "footwear.running",
+    "tag": "hiking_crossover",
+    "raw": [
+      "northbound-ridgeline-gtx",
+      "northbound-scree-lite",
+      "northbound-ridgeline"
+    ],
+    "enriched": [
+      "northbound-ridgeline",
+      "northbound-scree-lite",
+      "northbound-ridgeline-gtx"
+    ],
+    "enriched_sql": [
+      "northbound-ridgeline",
+      "northbound-ridgeline-gtx",
+      "terrafirma-loop-treadmill"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "I'm searching for trail shoes with a moderate heel drop that won't strain my calves.",
+    "gold": "northbound-ridgeline",
+    "category": "footwear.running",
+    "tag": "trail_use",
+    "raw": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "northbound-ridgeline"
+    ],
+    "enriched_sql": [
+      "halcyon-meander",
+      "northbound-ridgeline",
+      "northbound-ridgeline-gtx"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "Need standard width trail shoes under $250 that provide stable footing without being too heavy.",
+    "gold": "northbound-ridgeline",
+    "category": "footwear.running",
+    "tag": "wet_road_grip",
+    "raw": [
+      "northbound-scree-lite",
+      "terrafirma-anchor-plus",
+      "northbound-ridgeline-gtx"
+    ],
+    "enriched": [
+      "northbound-ridgeline",
+      "northbound-scree-lite",
+      "northbound-ridgeline-gtx"
+    ],
+    "enriched_sql": [
+      "northbound-ridgeline",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "price <= SGD 250"
+    ]
+  },
+  {
+    "query": "I'm training for a trail marathon in rainy and cold conditions and need shoes that can handle slippery paths.",
+    "gold": "northbound-ridgeline-gtx",
+    "category": "footwear.running",
+    "tag": "cold_climate",
+    "raw": [
+      "northbound-scree-lite",
+      "northbound-ridgeline-gtx",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched": [
+      "northbound-ridgeline",
+      "northbound-scree-lite",
+      "northbound-ridgeline-gtx"
+    ],
+    "enriched_sql": [
+      "northbound-ridgeline",
+      "northbound-ridgeline-gtx",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {tropical_training} (boost)"
+    ]
+  },
+  {
+    "query": "Looking for running shoes suitable for trails with good arch support but not too much breathability because I run in chilly weather.",
+    "gold": "northbound-ridgeline-gtx",
+    "category": "footwear.running",
+    "tag": "trail_use",
+    "raw": [
+      "northbound-scree-lite",
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "northbound-scree-lite",
+      "northbound-ridgeline",
+      "meridian-atlas-stability"
+    ],
+    "enriched_sql": [
+      "northbound-ridgeline",
+      "meridian-atlas-stability",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "What are some balanced cushioning trail shoes that can keep my feet warm and dry in damp, cold climates?",
+    "gold": "northbound-ridgeline-gtx",
+    "category": "footwear.running",
+    "tag": "wet_weather",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "northbound-scree-lite",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "northbound-ridgeline",
+      "northbound-scree-lite",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched_sql": [
+      "northbound-ridgeline",
+      "northbound-ridgeline-gtx",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "I want trail running shoes with laces and standard width, comfortable for neutral arches, and suitable for wet environments.",
+    "gold": "northbound-ridgeline-gtx",
+    "category": "footwear.running",
+    "tag": "cold_climate",
+    "raw": [
+      "northbound-ridgeline-gtx",
+      "northbound-scree-lite",
+      "northbound-ridgeline"
+    ],
+    "enriched": [
+      "northbound-scree-lite",
+      "northbound-ridgeline",
+      "northbound-ridgeline-gtx"
+    ],
+    "enriched_sql": [
+      "northbound-ridgeline",
+      "northbound-ridgeline-gtx",
+      "terrafirma-anchor-plus"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ neutral (boost)"
+    ]
+  },
+  {
+    "query": "Can you suggest running shoes with moderate heel drop and low breathability for trail runs in cold, wet weather?",
+    "gold": "northbound-ridgeline-gtx",
+    "category": "footwear.running",
+    "tag": "trail_use",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "kestrel-drift-3",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "northbound-scree-lite",
+      "northbound-ridgeline",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched_sql": [
+      "northbound-ridgeline",
+      "vela-halo-breeze",
+      "northbound-ridgeline-gtx"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "I have neutral arches and run mostly on uneven terrain in cold, rainy weather—any recommendations?",
+    "gold": "northbound-ridgeline-gtx",
+    "category": "footwear.running",
+    "tag": "wet_weather",
+    "raw": [
+      "northbound-scree-lite",
+      "halcyon-meander",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "northbound-ridgeline"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "northbound-ridgeline"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ neutral (boost)"
+    ]
+  },
+  {
+    "query": "Are there lightweight trail running shoes with balanced cushioning and minimal ventilation for running in cold, wet conditions?",
+    "gold": "northbound-ridgeline-gtx",
+    "category": "footwear.running",
+    "tag": "cold_climate",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "northbound-scree-lite",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "northbound-scree-lite",
+      "northbound-ridgeline",
+      "northbound-ridgeline-gtx"
+    ],
+    "enriched_sql": [
+      "northbound-ridgeline",
+      "northbound-ridgeline-gtx",
+      "halcyon-meander"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "Looking for standard width trail shoes with a 6mm heel drop and enough insulation for cold, wet running conditions.",
+    "gold": "northbound-ridgeline-gtx",
+    "category": "footwear.running",
+    "tag": "trail_use",
+    "raw": [
+      "northbound-scree-lite",
+      "northbound-ridgeline-gtx",
+      "kestrel-drift-3-wide"
+    ],
+    "enriched": [
+      "northbound-ridgeline",
+      "northbound-scree-lite",
+      "northbound-ridgeline-gtx"
+    ],
+    "enriched_sql": [
+      "northbound-ridgeline",
+      "northbound-ridgeline-gtx",
+      "kestrel-drift-3-wide"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "I need running shoes that can handle long road runs in hot and humid weather.",
+    "gold": "vela-aero-9",
+    "category": "footwear.running",
+    "tag": "humid_climate",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "kestrel-cloudstep-2",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "meridian-atlas-gt",
+      "meridian-atlas-stability",
+      "vela-halo-breeze"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-gt",
+      "meridian-atlas-stability",
+      "vela-halo-breeze"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {humid_climate, road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "Looking for lightweight shoes with firm cushioning for fast tempo runs on pavement.",
+    "gold": "vela-aero-9",
+    "category": "footwear.running",
+    "tag": "road_long_distance",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "kestrel-cloudstep-2",
+      "vela-aero-9"
+    ],
+    "enriched": [
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt",
+      "halcyon-meander"
+    ],
+    "enriched_sql": [
+      "halcyon-zephyr-lt",
+      "halcyon-meander",
+      "kestrel-vapourline"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road"
+    ]
+  },
+  {
+    "query": "What are some good neutral arch running shoes with high breathability for warm climates?",
+    "gold": "vela-aero-9",
+    "category": "footwear.running",
+    "tag": "tempo",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "vela-aero-9",
+      "vela-halo-breeze"
+    ],
+    "enriched": [
+      "vela-halo-breeze",
+      "meridian-atlas-gt",
+      "meridian-atlas-stability"
+    ],
+    "enriched_sql": [
+      "vela-halo-breeze",
+      "meridian-atlas-gt",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ neutral (boost)",
+      "tags ∈ {high_mileage_week, humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "Do you have lace-up running shoes suitable for training in humid conditions?",
+    "gold": "vela-aero-9",
+    "category": "footwear.running",
+    "tag": "humid_climate",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "kestrel-cloudstep-2",
+      "vela-aero-9"
+    ],
+    "enriched": [
+      "vela-halo-breeze",
+      "northbound-scree-lite",
+      "kestrel-vapourline"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "vela-halo-breeze",
+      "kestrel-vapourline"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {humid_climate, tropical_training} (boost)"
+    ]
+  },
+  {
+    "query": "I want shoes with a nylon plate for stability during extended road runs.",
+    "gold": "vela-aero-9",
+    "category": "footwear.running",
+    "tag": "road_long_distance",
+    "raw": [
+      "meridian-atlas-gt",
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "arch_support ~ stability (boost)",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "Can you recommend road running shoes weighing around 230 grams with moderate heel drop?",
+    "gold": "vela-aero-9",
+    "category": "footwear.running",
+    "tag": "tempo",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "kestrel-drift-3"
+    ],
+    "enriched": [
+      "kestrel-vapourline",
+      "kestrel-cloudstep-2",
+      "halcyon-meander"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "kestrel-vapourline",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "I’m training for long-distance runs and need shoes that offer firm support without being bulky.",
+    "gold": "vela-aero-9",
+    "category": "footwear.running",
+    "tag": "humid_climate",
+    "raw": [
+      "terrafirma-anchor-plus",
+      "halcyon-zephyr-lt",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "halcyon-meander"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "halcyon-meander"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {road_long_distance, tropical_training} (boost)"
+    ]
+  },
+  {
+    "query": "Which running shoes provide good airflow and a standard width for comfortable hot weather runs?",
+    "gold": "vela-aero-9",
+    "category": "footwear.running",
+    "tag": "road_long_distance",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "kestrel-drift-3-wide",
+      "vela-halo-breeze"
+    ],
+    "enriched": [
+      "vela-halo-breeze",
+      "kestrel-drift-3-wide",
+      "meridian-atlas-stability"
+    ],
+    "enriched_sql": [
+      "vela-halo-breeze",
+      "kestrel-drift-3-wide",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "I need lightweight running shoes with good arch support for road races in hot, humid weather.",
+    "gold": "vela-aero-9-elite",
+    "category": "footwear.running",
+    "tag": "race_day",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "kestrel-cloudstep-2",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "kestrel-vapourline",
+      "meridian-atlas-stability",
+      "meridian-atlas-gt"
+    ],
+    "enriched_sql": [
+      "kestrel-vapourline",
+      "meridian-atlas-stability",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {humid_climate, race_day, road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "What are the best narrow-fitting shoes to help me improve my tempo runs on pavement?",
+    "gold": "vela-aero-9-elite",
+    "category": "footwear.running",
+    "tag": "tropical_training",
+    "raw": [
+      "terrafirma-loop-treadmill",
+      "halcyon-zephyr-lt",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched": [
+      "terrafirma-loop-treadmill",
+      "terrafirma-anchor-plus",
+      "kestrel-vapourline"
+    ],
+    "enriched_sql": [
+      "terrafirma-loop-treadmill",
+      "terrafirma-anchor-plus",
+      "kestrel-vapourline"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road"
+    ]
+  },
+  {
+    "query": "Looking for firm-cushioned shoes with carbon plates to boost my speed during race day.",
+    "gold": "vela-aero-9-elite",
+    "category": "footwear.running",
+    "tag": "tempo",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "kestrel-vapourline",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "kestrel-vapourline",
+      "vela-aero-9-elite",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched_sql": [
+      "kestrel-vapourline",
+      "vela-aero-9-elite",
+      "vela-aero-9"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {race_day} (boost)"
+    ]
+  },
+  {
+    "query": "Can you recommend breathable road running shoes with a low heel drop for faster training sessions?",
+    "gold": "vela-aero-9-elite",
+    "category": "footwear.running",
+    "tag": "race_day",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt",
+      "kestrel-drift-3"
+    ],
+    "enriched": [
+      "kestrel-cloudstep-2",
+      "kestrel-vapourline",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched_sql": [
+      "vela-aero-9",
+      "kestrel-vapourline",
+      "terrafirma-anchor-plus"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {road_long_distance, tropical_training, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "I want lace-up shoes that are comfortable for neutral arch runners and suited for tropical climates.",
+    "gold": "vela-aero-9-elite",
+    "category": "footwear.running",
+    "tag": "tropical_training",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "terrafirma-loop-treadmill",
+      "vela-aero-9"
+    ],
+    "enriched": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "meridian-atlas-gt",
+      "vela-aero-9"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ neutral (boost)",
+      "tags ∈ {humid_climate, tropical_training} (boost)"
+    ]
+  },
+  {
+    "query": "Which shoes are ideal for someone focusing on tempo runs but needs a narrow fit and firm cushioning?",
+    "gold": "vela-aero-9-elite",
+    "category": "footwear.running",
+    "tag": "tempo",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "kestrel-cloudstep-2",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "kestrel-cloudstep-2",
+      "halcyon-meander"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "halcyon-meander",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "Help me find high-performance shoes that weigh under 200 grams and offer good support on asphalt.",
+    "gold": "vela-aero-9-elite",
+    "category": "footwear.running",
+    "tag": "race_day",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "kestrel-vapourline",
+      "halcyon-zephyr-lt",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "halcyon-crossover-gym",
+      "halcyon-meander"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "price <= SGD 200",
+      "tags ∈ {high_mileage_week} (boost)"
+    ]
+  },
+  {
+    "query": "I’m training for a marathon in a warm climate and need shoes with excellent breathability and a carbon plate.",
+    "gold": "vela-aero-9-elite",
+    "category": "footwear.running",
+    "tag": "tropical_training",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "kestrel-cloudstep-2",
+      "vela-aero-9"
+    ],
+    "enriched": [
+      "vela-halo-breeze",
+      "vela-aero-9",
+      "kestrel-vapourline"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "vela-halo-breeze",
+      "vela-aero-9"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {humid_climate, tropical_training} (boost)"
+    ]
+  },
+  {
+    "query": "I need running shoes that keep my feet cool during humid morning jogs.",
+    "gold": "vela-halo-breeze",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "vela-halo-breeze",
+      "kestrel-vapourline",
+      "meridian-atlas-gt"
+    ],
+    "enriched_sql": [
+      "vela-halo-breeze",
+      "kestrel-vapourline",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "Looking for well-cushioned sneakers for daily treadmill workouts at the gym.",
+    "gold": "vela-halo-breeze",
+    "category": "footwear.running",
+    "tag": "humid_climate",
+    "raw": [
+      "halcyon-crossover-gym",
+      "halcyon-meander",
+      "terrafirma-loop-treadmill"
+    ],
+    "enriched": [
+      "terrafirma-loop-treadmill",
+      "halcyon-crossover-gym",
+      "halcyon-meander"
+    ],
+    "enriched_sql": [
+      "terrafirma-loop-treadmill",
+      "halcyon-crossover-gym",
+      "halcyon-meander"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {treadmill_indoor} (boost)"
+    ]
+  },
+  {
+    "query": "What are some good neutral arch runners for road and indoor use?",
+    "gold": "vela-halo-breeze",
+    "category": "footwear.running",
+    "tag": "daily_training",
+    "raw": [
+      "terrafirma-loop-treadmill",
+      "meridian-atlas-gt",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "terrafirma-loop-treadmill",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "enriched_sql": [
+      "terrafirma-loop-treadmill",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "arch_support ~ neutral (boost)",
+      "tags ∈ {road_long_distance, treadmill_indoor, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "I want breathable running shoes with a balanced feel for everyday training.",
+    "gold": "vela-halo-breeze",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "vela-halo-breeze",
+      "kestrel-drift-3"
+    ],
+    "enriched": [
+      "vela-halo-breeze",
+      "terrafirma-loop-treadmill",
+      "halcyon-crossover-gym"
+    ],
+    "enriched_sql": [
+      "vela-halo-breeze",
+      "vela-aero-9",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {tropical_training} (boost)"
+    ]
+  },
+  {
+    "query": "Help me find lightweight shoes with an 8mm heel drop suitable for city streets.",
+    "gold": "vela-halo-breeze",
+    "category": "footwear.running",
+    "tag": "humid_climate",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "kestrel-drift-3-wide"
+    ],
+    "enriched": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "kestrel-drift-3-wide"
+    ],
+    "enriched_sql": [
+      "halcyon-meander",
+      "kestrel-drift-3-wide",
+      "halcyon-zephyr-lt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road"
+    ]
+  },
+  {
+    "query": "Can you suggest lace-up trainers that aren’t too wide but comfortable for regular runs?",
+    "gold": "vela-halo-breeze",
+    "category": "footwear.running",
+    "tag": "daily_training",
+    "raw": [
+      "kestrel-drift-3-wide",
+      "halcyon-zephyr-lt",
+      "terrafirma-loop-treadmill"
+    ],
+    "enriched": [
+      "kestrel-drift-3-wide",
+      "terrafirma-loop-treadmill",
+      "halcyon-crossover-gym"
+    ],
+    "enriched_sql": [
+      "kestrel-drift-3-wide",
+      "terrafirma-loop-treadmill",
+      "halcyon-crossover-gym"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "Which shoes work best for frequent indoor treadmill sessions in warm climates?",
+    "gold": "vela-halo-breeze",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor",
+    "raw": [
+      "terrafirma-loop-treadmill",
+      "halcyon-zephyr-lt",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched": [
+      "terrafirma-loop-treadmill",
+      "vela-halo-breeze",
+      "northbound-scree-lite"
+    ],
+    "enriched_sql": [
+      "terrafirma-loop-treadmill",
+      "vela-halo-breeze",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {humid_climate, treadmill_indoor} (boost)"
+    ]
+  },
+  {
+    "query": "Show me road running shoes with moderate cushioning for consistent daily use.",
+    "gold": "vela-halo-breeze",
+    "category": "footwear.running",
+    "tag": "humid_climate",
+    "raw": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "kestrel-drift-3"
+    ],
+    "enriched": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "halcyon-crossover-gym"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "halcyon-meander",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "I'm training for my first 5K and need comfortable shoes for running on city roads.",
+    "gold": "terrafirma-anchor",
+    "category": "footwear.running",
+    "tag": "beginner_friendly",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "kestrel-drift-3"
+    ],
+    "enriched": [
+      "halcyon-crossover-gym",
+      "terrafirma-loop-treadmill",
+      "halcyon-meander"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {road_long_distance, tropical_training, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "I run daily on a treadmill and want cushioned shoes that are not too heavy.",
+    "gold": "terrafirma-anchor",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor",
+    "raw": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "halcyon-meander",
+      "terrafirma-loop-treadmill",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched_sql": [
+      "terrafirma-loop-treadmill",
+      "halcyon-meander",
+      "halcyon-zephyr-lt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {treadmill_indoor} (boost)"
+    ]
+  },
+  {
+    "query": "Looking for affordable running shoes with good arch support for neutral feet.",
+    "gold": "terrafirma-anchor",
+    "category": "footwear.running",
+    "tag": "budget_daily",
+    "raw": [
+      "terrafirma-anchor-plus",
+      "kestrel-cloudstep-2",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "terrafirma-anchor"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "terrafirma-anchor"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ neutral (boost)"
+    ]
+  },
+  {
+    "query": "Need lace-up running shoes with balanced cushioning for my indoor workouts.",
+    "gold": "terrafirma-anchor",
+    "category": "footwear.running",
+    "tag": "beginner_friendly",
+    "raw": [
+      "terrafirma-loop-treadmill",
+      "kestrel-cloudstep-2",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "terrafirma-loop-treadmill",
+      "halcyon-meander",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched_sql": [
+      "terrafirma-loop-treadmill",
+      "halcyon-zephyr-lt",
+      "halcyon-meander"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {treadmill_indoor} (boost)"
+    ]
+  },
+  {
+    "query": "What shoes do you recommend for someone just starting to run on paved surfaces?",
+    "gold": "terrafirma-anchor",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "terrafirma-loop-treadmill",
+      "vela-halo-breeze"
+    ],
+    "enriched": [
+      "terrafirma-loop-treadmill",
+      "terrafirma-anchor",
+      "halcyon-meander"
+    ],
+    "enriched_sql": [
+      "terrafirma-loop-treadmill",
+      "terrafirma-anchor",
+      "halcyon-meander"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "I want breathable shoes that provide moderate support and fit a standard width.",
+    "gold": "terrafirma-anchor",
+    "category": "footwear.running",
+    "tag": "budget_daily",
+    "raw": [
+      "kestrel-drift-3-wide",
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "vela-halo-breeze"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "vela-halo-breeze"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "Searching for lightweight running shoes with a 10mm heel drop suitable for daily use.",
+    "gold": "terrafirma-anchor",
+    "category": "footwear.running",
+    "tag": "beginner_friendly",
+    "raw": [
+      "kestrel-drift-3",
+      "kestrel-cloudstep-2",
+      "kestrel-drift-3-wide"
+    ],
+    "enriched": [
+      "halcyon-crossover-gym",
+      "kestrel-drift-3-wide",
+      "halcyon-meander"
+    ],
+    "enriched_sql": [
+      "halcyon-crossover-gym",
+      "kestrel-drift-3-wide",
+      "halcyon-meander"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "Can you find me budget-friendly trainers for indoor road running with no stiff plate?",
+    "gold": "terrafirma-anchor",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor",
+    "raw": [
+      "terrafirma-loop-treadmill",
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "terrafirma-loop-treadmill",
+      "terrafirma-anchor",
+      "halcyon-crossover-gym"
+    ],
+    "enriched_sql": [
+      "terrafirma-loop-treadmill",
+      "terrafirma-anchor-plus",
+      "terrafirma-anchor"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {beginner_friendly, road_long_distance, treadmill_indoor, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "I need comfortable running shoes that help with overpronation for my daily road runs.",
+    "gold": "terrafirma-anchor-plus",
+    "category": "footwear.running",
+    "tag": "overpronation",
+    "raw": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "terrafirma-loop-treadmill"
+    ],
+    "enriched": [
+      "meridian-fathom-mc",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "arch_support ~ stability (boost)",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "Looking for wide running shoes with good arch support for stability and medium breathability.",
+    "gold": "terrafirma-anchor-plus",
+    "category": "footwear.running",
+    "tag": "beginner_friendly",
+    "raw": [
+      "meridian-atlas-stability",
+      "kestrel-drift-3-wide",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ stability (boost)"
+    ]
+  },
+  {
+    "query": "What are some beginner-friendly running shoes that don’t have a carbon plate and offer balanced cushioning?",
+    "gold": "terrafirma-anchor-plus",
+    "category": "footwear.running",
+    "tag": "budget_daily",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched_sql": [
+      "halcyon-meander",
+      "terrafirma-anchor-plus",
+      "halcyon-crossover-gym"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {beginner_friendly} (boost)"
+    ]
+  },
+  {
+    "query": "Can you suggest stable running shoes suitable for wide feet that I can use on paved surfaces?",
+    "gold": "terrafirma-anchor-plus",
+    "category": "footwear.running",
+    "tag": "overpronation",
+    "raw": [
+      "terrafirma-anchor-plus",
+      "kestrel-drift-3-wide",
+      "meridian-atlas-stability"
+    ],
+    "enriched": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "kestrel-drift-3-wide"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "terrafirma-anchor-plus",
+      "kestrel-drift-3-wide"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "width = wide"
+    ]
+  },
+  {
+    "query": "I want lace-up running shoes with a higher heel drop around 10mm for my training routine.",
+    "gold": "terrafirma-anchor-plus",
+    "category": "footwear.running",
+    "tag": "beginner_friendly",
+    "raw": [
+      "vela-halo-max",
+      "kestrel-cloudstep-2",
+      "kestrel-drift-3-wide"
+    ],
+    "enriched": [
+      "vela-halo-max",
+      "kestrel-drift-3-wide",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched_sql": [
+      "kestrel-drift-3-wide",
+      "terrafirma-anchor-plus",
+      "kestrel-drift-3"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {high_mileage_week, night_routine, tropical_training} (boost)"
+    ]
+  },
+  {
+    "query": "Searching for affordable training shoes for walking and running on the road with decent breathability.",
+    "gold": "terrafirma-anchor-plus",
+    "category": "footwear.running",
+    "tag": "budget_daily",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt",
+      "kestrel-drift-3"
+    ],
+    "enriched": [
+      "vela-halo-breeze",
+      "kestrel-vapourline",
+      "terrafirma-loop-treadmill"
+    ],
+    "enriched_sql": [
+      "vela-halo-breeze",
+      "meridian-atlas-stability",
+      "vela-aero-9"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {road_long_distance, tropical_training, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "Are there any lightweight stability shoes with balanced cushioning for someone new to running?",
+    "gold": "terrafirma-anchor-plus",
+    "category": "footwear.running",
+    "tag": "overpronation",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "meridian-atlas-stability"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "kestrel-cloudstep-2",
+      "halcyon-meander"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "halcyon-meander"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ stability (boost)"
+    ]
+  },
+  {
+    "query": "Do you have running footwear that supports overpronation and offers wide sizing without a stiff plate?",
+    "gold": "terrafirma-anchor-plus",
+    "category": "footwear.running",
+    "tag": "beginner_friendly",
+    "raw": [
+      "terrafirma-anchor-plus",
+      "kestrel-cloudstep-2",
+      "kestrel-drift-3-wide"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "meridian-fathom-mc",
+      "meridian-atlas-stability"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "meridian-fathom-mc"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ stability (boost)"
+    ]
+  },
+  {
+    "query": "I'm looking for running shoes that are comfortable for daily gym workouts and treadmill running.",
+    "gold": "terrafirma-loop-treadmill",
+    "category": "footwear.running",
+    "tag": "budget_daily",
+    "raw": [
+      "terrafirma-loop-treadmill",
+      "halcyon-crossover-gym",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "terrafirma-loop-treadmill",
+      "halcyon-crossover-gym",
+      "terrafirma-anchor"
+    ],
+    "enriched_sql": [
+      "terrafirma-loop-treadmill",
+      "halcyon-crossover-gym",
+      "terrafirma-anchor"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {treadmill_indoor} (boost)"
+    ]
+  },
+  {
+    "query": "Can you suggest neutral arch running shoes that work well on roads and indoor surfaces?",
+    "gold": "terrafirma-loop-treadmill",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor",
+    "raw": [
+      "terrafirma-loop-treadmill",
+      "halcyon-meander",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched": [
+      "terrafirma-loop-treadmill",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "enriched_sql": [
+      "terrafirma-loop-treadmill",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "arch_support ~ neutral (boost)",
+      "tags ∈ {road_long_distance, treadmill_indoor, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "I need breathable shoes with balanced cushioning for my regular jogging sessions.",
+    "gold": "terrafirma-loop-treadmill",
+    "category": "footwear.running",
+    "tag": "gym_crossover",
+    "raw": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "vela-halo-breeze"
+    ],
+    "enriched": [
+      "halcyon-meander",
+      "vela-halo-breeze",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched_sql": [
+      "halcyon-meander",
+      "vela-halo-breeze",
+      "terrafirma-anchor-plus"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "What are good laceless running shoes for standard width feet under $150?",
+    "gold": "terrafirma-loop-treadmill",
+    "category": "footwear.running",
+    "tag": "budget_daily",
+    "raw": [
+      "kestrel-drift-3-wide",
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "kestrel-drift-3-wide",
+      "kestrel-drift-3",
+      "halcyon-crossover-gym"
+    ],
+    "enriched_sql": [
+      "kestrel-drift-3-wide",
+      "kestrel-drift-3",
+      "halcyon-crossover-gym"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "Help me find lightweight running shoes suitable for both treadmill and outdoor runs.",
+    "gold": "terrafirma-loop-treadmill",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor",
+    "raw": [
+      "terrafirma-loop-treadmill",
+      "kestrel-cloudstep-2",
+      "vela-halo-breeze"
+    ],
+    "enriched": [
+      "terrafirma-loop-treadmill",
+      "halcyon-zephyr-lt",
+      "northbound-scree-lite"
+    ],
+    "enriched_sql": [
+      "terrafirma-loop-treadmill",
+      "halcyon-zephyr-lt",
+      "kestrel-vapourline"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {treadmill_indoor} (boost)"
+    ]
+  },
+  {
+    "query": "I want shoes with a 9mm heel drop that offer good support without stiff plates.",
+    "gold": "terrafirma-loop-treadmill",
+    "category": "footwear.running",
+    "tag": "gym_crossover",
+    "raw": [
+      "vela-aero-9",
+      "kestrel-cloudstep-2",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "vela-aero-9"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "Are there any running shoes that combine high breathability and moderate stack height for training?",
+    "gold": "terrafirma-loop-treadmill",
+    "category": "footwear.running",
+    "tag": "budget_daily",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt",
+      "kestrel-drift-3"
+    ],
+    "enriched": [
+      "vela-halo-breeze",
+      "kestrel-cloudstep-2",
+      "kestrel-vapourline"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "vela-halo-breeze",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {high_mileage_week, tropical_training} (boost)"
+    ]
+  },
+  {
+    "query": "Looking for affordable neutral running shoes with standard width for everyday use.",
+    "gold": "terrafirma-loop-treadmill",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor",
+    "raw": [
+      "kestrel-drift-3-wide",
+      "halcyon-meander",
+      "terrafirma-anchor"
+    ],
+    "enriched": [
+      "halcyon-crossover-gym",
+      "terrafirma-anchor",
+      "terrafirma-loop-treadmill"
+    ],
+    "enriched_sql": [
+      "halcyon-crossover-gym",
+      "terrafirma-anchor",
+      "terrafirma-loop-treadmill"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ neutral (boost)"
+    ]
+  },
+  {
+    "query": "I need running shoes that keep my feet cool and dry during hot, humid workouts.",
+    "gold": "halcyon-zephyr-lt",
+    "category": "footwear.running",
+    "tag": "travel_light_packing",
+    "raw": [
+      "halcyon-meander",
+      "halcyon-zephyr-lt",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched": [
+      "vela-halo-breeze",
+      "northbound-scree-lite",
+      "kestrel-vapourline"
+    ],
+    "enriched_sql": [
+      "vela-halo-breeze",
+      "kestrel-vapourline",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "Looking for narrow shoes with firm cushioning for faster tempo runs on pavement.",
+    "gold": "halcyon-zephyr-lt",
+    "category": "footwear.running",
+    "tag": "humid_climate",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "kestrel-cloudstep-2",
+      "vela-aero-9"
+    ],
+    "enriched": [
+      "halcyon-meander",
+      "terrafirma-anchor-plus",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched_sql": [
+      "halcyon-meander",
+      "terrafirma-anchor-plus",
+      "kestrel-vapourline"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road"
+    ]
+  },
+  {
+    "query": "What are some lightweight lace-up shoes suitable for neutral runners training in tropical weather?",
+    "gold": "halcyon-zephyr-lt",
+    "category": "footwear.running",
+    "tag": "tempo",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "kestrel-cloudstep-2",
+      "vela-aero-9"
+    ],
+    "enriched": [
+      "halcyon-zephyr-lt",
+      "northbound-scree-lite",
+      "kestrel-vapourline"
+    ],
+    "enriched_sql": [
+      "vela-aero-9",
+      "halcyon-zephyr-lt",
+      "kestrel-vapourline"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ neutral (boost)",
+      "tags ∈ {tropical_training} (boost)"
+    ]
+  },
+  {
+    "query": "Can you find road running shoes with high breathability and no stiff plates for travel?",
+    "gold": "halcyon-zephyr-lt",
+    "category": "footwear.running",
+    "tag": "travel_light_packing",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt",
+      "kestrel-vapourline"
+    ],
+    "enriched": [
+      "kestrel-vapourline",
+      "vela-halo-breeze",
+      "northbound-scree-lite"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-gt",
+      "meridian-atlas-stability",
+      "vela-halo-breeze"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {high_mileage_week, road_long_distance, travel_cabin_size, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "I want shoes that support neutral arches and feel responsive for quick pace training.",
+    "gold": "halcyon-zephyr-lt",
+    "category": "footwear.running",
+    "tag": "humid_climate",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "kestrel-cloudstep-2",
+      "vela-aero-9"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "halcyon-meander",
+      "meridian-atlas-stability"
+    ],
+    "enriched_sql": [
+      "meridian-atlas-stability",
+      "vela-aero-9",
+      "terrafirma-anchor-plus"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ neutral (boost)",
+      "tags ∈ {tropical_training} (boost)"
+    ]
+  },
+  {
+    "query": "Do you have firm cushioned shoes with a moderate heel drop for running intervals on the road?",
+    "gold": "halcyon-zephyr-lt",
+    "category": "footwear.running",
+    "tag": "tempo",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "kestrel-cloudstep-2",
+      "terrafirma-anchor-plus",
+      "halcyon-meander"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "halcyon-meander",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "Searching for a pair of narrow running shoes that pack light for trips and handle humidity well.",
+    "gold": "halcyon-zephyr-lt",
+    "category": "footwear.running",
+    "tag": "travel_light_packing",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "halcyon-meander",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched": [
+      "kestrel-vapourline",
+      "halcyon-zephyr-lt",
+      "northbound-scree-lite"
+    ],
+    "enriched_sql": [
+      "kestrel-vapourline",
+      "vela-halo-breeze",
+      "vela-aero-9-elite"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "Which lightweight, breathable road shoes provide a snug fit for someone who likes firm support?",
+    "gold": "halcyon-zephyr-lt",
+    "category": "footwear.running",
+    "tag": "humid_climate",
+    "raw": [
+      "halcyon-zephyr-lt",
+      "vela-aero-9",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched": [
+      "kestrel-vapourline",
+      "terrafirma-anchor-plus",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "I'm looking for comfortable shoes to wear during my recovery runs on pavement.",
+    "gold": "halcyon-meander",
+    "category": "footwear.running",
+    "tag": "recovery_run",
+    "raw": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "vela-halo-max"
+    ],
+    "enriched": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "vela-halo-max"
+    ],
+    "enriched_sql": [
+      "halcyon-meander",
+      "terrafirma-anchor-plus",
+      "terrafirma-loop-treadmill"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {recovery_run} (boost)"
+    ]
+  },
+  {
+    "query": "Can you recommend some cushioned running shoes suitable for someone just starting out?",
+    "gold": "halcyon-meander",
+    "category": "footwear.running",
+    "tag": "walking",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "kestrel-drift-3"
+    ],
+    "enriched": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "terrafirma-loop-treadmill"
+    ],
+    "enriched_sql": [
+      "halcyon-meander",
+      "terrafirma-loop-treadmill",
+      "halcyon-crossover-gym"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "I need breathable sneakers with good arch support for walking and light jogging.",
+    "gold": "halcyon-meander",
+    "category": "footwear.running",
+    "tag": "beginner_friendly",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "kestrel-drift-3"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt",
+      "meridian-atlas-stability"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "What shoes do you suggest for road running that aren't too heavy and provide plush cushioning?",
+    "gold": "halcyon-meander",
+    "category": "footwear.running",
+    "tag": "recovery_run",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "halcyon-meander",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "I'm training for daily walks and want shoes with a snug lace closure and medium breathability.",
+    "gold": "halcyon-meander",
+    "category": "footwear.running",
+    "tag": "walking",
+    "raw": [
+      "vela-halo-breeze",
+      "vela-aero-9",
+      "kestrel-drift-3-wide"
+    ],
+    "enriched": [
+      "vela-halo-breeze",
+      "northbound-scree-lite",
+      "kestrel-drift-3-wide"
+    ],
+    "enriched_sql": [
+      "vela-aero-9",
+      "vela-halo-breeze",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {tropical_training} (boost)"
+    ]
+  },
+  {
+    "query": "Are there neutral arch running shoes that feel soft underfoot for less experienced runners?",
+    "gold": "halcyon-meander",
+    "category": "footwear.running",
+    "tag": "beginner_friendly",
+    "raw": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "northbound-scree-lite"
+    ],
+    "enriched": [
+      "halcyon-meander",
+      "terrafirma-anchor-plus",
+      "terrafirma-anchor"
+    ],
+    "enriched_sql": [
+      "halcyon-meander",
+      "terrafirma-anchor-plus",
+      "terrafirma-anchor"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "arch_support ~ neutral (boost)"
+    ]
+  },
+  {
+    "query": "What's a good option for a standard-width shoe with a high heel drop for recovery workouts?",
+    "gold": "halcyon-meander",
+    "category": "footwear.running",
+    "tag": "recovery_run",
+    "raw": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "vela-halo-max"
+    ],
+    "enriched": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "vela-halo-max"
+    ],
+    "enriched_sql": [
+      "halcyon-meander",
+      "kestrel-drift-3-wide",
+      "terrafirma-anchor-plus"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {high_mileage_week, recovery_run} (boost)"
+    ]
+  },
+  {
+    "query": "Help me find lightweight runners designed for road surfaces that offer extra comfort during cooldowns.",
+    "gold": "halcyon-meander",
+    "category": "footwear.running",
+    "tag": "walking",
+    "raw": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "kestrel-vapourline"
+    ],
+    "enriched_sql": [
+      "halcyon-meander",
+      "terrafirma-anchor-plus",
+      "kestrel-vapourline"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "What are good running shoes for short road runs that also work well in the gym?",
+    "gold": "halcyon-crossover-gym",
+    "category": "footwear.running",
+    "tag": "short_runs",
+    "raw": [
+      "halcyon-crossover-gym",
+      "terrafirma-loop-treadmill",
+      "halcyon-meander"
+    ],
+    "enriched": [
+      "terrafirma-loop-treadmill",
+      "halcyon-crossover-gym",
+      "halcyon-meander"
+    ],
+    "enriched_sql": [
+      "terrafirma-loop-treadmill",
+      "halcyon-crossover-gym",
+      "terrafirma-anchor-plus"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "I'm looking for firm-cushioned running shoes with neutral arch support for treadmill workouts.",
+    "gold": "halcyon-crossover-gym",
+    "category": "footwear.running",
+    "tag": "gym_crossover",
+    "raw": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-gt",
+      "terrafirma-loop-treadmill"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "terrafirma-loop-treadmill",
+      "meridian-atlas-stability"
+    ],
+    "enriched_sql": [
+      "terrafirma-loop-treadmill",
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "arch_support ~ neutral (boost)",
+      "tags ∈ {treadmill_indoor} (boost)"
+    ]
+  },
+  {
+    "query": "Can you recommend lightweight running shoes with a 6mm heel drop for easy short runs?",
+    "gold": "halcyon-crossover-gym",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-meander",
+      "kestrel-drift-3"
+    ],
+    "enriched": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "kestrel-vapourline"
+    ],
+    "enriched_sql": [
+      "halcyon-meander",
+      "kestrel-vapourline",
+      "halcyon-zephyr-lt"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "I need breathable, lace-up running shoes with standard width for indoor and outdoor use.",
+    "gold": "halcyon-crossover-gym",
+    "category": "footwear.running",
+    "tag": "short_runs",
+    "raw": [
+      "terrafirma-loop-treadmill",
+      "kestrel-drift-3-wide",
+      "vela-halo-breeze"
+    ],
+    "enriched": [
+      "vela-halo-breeze",
+      "terrafirma-loop-treadmill",
+      "northbound-scree-lite"
+    ],
+    "enriched_sql": [
+      "terrafirma-loop-treadmill",
+      "vela-halo-breeze",
+      "halcyon-zephyr-lt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {treadmill_indoor} (boost)"
+    ]
+  },
+  {
+    "query": "Which running shoes provide medium breathability and firm cushioning for training indoors?",
+    "gold": "halcyon-crossover-gym",
+    "category": "footwear.running",
+    "tag": "gym_crossover",
+    "raw": [
+      "terrafirma-loop-treadmill",
+      "halcyon-zephyr-lt",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched": [
+      "vela-halo-breeze",
+      "terrafirma-loop-treadmill",
+      "kestrel-cloudstep-2"
+    ],
+    "enriched_sql": [
+      "terrafirma-loop-treadmill",
+      "vela-aero-9",
+      "vela-halo-breeze"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {treadmill_indoor, tropical_training} (boost)"
+    ]
+  },
+  {
+    "query": "Are there running shoes suitable for quick gym sessions and short runs without a stiff plate?",
+    "gold": "halcyon-crossover-gym",
+    "category": "footwear.running",
+    "tag": "treadmill_indoor",
+    "raw": [
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt",
+      "vela-aero-9"
+    ],
+    "enriched": [
+      "kestrel-vapourline",
+      "kestrel-cloudstep-2",
+      "halcyon-meander"
+    ],
+    "enriched_sql": [
+      "kestrel-vapourline",
+      "halcyon-meander",
+      "terrafirma-loop-treadmill"
+    ],
+    "filters": [
+      "category = footwear.running"
+    ]
+  },
+  {
+    "query": "What comfortable running shoes with standard fit and neutral support work best on roads?",
+    "gold": "halcyon-crossover-gym",
+    "category": "footwear.running",
+    "tag": "short_runs",
+    "raw": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "terrafirma-anchor-plus"
+    ],
+    "enriched": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "halcyon-meander"
+    ],
+    "enriched_sql": [
+      "terrafirma-anchor-plus",
+      "meridian-atlas-stability",
+      "meridian-atlas-gt"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "surface = road",
+      "arch_support ~ neutral (boost)",
+      "tags ∈ {road_long_distance, wet_road_grip} (boost)"
+    ]
+  },
+  {
+    "query": "Looking for moderately cushioned running shoes under $160 for daily short-distance running.",
+    "gold": "halcyon-crossover-gym",
+    "category": "footwear.running",
+    "tag": "gym_crossover",
+    "raw": [
+      "halcyon-meander",
+      "kestrel-cloudstep-2",
+      "halcyon-zephyr-lt"
+    ],
+    "enriched": [
+      "halcyon-meander",
+      "halcyon-crossover-gym",
+      "terrafirma-anchor"
+    ],
+    "enriched_sql": [
+      "halcyon-crossover-gym",
+      "terrafirma-anchor",
+      "terrafirma-loop-treadmill"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "price <= SGD 160",
+      "tags ∈ {road_long_distance} (boost)"
+    ]
+  },
+  {
+    "query": "I need a quick morning moisturizer that won't make my face greasy in Singapore's humid weather.",
+    "gold": "lumenlab-clarity-gel",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "petal-gentle-gel",
+      "sable-rich-night",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched": [
+      "clearfield-mattifying-spf",
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "clearfield-mattifying-spf",
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "Looking for a fragrance-free gel moisturizer safe for pregnancy with ingredients that help control oil.",
+    "gold": "lumenlab-clarity-gel",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf",
+    "raw": [
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel",
+      "clearfield-spot-gel"
+    ],
+    "enriched": [
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel",
+      "clearfield-spot-gel"
+    ],
+    "enriched_sql": [
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel",
+      "sable-barrier-balm"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true"
+    ]
+  },
+  {
+    "query": "What’s a good lightweight face moisturizer I can apply under sunscreen without feeling sticky?",
+    "gold": "lumenlab-clarity-gel",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate",
+    "raw": [
+      "lumenlab-dawn-spf50",
+      "clearfield-mattifying-spf",
+      "petal-gentle-gel"
+    ],
+    "enriched": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched_sql": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "lumenlab-clarity-gel"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "Can you suggest a vegan moisturizer suitable for combination skin that won’t clog pores?",
+    "gold": "lumenlab-clarity-gel",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel",
+      "sable-barrier-balm"
+    ],
+    "enriched": [
+      "lumenlab-clarity-gel",
+      "petal-bloom-oil",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel",
+      "fifth-refill-moisturiser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ combination (boost)"
+    ]
+  },
+  {
+    "query": "I want a moisturizer for oily skin that absorbs quickly and fits into a 5-minute skincare routine.",
+    "gold": "lumenlab-clarity-gel",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf",
+    "raw": [
+      "fifth-refill-moisturiser",
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel"
+    ],
+    "enriched": [
+      "lumenlab-clarity-gel",
+      "fifth-refill-moisturiser",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "lumenlab-clarity-gel",
+      "lumenlab-night-retinal",
+      "sable-rich-night"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ oily (boost)",
+      "tags ∈ {night_routine} (boost)"
+    ]
+  },
+  {
+    "query": "Is there a gel-based moisturizer with niacinamide and zinc that’s gentle and pregnancy-safe?",
+    "gold": "lumenlab-clarity-gel",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate",
+    "raw": [
+      "lumenlab-clarity-serum",
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel"
+    ],
+    "enriched": [
+      "lumenlab-clarity-serum",
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel",
+      "sable-rich-night"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "Help me find a low-comedogenic moisturizer that feels light and is good for humid climates.",
+    "gold": "lumenlab-clarity-gel",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel",
+      "sable-barrier-balm"
+    ],
+    "enriched": [
+      "lumenlab-clarity-gel",
+      "clearfield-mattifying-spf",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "lumenlab-clarity-gel",
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {humid_climate, oily_skin_humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "Looking for a pH-balanced gel moisturizer for oily skin that layers well with other products.",
+    "gold": "lumenlab-clarity-gel",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf",
+    "raw": [
+      "petal-gentle-gel",
+      "lumenlab-clarity-gel",
+      "sable-barrier-balm"
+    ],
+    "enriched": [
+      "petal-gentle-gel",
+      "lumenlab-clarity-gel",
+      "sable-barrier-balm"
+    ],
+    "enriched_sql": [
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel",
+      "clearfield-bha-toner"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ oily (boost)"
+    ]
+  },
+  {
+    "query": "What’s a lightweight sunscreen I can use quickly in the morning that won’t clog my oily, sensitive skin?",
+    "gold": "lumenlab-dawn-spf50",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "lumenlab-dawn-spf50",
+      "clearfield-mattifying-spf",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "clearfield-foam-wash"
+    ],
+    "enriched_sql": [
+      "lumenlab-dawn-spf50",
+      "clearfield-mattifying-spf",
+      "sable-cream-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ sensitive (boost)"
+    ]
+  },
+  {
+    "query": "I need a fragrance-free SPF 50 sunscreen that’s safe to layer under makeup in a humid climate.",
+    "gold": "lumenlab-dawn-spf50",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate",
+    "raw": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched_sql": [
+      "lumenlab-dawn-spf50",
+      "lumenlab-clarity-gel",
+      "clearfield-bha-toner"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true",
+      "tags ∈ {humid_climate, oily_skin_humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "Can you suggest a vegan, pregnancy-safe facial sunscreen suitable for combination skin?",
+    "gold": "lumenlab-dawn-spf50",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf",
+    "raw": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "petal-gentle-gel"
+    ],
+    "enriched": [
+      "clearfield-mattifying-spf",
+      "fifth-vitc-serum",
+      "lumenlab-dawn-spf50"
+    ],
+    "enriched_sql": [
+      "clearfield-mattifying-spf",
+      "fifth-vitc-serum",
+      "lumenlab-dawn-spf50"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ combination (boost)"
+    ]
+  },
+  {
+    "query": "Looking for a fluid-textured sunblock with zinc oxide that doesn’t feel sticky or heavy on my face.",
+    "gold": "lumenlab-dawn-spf50",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "lumenlab-dawn-spf50",
+      "clearfield-mattifying-spf",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched": [
+      "lumenlab-dawn-spf50",
+      "clearfield-mattifying-spf",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched_sql": [
+      "lumenlab-dawn-spf50",
+      "clearfield-mattifying-spf",
+      "lumenlab-clarity-gel"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "Is there a non-comedogenic SPF 50 sunscreen that works well for sensitive skin and can be applied in under 5 minutes?",
+    "gold": "lumenlab-dawn-spf50",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate",
+    "raw": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "petal-gentle-gel"
+    ],
+    "enriched": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "fifth-refill-moisturiser"
+    ],
+    "enriched_sql": [
+      "lumenlab-dawn-spf50",
+      "clearfield-mattifying-spf",
+      "fifth-peptide-eye"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ sensitive (boost)"
+    ]
+  },
+  {
+    "query": "What’s a good SPF product with low irritation for daily use on normal to oily skin that won’t interfere with my moisturizer and SPF combo?",
+    "gold": "lumenlab-dawn-spf50",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf",
+    "raw": [
+      "clearfield-mattifying-spf",
+      "petal-gentle-gel",
+      "clearfield-aha-night"
+    ],
+    "enriched": [
+      "clearfield-mattifying-spf",
+      "clearfield-aha-night",
+      "clearfield-foam-wash"
+    ],
+    "enriched_sql": [
+      "clearfield-mattifying-spf",
+      "clearfield-foam-wash",
+      "lumenlab-clarity-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ oily (boost)"
+    ]
+  },
+  {
+    "query": "I want a facial sunscreen with a pH close to 6 that’s fragrance-free and effective in humid weather.",
+    "gold": "lumenlab-dawn-spf50",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "clearfield-aha-night"
+    ],
+    "enriched": [
+      "clearfield-mattifying-spf",
+      "clearfield-bha-toner",
+      "lumenlab-dawn-spf50"
+    ],
+    "enriched_sql": [
+      "clearfield-bha-toner",
+      "lumenlab-dawn-spf50",
+      "fifth-vitc-serum"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true",
+      "tags ∈ {humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "Can you recommend a sunscreen that’s easy to apply, suitable for sensitive skin, and vegan without any refill option?",
+    "gold": "lumenlab-dawn-spf50",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate",
+    "raw": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "fifth-refill-moisturiser"
+    ],
+    "enriched": [
+      "clearfield-mattifying-spf",
+      "fifth-refill-moisturiser",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "petal-gentle-gel",
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ sensitive (boost)"
+    ]
+  },
+  {
+    "query": "I need a gentle face wash that won't clog my pores and is safe during pregnancy.",
+    "gold": "lumenlab-reset-cleanser",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste",
+    "raw": [
+      "clearfield-foam-wash",
+      "sable-cream-cleanser",
+      "petal-gentle-gel"
+    ],
+    "enriched": [
+      "clearfield-foam-wash",
+      "sable-cream-cleanser",
+      "lumenlab-reset-cleanser"
+    ],
+    "enriched_sql": [
+      "clearfield-foam-wash",
+      "sable-cream-cleanser",
+      "lumenlab-reset-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "What’s a quick morning cleanser suitable for oily skin in a humid climate?",
+    "gold": "lumenlab-reset-cleanser",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate",
+    "raw": [
+      "sable-cream-cleanser",
+      "clearfield-foam-wash",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched": [
+      "clearfield-foam-wash",
+      "lumenlab-reset-cleanser",
+      "clearfield-bha-toner"
+    ],
+    "enriched_sql": [
+      "clearfield-foam-wash",
+      "lumenlab-reset-cleanser",
+      "clearfield-bha-toner"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ oily (boost)",
+      "tags ∈ {humid_climate, oily_skin_humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "Looking for a fragrance-free gel cleanser that’s vegan and eco-friendly.",
+    "gold": "lumenlab-reset-cleanser",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "clearfield-foam-wash",
+      "sable-cream-cleanser",
+      "lumenlab-reset-cleanser"
+    ],
+    "enriched": [
+      "lumenlab-reset-cleanser",
+      "clearfield-foam-wash",
+      "sable-cream-cleanser"
+    ],
+    "enriched_sql": [
+      "lumenlab-reset-cleanser",
+      "clearfield-foam-wash",
+      "sable-cream-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true",
+      "tags ∈ {beginner_friendly} (boost)"
+    ]
+  },
+  {
+    "query": "Can you help me find a daytime face wash that works well for combination skin and has a pH close to skin’s natural level?",
+    "gold": "lumenlab-reset-cleanser",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste",
+    "raw": [
+      "clearfield-aha-night",
+      "clearfield-foam-wash",
+      "petal-gentle-gel"
+    ],
+    "enriched": [
+      "clearfield-foam-wash",
+      "clearfield-aha-night",
+      "clearfield-bha-toner"
+    ],
+    "enriched_sql": [
+      "clearfield-bha-toner",
+      "lumenlab-reset-cleanser",
+      "clearfield-foam-wash"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ combination (boost)"
+    ]
+  },
+  {
+    "query": "I want a low-waste refillable cleanser that I can use daily without feeling greasy.",
+    "gold": "lumenlab-reset-cleanser",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate",
+    "raw": [
+      "clearfield-foam-wash",
+      "lumenlab-reset-cleanser",
+      "sable-cream-cleanser"
+    ],
+    "enriched": [
+      "lumenlab-reset-cleanser",
+      "clearfield-foam-wash",
+      "sable-cream-cleanser"
+    ],
+    "enriched_sql": [
+      "lumenlab-reset-cleanser",
+      "fifth-refill-moisturiser",
+      "petal-gentle-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {refillable_low_waste} (boost)"
+    ]
+  },
+  {
+    "query": "Which gel cleanser is best for someone with normal to oily skin who wants a product with glycerin?",
+    "gold": "lumenlab-reset-cleanser",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "petal-gentle-gel",
+      "sable-cream-cleanser",
+      "lumenlab-reset-cleanser"
+    ],
+    "enriched": [
+      "sable-cream-cleanser",
+      "petal-gentle-gel",
+      "lumenlab-reset-cleanser"
+    ],
+    "enriched_sql": [
+      "lumenlab-reset-cleanser",
+      "clearfield-foam-wash",
+      "sable-cream-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ oily (boost)"
+    ]
+  },
+  {
+    "query": "Do you have any pregnancy-safe facial cleansers that cleanse thoroughly but are gentle?",
+    "gold": "lumenlab-reset-cleanser",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste",
+    "raw": [
+      "clearfield-foam-wash",
+      "sable-cream-cleanser",
+      "lumenlab-reset-cleanser"
+    ],
+    "enriched": [
+      "clearfield-foam-wash",
+      "sable-cream-cleanser",
+      "lumenlab-reset-cleanser"
+    ],
+    "enriched_sql": [
+      "clearfield-foam-wash",
+      "sable-cream-cleanser",
+      "lumenlab-reset-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "Searching for an affordable vegan facial cleanser that fits into a 5-minute morning routine.",
+    "gold": "lumenlab-reset-cleanser",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate",
+    "raw": [
+      "sable-cream-cleanser",
+      "clearfield-foam-wash",
+      "fifth-refill-moisturiser"
+    ],
+    "enriched": [
+      "clearfield-foam-wash",
+      "lumenlab-reset-cleanser",
+      "sable-cream-cleanser"
+    ],
+    "enriched_sql": [
+      "clearfield-foam-wash",
+      "lumenlab-reset-cleanser",
+      "sable-cream-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {morning_routine_under_5min, night_routine} (boost)"
+    ]
+  },
+  {
+    "query": "I'm looking for a fragrance-free night cream to help smooth fine lines without clogging my pores.",
+    "gold": "lumenlab-night-retinal",
+    "category": "skincare.facial",
+    "tag": "fine_lines",
+    "raw": [
+      "petal-gentle-gel",
+      "clearfield-aha-night",
+      "sable-rich-night"
+    ],
+    "enriched": [
+      "sable-rich-night",
+      "clearfield-aha-night",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "sable-rich-night",
+      "petal-gentle-gel",
+      "lumenlab-night-retinal"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true"
+    ]
+  },
+  {
+    "query": "Do you have a vegan retinol cream that works well for oily or combination skin types?",
+    "gold": "lumenlab-night-retinal",
+    "category": "skincare.facial",
+    "tag": "texture_refining",
+    "raw": [
+      "lumenlab-night-retinal",
+      "petal-gentle-gel",
+      "petal-bloom-oil"
+    ],
+    "enriched": [
+      "lumenlab-night-retinal",
+      "petal-bloom-oil",
+      "sable-rich-night"
+    ],
+    "enriched_sql": [
+      "lumenlab-night-retinal",
+      "fifth-vitc-serum",
+      "petal-gentle-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ combination (boost)"
+    ]
+  },
+  {
+    "query": "I need a gentle nighttime treatment cream with ceramides to improve my skin texture.",
+    "gold": "lumenlab-night-retinal",
+    "category": "skincare.facial",
+    "tag": "night_routine",
+    "raw": [
+      "sable-rich-night",
+      "petal-gentle-gel",
+      "lumenlab-night-retinal"
+    ],
+    "enriched": [
+      "sable-rich-night",
+      "lumenlab-night-retinal",
+      "sable-barrier-balm"
+    ],
+    "enriched_sql": [
+      "sable-rich-night",
+      "lumenlab-night-retinal",
+      "sable-barrier-balm"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "Can you suggest a non-comedogenic facial cream suitable for normal skin that reduces wrinkles?",
+    "gold": "lumenlab-night-retinal",
+    "category": "skincare.facial",
+    "tag": "fine_lines",
+    "raw": [
+      "petal-gentle-gel",
+      "clearfield-aha-night",
+      "lumenlab-night-retinal"
+    ],
+    "enriched": [
+      "petal-gentle-gel",
+      "sable-rich-night",
+      "clearfield-aha-night"
+    ],
+    "enriched_sql": [
+      "petal-gentle-gel",
+      "petal-bloom-oil",
+      "lumenlab-night-retinal"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ normal (boost)"
+    ]
+  },
+  {
+    "query": "What's a good overnight facial treatment to refine skin texture that won't irritate sensitive skin?",
+    "gold": "lumenlab-night-retinal",
+    "category": "skincare.facial",
+    "tag": "texture_refining",
+    "raw": [
+      "clearfield-aha-night",
+      "sable-rich-night",
+      "lumenlab-night-retinal"
+    ],
+    "enriched": [
+      "sable-rich-night",
+      "clearfield-aha-night",
+      "lumenlab-night-retinal"
+    ],
+    "enriched_sql": [
+      "sable-rich-night",
+      "petal-gentle-gel",
+      "sable-cream-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ sensitive (boost)"
+    ]
+  },
+  {
+    "query": "I'm searching for a 30ml anti-aging cream with low irritation potential for my nightly skincare routine.",
+    "gold": "lumenlab-night-retinal",
+    "category": "skincare.facial",
+    "tag": "night_routine",
+    "raw": [
+      "petal-gentle-gel",
+      "clearfield-aha-night",
+      "sable-rich-night"
+    ],
+    "enriched": [
+      "clearfield-aha-night",
+      "sable-rich-night",
+      "lumenlab-night-retinal"
+    ],
+    "enriched_sql": [
+      "sable-rich-night",
+      "lumenlab-night-retinal",
+      "petal-bloom-oil"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {night_routine} (boost)"
+    ]
+  },
+  {
+    "query": "Is there a retinol-based cream safe for everyday use that hydrates as well as minimizes fine lines?",
+    "gold": "lumenlab-night-retinal",
+    "category": "skincare.facial",
+    "tag": "fine_lines",
+    "raw": [
+      "lumenlab-night-retinal",
+      "petal-gentle-gel",
+      "sable-rich-night"
+    ],
+    "enriched": [
+      "lumenlab-night-retinal",
+      "sable-rich-night",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "lumenlab-night-retinal",
+      "sable-rich-night",
+      "petal-gentle-gel"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "Looking for a quick-absorbing night cream under $70 that targets fine lines and uneven skin texture.",
+    "gold": "lumenlab-night-retinal",
+    "category": "skincare.facial",
+    "tag": "texture_refining",
+    "raw": [
+      "sable-rich-night",
+      "clearfield-aha-night",
+      "petal-gentle-gel"
+    ],
+    "enriched": [
+      "sable-rich-night",
+      "clearfield-aha-night",
+      "lumenlab-night-retinal"
+    ],
+    "enriched_sql": [
+      "sable-rich-night",
+      "lumenlab-night-retinal",
+      "petal-gentle-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "price <= SGD 70"
+    ]
+  },
+  {
+    "query": "I'm looking for a gentle moisturizer to repair my skin barrier after a facial treatment that I can use overnight.",
+    "gold": "sable-barrier-balm",
+    "category": "skincare.facial",
+    "tag": "sensitive_barrier_repair",
+    "raw": [
+      "sable-barrier-balm",
+      "sable-rich-night",
+      "petal-gentle-gel"
+    ],
+    "enriched": [
+      "sable-barrier-balm",
+      "sable-rich-night",
+      "petal-bloom-oil"
+    ],
+    "enriched_sql": [
+      "sable-barrier-balm",
+      "sable-rich-night",
+      "sable-cream-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {sensitive_barrier_repair} (boost)"
+    ]
+  },
+  {
+    "query": "What’s a good fragrance-free balm moisturizer for dry and sensitive skin that won’t clog pores?",
+    "gold": "sable-barrier-balm",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office",
+    "raw": [
+      "sable-barrier-balm",
+      "petal-gentle-gel",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched": [
+      "sable-barrier-balm",
+      "sable-calm-serum",
+      "sable-cream-cleanser"
+    ],
+    "enriched_sql": [
+      "sable-barrier-balm",
+      "sable-cream-cleanser",
+      "petal-gentle-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true",
+      "skin_type ~ sensitive (boost)"
+    ]
+  },
+  {
+    "query": "I work in an air-conditioned office and need a nourishing night cream that supports barrier repair.",
+    "gold": "sable-barrier-balm",
+    "category": "skincare.facial",
+    "tag": "post_procedure_recovery",
+    "raw": [
+      "sable-barrier-balm",
+      "sable-rich-night",
+      "petal-gentle-gel"
+    ],
+    "enriched": [
+      "sable-barrier-balm",
+      "sable-rich-night",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "sable-barrier-balm",
+      "sable-rich-night",
+      "sable-cream-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {air_conditioned_office, sensitive_barrier_repair} (boost)"
+    ]
+  },
+  {
+    "query": "Can you suggest a pregnancy-safe night moisturizer with ceramides and squalane for sensitive skin?",
+    "gold": "sable-barrier-balm",
+    "category": "skincare.facial",
+    "tag": "night_routine",
+    "raw": [
+      "sable-barrier-balm",
+      "sable-rich-night",
+      "petal-gentle-gel"
+    ],
+    "enriched": [
+      "sable-rich-night",
+      "sable-barrier-balm",
+      "sable-calm-serum"
+    ],
+    "enriched_sql": [
+      "sable-barrier-balm",
+      "sable-rich-night",
+      "sable-cream-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ sensitive (boost)"
+    ]
+  },
+  {
+    "query": "I want a calming, non-irritating balm to help my skin recover after a dermatological procedure.",
+    "gold": "sable-barrier-balm",
+    "category": "skincare.facial",
+    "tag": "sensitive_barrier_repair",
+    "raw": [
+      "sable-barrier-balm",
+      "sable-calm-serum",
+      "petal-gentle-gel"
+    ],
+    "enriched": [
+      "sable-barrier-balm",
+      "sable-calm-serum",
+      "petal-bloom-oil"
+    ],
+    "enriched_sql": [
+      "sable-barrier-balm",
+      "petal-bloom-oil",
+      "sable-rich-night"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "Which moisturizer would you recommend for dry, sensitive skin that’s free of fragrance and light enough for night use?",
+    "gold": "sable-barrier-balm",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office",
+    "raw": [
+      "sable-rich-night",
+      "petal-gentle-gel",
+      "sable-barrier-balm"
+    ],
+    "enriched": [
+      "sable-rich-night",
+      "petal-gentle-gel",
+      "lumenlab-night-retinal"
+    ],
+    "enriched_sql": [
+      "sable-rich-night",
+      "petal-gentle-gel",
+      "sable-cream-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true",
+      "skin_type ~ sensitive (boost)"
+    ]
+  },
+  {
+    "query": "I need a low-comedogenic balm that strengthens the skin barrier and feels rich but not greasy.",
+    "gold": "sable-barrier-balm",
+    "category": "skincare.facial",
+    "tag": "post_procedure_recovery",
+    "raw": [
+      "sable-barrier-balm",
+      "sable-rich-night",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched": [
+      "sable-barrier-balm",
+      "sable-rich-night",
+      "petal-bloom-oil"
+    ],
+    "enriched_sql": [
+      "sable-barrier-balm",
+      "sable-rich-night",
+      "petal-bloom-oil"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "Looking for a sensitive skin balm moisturizer with cholesterol and ceramides that’s safe during pregnancy.",
+    "gold": "sable-barrier-balm",
+    "category": "skincare.facial",
+    "tag": "night_routine",
+    "raw": [
+      "sable-barrier-balm",
+      "sable-rich-night",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched": [
+      "sable-barrier-balm",
+      "sable-rich-night",
+      "sable-calm-serum"
+    ],
+    "enriched_sql": [
+      "sable-barrier-balm",
+      "sable-rich-night",
+      "petal-gentle-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ sensitive (boost)"
+    ]
+  },
+  {
+    "query": "I spend a lot of time in air-conditioned offices and need a gentle face cleanser for dry, sensitive skin.",
+    "gold": "sable-cream-cleanser",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office",
+    "raw": [
+      "sable-cream-cleanser",
+      "petal-gentle-gel",
+      "clearfield-foam-wash"
+    ],
+    "enriched": [
+      "sable-cream-cleanser",
+      "clearfield-foam-wash",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "sable-cream-cleanser",
+      "sable-barrier-balm",
+      "petal-gentle-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ sensitive (boost)",
+      "tags ∈ {air_conditioned_office} (boost)"
+    ]
+  },
+  {
+    "query": "Looking for a fragrance-free cream cleanser that won't irritate my sensitive skin at night.",
+    "gold": "sable-cream-cleanser",
+    "category": "skincare.facial",
+    "tag": "sensitive_barrier_repair",
+    "raw": [
+      "sable-cream-cleanser",
+      "petal-gentle-gel",
+      "sable-rich-night"
+    ],
+    "enriched": [
+      "sable-cream-cleanser",
+      "sable-rich-night",
+      "clearfield-foam-wash"
+    ],
+    "enriched_sql": [
+      "sable-cream-cleanser",
+      "petal-gentle-gel",
+      "sable-rich-night"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true",
+      "skin_type ~ sensitive (boost)"
+    ]
+  },
+  {
+    "query": "I want a pregnancy-safe facial cleanser that helps repair my skin barrier without causing breakouts.",
+    "gold": "sable-cream-cleanser",
+    "category": "skincare.facial",
+    "tag": "night_routine",
+    "raw": [
+      "sable-barrier-balm",
+      "clearfield-aha-night",
+      "clearfield-foam-wash"
+    ],
+    "enriched": [
+      "sable-barrier-balm",
+      "clearfield-spot-gel",
+      "clearfield-foam-wash"
+    ],
+    "enriched_sql": [
+      "sable-barrier-balm",
+      "sable-cream-cleanser",
+      "clearfield-foam-wash"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {sensitive_barrier_repair} (boost)"
+    ]
+  },
+  {
+    "query": "Can you suggest a mild cream cleanser with glycerin and oat lipid for my sensitive skin routine?",
+    "gold": "sable-cream-cleanser",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office",
+    "raw": [
+      "sable-cream-cleanser",
+      "petal-gentle-gel",
+      "sable-rich-night"
+    ],
+    "enriched": [
+      "sable-cream-cleanser",
+      "petal-gentle-gel",
+      "clearfield-foam-wash"
+    ],
+    "enriched_sql": [
+      "sable-cream-cleanser",
+      "petal-gentle-gel",
+      "sable-rich-night"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ sensitive (boost)",
+      "tags ∈ {night_routine} (boost)"
+    ]
+  },
+  {
+    "query": "Need a low-comedogenic face cleanser suitable for quick morning or night use on dry skin.",
+    "gold": "sable-cream-cleanser",
+    "category": "skincare.facial",
+    "tag": "sensitive_barrier_repair",
+    "raw": [
+      "clearfield-foam-wash",
+      "sable-cream-cleanser",
+      "clearfield-aha-night"
+    ],
+    "enriched": [
+      "clearfield-foam-wash",
+      "sable-cream-cleanser",
+      "lumenlab-reset-cleanser"
+    ],
+    "enriched_sql": [
+      "sable-cream-cleanser",
+      "clearfield-foam-wash",
+      "sable-rich-night"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ dry (boost)"
+    ]
+  },
+  {
+    "query": "What cleanser would you recommend for someone with dry, sensitive skin prone to irritation who prefers fragrance-free products?",
+    "gold": "sable-cream-cleanser",
+    "category": "skincare.facial",
+    "tag": "night_routine",
+    "raw": [
+      "clearfield-foam-wash",
+      "petal-gentle-gel",
+      "sable-cream-cleanser"
+    ],
+    "enriched": [
+      "sable-cream-cleanser",
+      "clearfield-foam-wash",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "sable-cream-cleanser",
+      "petal-gentle-gel",
+      "clearfield-foam-wash"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true",
+      "skin_type ~ sensitive (boost)",
+      "tags ∈ {maskne_prone} (boost)"
+    ]
+  },
+  {
+    "query": "Looking for a pH-balanced cream cleanser that feels soothing and non-drying for sensitive skin.",
+    "gold": "sable-cream-cleanser",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office",
+    "raw": [
+      "sable-cream-cleanser",
+      "petal-gentle-gel",
+      "clearfield-foam-wash"
+    ],
+    "enriched": [
+      "sable-cream-cleanser",
+      "sable-calm-serum",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "sable-cream-cleanser",
+      "petal-gentle-gel",
+      "sable-barrier-balm"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ sensitive (boost)"
+    ]
+  },
+  {
+    "query": "I want a gentle facial cleanser that works well after a day in an air-conditioned environment and supports barrier repair.",
+    "gold": "sable-cream-cleanser",
+    "category": "skincare.facial",
+    "tag": "sensitive_barrier_repair",
+    "raw": [
+      "sable-barrier-balm",
+      "petal-gentle-gel",
+      "clearfield-aha-night"
+    ],
+    "enriched": [
+      "sable-barrier-balm",
+      "clearfield-foam-wash",
+      "sable-cream-cleanser"
+    ],
+    "enriched_sql": [
+      "sable-barrier-balm",
+      "sable-cream-cleanser",
+      "clearfield-foam-wash"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {air_conditioned_office, sensitive_barrier_repair} (boost)"
+    ]
+  },
+  {
+    "query": "I'm looking for a fragrance-free night cream that soothes very dry skin after long hours in an air-conditioned office.",
+    "gold": "sable-rich-night",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office",
+    "raw": [
+      "sable-rich-night",
+      "petal-gentle-gel",
+      "sable-barrier-balm"
+    ],
+    "enriched": [
+      "sable-rich-night",
+      "petal-gentle-gel",
+      "sable-barrier-balm"
+    ],
+    "enriched_sql": [
+      "sable-rich-night",
+      "sable-barrier-balm",
+      "sable-cream-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true",
+      "skin_type ~ dry (boost)",
+      "tags ∈ {air_conditioned_office} (boost)"
+    ]
+  },
+  {
+    "query": "Which cream would help me with dry and sensitive skin, preferably one that's safe to use during pregnancy?",
+    "gold": "sable-rich-night",
+    "category": "skincare.facial",
+    "tag": "very_dry_skin",
+    "raw": [
+      "sable-rich-night",
+      "petal-gentle-gel",
+      "sable-barrier-balm"
+    ],
+    "enriched": [
+      "sable-rich-night",
+      "sable-cream-cleanser",
+      "sable-barrier-balm"
+    ],
+    "enriched_sql": [
+      "sable-cream-cleanser",
+      "sable-barrier-balm",
+      "petal-gentle-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ sensitive (boost)"
+    ]
+  },
+  {
+    "query": "Can you suggest a nourishing moisturizer with ceramides and squalane for my nighttime skincare?",
+    "gold": "sable-rich-night",
+    "category": "skincare.facial",
+    "tag": "night_routine",
+    "raw": [
+      "sable-rich-night",
+      "sable-barrier-balm",
+      "lumenlab-night-retinal"
+    ],
+    "enriched": [
+      "sable-rich-night",
+      "sable-barrier-balm",
+      "lumenlab-night-retinal"
+    ],
+    "enriched_sql": [
+      "sable-rich-night",
+      "sable-barrier-balm",
+      "lumenlab-night-retinal"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "I need a rich cream that hydrates dry skin overnight but doesn’t feel greasy or heavy.",
+    "gold": "sable-rich-night",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office",
+    "raw": [
+      "sable-rich-night",
+      "petal-gentle-gel",
+      "sable-cream-cleanser"
+    ],
+    "enriched": [
+      "sable-rich-night",
+      "petal-gentle-gel",
+      "sable-cream-cleanser"
+    ],
+    "enriched_sql": [
+      "sable-rich-night",
+      "sable-cream-cleanser",
+      "petal-bloom-oil"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ dry (boost)"
+    ]
+  },
+  {
+    "query": "What's a good non-vegan moisturizer with shea butter that’s gentle enough for dry skin and has a low risk of causing breakouts?",
+    "gold": "sable-rich-night",
+    "category": "skincare.facial",
+    "tag": "very_dry_skin",
+    "raw": [
+      "petal-gentle-gel",
+      "sable-barrier-balm",
+      "sable-rich-night"
+    ],
+    "enriched": [
+      "sable-rich-night",
+      "sable-barrier-balm",
+      "petal-bloom-oil"
+    ],
+    "enriched_sql": [
+      "sable-rich-night",
+      "sable-barrier-balm",
+      "petal-bloom-oil"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ dry (boost)"
+    ]
+  },
+  {
+    "query": "I'm searching for a 50ml night cream that can improve skin barrier repair after exposure to dry indoor air.",
+    "gold": "sable-rich-night",
+    "category": "skincare.facial",
+    "tag": "night_routine",
+    "raw": [
+      "sable-barrier-balm",
+      "lumenlab-night-retinal",
+      "sable-rich-night"
+    ],
+    "enriched": [
+      "sable-barrier-balm",
+      "sable-rich-night",
+      "lumenlab-night-retinal"
+    ],
+    "enriched_sql": [
+      "sable-barrier-balm",
+      "sable-rich-night",
+      "petal-bloom-oil"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ dry (boost)",
+      "tags ∈ {sensitive_barrier_repair, treadmill_indoor} (boost)"
+    ]
+  },
+  {
+    "query": "Can you recommend a moisturizer with a balanced pH around 5.4 that’s specifically designed for very dry skin?",
+    "gold": "sable-rich-night",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office",
+    "raw": [
+      "fifth-refill-moisturiser",
+      "petal-gentle-gel",
+      "sable-barrier-balm"
+    ],
+    "enriched": [
+      "fifth-refill-moisturiser",
+      "fifth-vitc-serum",
+      "sable-barrier-balm"
+    ],
+    "enriched_sql": [
+      "fifth-refill-moisturiser",
+      "sable-barrier-balm",
+      "sable-rich-night"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ dry (boost)"
+    ]
+  },
+  {
+    "query": "Is there a cream I can use nightly that moisturizes deeply but absorbs quickly, taking less than 5 minutes to apply?",
+    "gold": "sable-rich-night",
+    "category": "skincare.facial",
+    "tag": "very_dry_skin",
+    "raw": [
+      "sable-rich-night",
+      "petal-gentle-gel",
+      "lumenlab-night-retinal"
+    ],
+    "enriched": [
+      "sable-rich-night",
+      "lumenlab-night-retinal",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "sable-rich-night",
+      "lumenlab-night-retinal",
+      "petal-gentle-gel"
+    ],
+    "filters": []
+  },
+  {
+    "query": "I need a quick treatment to clear up blackheads without a heavy or greasy feel.",
+    "gold": "clearfield-bha-toner",
+    "category": "skincare.facial",
+    "tag": "maskne_prone",
+    "raw": [
+      "clearfield-bha-toner",
+      "clearfield-spot-gel",
+      "clearfield-aha-night"
+    ],
+    "enriched": [
+      "clearfield-spot-gel",
+      "clearfield-foam-wash",
+      "clearfield-bha-toner"
+    ],
+    "enriched_sql": [
+      "clearfield-foam-wash",
+      "clearfield-bha-toner",
+      "sable-cream-cleanser"
+    ],
+    "filters": []
+  },
+  {
+    "query": "Looking for a vegan-friendly skincare product that helps control oil in humid weather.",
+    "gold": "clearfield-bha-toner",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate",
+    "raw": [
+      "lumenlab-clarity-gel",
+      "sable-barrier-balm",
+      "petal-gentle-gel"
+    ],
+    "enriched": [
+      "lumenlab-clarity-gel",
+      "clearfield-mattifying-spf",
+      "petal-bloom-oil"
+    ],
+    "enriched_sql": [
+      "lumenlab-clarity-gel",
+      "clearfield-mattifying-spf",
+      "petal-bloom-oil"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {beginner_friendly, humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "What can I use to treat mask-related breakouts without fragrance or irritation?",
+    "gold": "clearfield-bha-toner",
+    "category": "skincare.facial",
+    "tag": "blackheads",
+    "raw": [
+      "clearfield-aha-night",
+      "clearfield-spot-gel",
+      "clearfield-foam-wash"
+    ],
+    "enriched": [
+      "clearfield-spot-gel",
+      "clearfield-foam-wash",
+      "clearfield-aha-night"
+    ],
+    "enriched_sql": [
+      "clearfield-foam-wash",
+      "clearfield-bha-toner",
+      "sable-barrier-balm"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true"
+    ]
+  },
+  {
+    "query": "Is there a gentle yet effective option to reduce blackheads for my combination skin?",
+    "gold": "clearfield-bha-toner",
+    "category": "skincare.facial",
+    "tag": "maskne_prone",
+    "raw": [
+      "clearfield-bha-toner",
+      "clearfield-spot-gel",
+      "clearfield-aha-night"
+    ],
+    "enriched": [
+      "clearfield-spot-gel",
+      "clearfield-bha-toner",
+      "clearfield-aha-night"
+    ],
+    "enriched_sql": [
+      "clearfield-bha-toner",
+      "lumenlab-reset-cleanser",
+      "petal-gentle-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ combination (boost)"
+    ]
+  },
+  {
+    "query": "I want a liquid treatment for oily skin that won’t clog pores or cause breakouts.",
+    "gold": "clearfield-bha-toner",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate",
+    "raw": [
+      "clearfield-aha-night",
+      "lumenlab-clarity-gel",
+      "clearfield-spot-gel"
+    ],
+    "enriched": [
+      "clearfield-spot-gel",
+      "clearfield-aha-night",
+      "clearfield-bha-toner"
+    ],
+    "enriched_sql": [
+      "clearfield-bha-toner",
+      "lumenlab-clarity-gel",
+      "clearfield-foam-wash"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ oily (boost)"
+    ]
+  },
+  {
+    "query": "Can you recommend something safe for daily use to manage oily areas and prevent blackheads?",
+    "gold": "clearfield-bha-toner",
+    "category": "skincare.facial",
+    "tag": "blackheads",
+    "raw": [
+      "clearfield-foam-wash",
+      "clearfield-aha-night",
+      "clearfield-spot-gel"
+    ],
+    "enriched": [
+      "clearfield-spot-gel",
+      "clearfield-foam-wash",
+      "clearfield-aha-night"
+    ],
+    "enriched_sql": [
+      "clearfield-foam-wash",
+      "clearfield-bha-toner",
+      "clearfield-mattifying-spf"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ oily (boost)"
+    ]
+  },
+  {
+    "query": "I’m looking for an affordable skincare fix that acts fast but isn’t suitable for pregnancy.",
+    "gold": "clearfield-bha-toner",
+    "category": "skincare.facial",
+    "tag": "maskne_prone",
+    "raw": [
+      "clearfield-aha-night",
+      "clearfield-spot-gel",
+      "lumenlab-night-retinal"
+    ],
+    "enriched": [
+      "clearfield-aha-night",
+      "clearfield-spot-gel",
+      "lumenlab-night-retinal"
+    ],
+    "enriched_sql": [
+      "lumenlab-night-retinal",
+      "sable-rich-night",
+      "clearfield-foam-wash"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "Need a lightweight, fragrance-free solution to improve skin texture during my morning routine.",
+    "gold": "clearfield-bha-toner",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate",
+    "raw": [
+      "clearfield-aha-night",
+      "petal-gentle-gel",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched": [
+      "clearfield-aha-night",
+      "clearfield-foam-wash",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "clearfield-foam-wash",
+      "petal-gentle-gel",
+      "lumenlab-clarity-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true",
+      "tags ∈ {morning_routine_under_5min, night_routine} (boost)"
+    ]
+  },
+  {
+    "query": "I have oily skin and live in a humid city; what’s a quick facial cleanser that won’t clog my pores?",
+    "gold": "clearfield-foam-wash",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "clearfield-foam-wash",
+      "sable-cream-cleanser",
+      "lumenlab-reset-cleanser"
+    ],
+    "enriched": [
+      "clearfield-foam-wash",
+      "lumenlab-reset-cleanser",
+      "clearfield-bha-toner"
+    ],
+    "enriched_sql": [
+      "clearfield-foam-wash",
+      "lumenlab-reset-cleanser",
+      "clearfield-bha-toner"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ oily (boost)",
+      "tags ∈ {humid_climate, oily_skin_humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "Can you recommend a fragrance-free foaming face wash that helps with mask-induced breakouts?",
+    "gold": "clearfield-foam-wash",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate",
+    "raw": [
+      "clearfield-foam-wash",
+      "clearfield-aha-night",
+      "sable-cream-cleanser"
+    ],
+    "enriched": [
+      "clearfield-foam-wash",
+      "clearfield-spot-gel",
+      "clearfield-aha-night"
+    ],
+    "enriched_sql": [
+      "clearfield-foam-wash",
+      "sable-cream-cleanser",
+      "lumenlab-reset-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true"
+    ]
+  },
+  {
+    "query": "I need a vegan cleanser that’s gentle but effective for oily skin, and I want to keep my morning routine under 5 minutes.",
+    "gold": "clearfield-foam-wash",
+    "category": "skincare.facial",
+    "tag": "maskne_prone",
+    "raw": [
+      "sable-cream-cleanser",
+      "clearfield-foam-wash",
+      "lumenlab-reset-cleanser"
+    ],
+    "enriched": [
+      "sable-cream-cleanser",
+      "lumenlab-reset-cleanser",
+      "clearfield-foam-wash"
+    ],
+    "enriched_sql": [
+      "lumenlab-reset-cleanser",
+      "clearfield-foam-wash",
+      "sable-cream-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ oily (boost)",
+      "tags ∈ {morning_routine_under_5min, night_routine} (boost)"
+    ]
+  },
+  {
+    "query": "What’s a salicylic acid cleanser with a low pH that’s safe to use daily for acne-prone skin?",
+    "gold": "clearfield-foam-wash",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "clearfield-foam-wash",
+      "sable-cream-cleanser",
+      "clearfield-bha-toner"
+    ],
+    "enriched": [
+      "clearfield-foam-wash",
+      "clearfield-bha-toner",
+      "sable-cream-cleanser"
+    ],
+    "enriched_sql": [
+      "clearfield-foam-wash",
+      "clearfield-bha-toner",
+      "sable-cream-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {maskne_prone} (boost)"
+    ]
+  },
+  {
+    "query": "Looking for an oil-control face wash that foams well and won’t irritate my sensitive, maskne-prone skin.",
+    "gold": "clearfield-foam-wash",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate",
+    "raw": [
+      "clearfield-foam-wash",
+      "sable-cream-cleanser",
+      "clearfield-aha-night"
+    ],
+    "enriched": [
+      "clearfield-foam-wash",
+      "clearfield-spot-gel",
+      "sable-cream-cleanser"
+    ],
+    "enriched_sql": [
+      "clearfield-foam-wash",
+      "sable-cream-cleanser",
+      "petal-gentle-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ sensitive (boost)",
+      "tags ∈ {maskne_prone} (boost)"
+    ]
+  },
+  {
+    "query": "I want a non-comedogenic, fragrance-free foaming cleanser that works well for oily skin but is not safe during pregnancy.",
+    "gold": "clearfield-foam-wash",
+    "category": "skincare.facial",
+    "tag": "maskne_prone",
+    "raw": [
+      "clearfield-foam-wash",
+      "clearfield-aha-night",
+      "sable-cream-cleanser"
+    ],
+    "enriched": [
+      "clearfield-foam-wash",
+      "clearfield-spot-gel",
+      "clearfield-aha-night"
+    ],
+    "enriched_sql": [
+      "clearfield-foam-wash",
+      "lumenlab-reset-cleanser",
+      "clearfield-bha-toner"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true",
+      "skin_type ~ oily (boost)"
+    ]
+  },
+  {
+    "query": "Is there a quick foaming facial wash under $30 suitable for oily skin in humid weather?",
+    "gold": "clearfield-foam-wash",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "clearfield-foam-wash",
+      "sable-cream-cleanser",
+      "clearfield-aha-night"
+    ],
+    "enriched": [
+      "clearfield-foam-wash",
+      "clearfield-mattifying-spf",
+      "clearfield-bha-toner"
+    ],
+    "enriched_sql": [
+      "clearfield-foam-wash",
+      "lumenlab-reset-cleanser",
+      "petal-rosewater-mist"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "price <= SGD 30",
+      "skin_type ~ oily (boost)",
+      "tags ∈ {humid_climate, oily_skin_humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "Can you suggest a vegan face cleanser with salicylic acid that doesn’t come with a refill option?",
+    "gold": "clearfield-foam-wash",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate",
+    "raw": [
+      "clearfield-foam-wash",
+      "sable-cream-cleanser",
+      "clearfield-aha-night"
+    ],
+    "enriched": [
+      "clearfield-foam-wash",
+      "sable-cream-cleanser",
+      "lumenlab-reset-cleanser"
+    ],
+    "enriched_sql": [
+      "clearfield-foam-wash",
+      "sable-cream-cleanser",
+      "lumenlab-reset-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "I'm looking for a lightweight sunscreen that won't clog my pores and is safe to use during pregnancy.",
+    "gold": "clearfield-mattifying-spf",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched_sql": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "lumenlab-clarity-gel"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "Can you recommend a vegan-friendly facial sunscreen that absorbs quickly and works well in humid weather?",
+    "gold": "clearfield-mattifying-spf",
+    "category": "skincare.facial",
+    "tag": "travel_cabin_size",
+    "raw": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched_sql": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "lumenlab-clarity-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {beginner_friendly, humid_climate} (boost)"
+    ]
+  },
+  {
+    "query": "I need a travel-sized sunscreen with SPF 30 that's good for oily or combination skin.",
+    "gold": "clearfield-mattifying-spf",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate",
+    "raw": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched_sql": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "lumenlab-clarity-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ combination (boost)",
+      "tags ∈ {travel_cabin_size} (boost)"
+    ]
+  },
+  {
+    "query": "What's a good fluid sunscreen I can apply in under 5 minutes as part of my morning routine?",
+    "gold": "clearfield-mattifying-spf",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "lumenlab-dawn-spf50",
+      "clearfield-mattifying-spf",
+      "fifth-refill-moisturiser"
+    ],
+    "enriched": [
+      "lumenlab-dawn-spf50",
+      "clearfield-mattifying-spf",
+      "fifth-refill-moisturiser"
+    ],
+    "enriched_sql": [
+      "fifth-refill-moisturiser",
+      "lumenlab-dawn-spf50",
+      "lumenlab-clarity-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {morning_routine_under_5min, night_routine} (boost)"
+    ]
+  },
+  {
+    "query": "Do you have a fragrance-containing sunscreen that's gentle on sensitive skin, suitable for oily types?",
+    "gold": "clearfield-mattifying-spf",
+    "category": "skincare.facial",
+    "tag": "travel_cabin_size",
+    "raw": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "petal-gentle-gel"
+    ],
+    "enriched": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "sable-barrier-balm"
+    ],
+    "enriched_sql": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "sable-barrier-balm"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ sensitive (boost)"
+    ]
+  },
+  {
+    "query": "I'm after a non-refillable, vegan sunscreen that helps control shine in hot, humid climates.",
+    "gold": "clearfield-mattifying-spf",
+    "category": "skincare.facial",
+    "tag": "oily_skin_humid_climate",
+    "raw": [
+      "clearfield-mattifying-spf",
+      "lumenlab-clarity-gel",
+      "lumenlab-dawn-spf50"
+    ],
+    "enriched": [
+      "clearfield-mattifying-spf",
+      "lumenlab-clarity-gel",
+      "lumenlab-dawn-spf50"
+    ],
+    "enriched_sql": [
+      "clearfield-mattifying-spf",
+      "lumenlab-clarity-gel",
+      "lumenlab-dawn-spf50"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {humid_climate, oily_skin_humid_climate, refillable_low_waste} (boost)"
+    ]
+  },
+  {
+    "query": "Can you suggest a pregnancy-safe sunscreen with a low comedogenic rating for daily use?",
+    "gold": "clearfield-mattifying-spf",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "sable-barrier-balm"
+    ],
+    "enriched": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "fifth-refill-moisturiser"
+    ],
+    "enriched_sql": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "fifth-refill-moisturiser"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "Looking for a sunscreen with silica to help mattify my skin but still feels light and fluid on the face.",
+    "gold": "clearfield-mattifying-spf",
+    "category": "skincare.facial",
+    "tag": "travel_cabin_size",
+    "raw": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "clearfield-aha-night"
+    ],
+    "enriched": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched_sql": [
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50",
+      "lumenlab-clarity-gel"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "I'm looking for a gentle facial mist to refresh my skin during long hours in an air-conditioned office.",
+    "gold": "petal-rosewater-mist",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office",
+    "raw": [
+      "petal-rosewater-mist",
+      "petal-gentle-gel",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched": [
+      "petal-rosewater-mist",
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "petal-rosewater-mist",
+      "sable-barrier-balm",
+      "lumenlab-clarity-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {air_conditioned_office} (boost)"
+    ]
+  },
+  {
+    "query": "Can you suggest a quick morning skincare product that hydrates without feeling heavy?",
+    "gold": "petal-rosewater-mist",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste",
+    "raw": [
+      "sable-rich-night",
+      "petal-gentle-gel",
+      "sable-cream-cleanser"
+    ],
+    "enriched": [
+      "sable-rich-night",
+      "petal-gentle-gel",
+      "petal-rosewater-mist"
+    ],
+    "enriched_sql": [
+      "sable-rich-night",
+      "petal-gentle-gel",
+      "petal-rosewater-mist"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "I need a vegan facial treatment that's safe to use while pregnant and suitable for dry skin.",
+    "gold": "petal-rosewater-mist",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "petal-bloom-oil",
+      "petal-gentle-gel",
+      "clearfield-aha-night"
+    ],
+    "enriched": [
+      "petal-bloom-oil",
+      "lumenlab-night-retinal",
+      "sable-cream-cleanser"
+    ],
+    "enriched_sql": [
+      "petal-bloom-oil",
+      "sable-cream-cleanser",
+      "sable-rich-night"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ dry (boost)"
+    ]
+  },
+  {
+    "query": "Is there a low-waste, refillable facial mist with soothing ingredients that won’t clog my pores?",
+    "gold": "petal-rosewater-mist",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office",
+    "raw": [
+      "petal-rosewater-mist",
+      "fifth-refill-moisturiser",
+      "clearfield-aha-night"
+    ],
+    "enriched": [
+      "petal-rosewater-mist",
+      "lumenlab-reset-cleanser",
+      "fifth-refill-moisturiser"
+    ],
+    "enriched_sql": [
+      "petal-rosewater-mist",
+      "lumenlab-reset-cleanser",
+      "fifth-refill-moisturiser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {refillable_low_waste} (boost)"
+    ]
+  },
+  {
+    "query": "What’s a fragrance-light hydrating spray I can use in under 5 minutes before makeup?",
+    "gold": "petal-rosewater-mist",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste",
+    "raw": [
+      "petal-rosewater-mist",
+      "petal-gentle-gel",
+      "fifth-refill-moisturiser"
+    ],
+    "enriched": [
+      "petal-rosewater-mist",
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "petal-rosewater-mist",
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel"
+    ],
+    "filters": []
+  },
+  {
+    "query": "Do you have a treatment product with natural rose water that’s good for combination skin?",
+    "gold": "petal-rosewater-mist",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "petal-rosewater-mist",
+      "petal-bloom-oil",
+      "petal-gentle-gel"
+    ],
+    "enriched": [
+      "petal-rosewater-mist",
+      "petal-bloom-oil",
+      "clearfield-bha-toner"
+    ],
+    "enriched_sql": [
+      "petal-rosewater-mist",
+      "clearfield-bha-toner",
+      "petal-gentle-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ combination (boost)"
+    ]
+  },
+  {
+    "query": "I’m searching for a gentle mist with a balanced pH that helps keep my skin comfortable all day.",
+    "gold": "petal-rosewater-mist",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office",
+    "raw": [
+      "petal-rosewater-mist",
+      "petal-gentle-gel",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched": [
+      "petal-rosewater-mist",
+      "petal-gentle-gel",
+      "clearfield-foam-wash"
+    ],
+    "enriched_sql": [
+      "petal-rosewater-mist",
+      "petal-gentle-gel",
+      "clearfield-foam-wash"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "Can you recommend a vegan skincare product under $30 that’s perfect for a simple daily routine?",
+    "gold": "petal-rosewater-mist",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste",
+    "raw": [
+      "petal-gentle-gel",
+      "sable-cream-cleanser",
+      "clearfield-foam-wash"
+    ],
+    "enriched": [
+      "sable-cream-cleanser",
+      "petal-bloom-oil",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "lumenlab-reset-cleanser",
+      "clearfield-foam-wash",
+      "petal-rosewater-mist"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "price <= SGD 30",
+      "tags ∈ {night_routine} (boost)"
+    ]
+  },
+  {
+    "query": "I'm looking for a nighttime facial oil that hydrates very dry skin after long hours in an air-conditioned office.",
+    "gold": "petal-bloom-oil",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office",
+    "raw": [
+      "sable-rich-night",
+      "lumenlab-clarity-gel",
+      "petal-bloom-oil"
+    ],
+    "enriched": [
+      "petal-bloom-oil",
+      "lumenlab-clarity-gel",
+      "sable-rich-night"
+    ],
+    "enriched_sql": [
+      "petal-bloom-oil",
+      "sable-rich-night",
+      "sable-barrier-balm"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ dry (boost)",
+      "tags ∈ {air_conditioned_office} (boost)"
+    ]
+  },
+  {
+    "query": "Can you recommend a vegan treatment oil that’s safe to use during pregnancy for my dry skin?",
+    "gold": "petal-bloom-oil",
+    "category": "skincare.facial",
+    "tag": "night_routine",
+    "raw": [
+      "petal-bloom-oil",
+      "sable-barrier-balm",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched": [
+      "petal-bloom-oil",
+      "lumenlab-night-retinal",
+      "sable-rich-night"
+    ],
+    "enriched_sql": [
+      "petal-bloom-oil",
+      "sable-rich-night",
+      "sable-barrier-balm"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ dry (boost)"
+    ]
+  },
+  {
+    "query": "What’s a good facial oil with vitamin E to restore moisture overnight without feeling greasy?",
+    "gold": "petal-bloom-oil",
+    "category": "skincare.facial",
+    "tag": "very_dry_skin",
+    "raw": [
+      "sable-rich-night",
+      "petal-bloom-oil",
+      "petal-gentle-gel"
+    ],
+    "enriched": [
+      "petal-bloom-oil",
+      "sable-rich-night",
+      "lumenlab-night-retinal"
+    ],
+    "enriched_sql": [
+      "petal-bloom-oil",
+      "sable-rich-night",
+      "lumenlab-night-retinal"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "I need a nourishing oil treatment for normal to dry skin that won’t clog my pores too much.",
+    "gold": "petal-bloom-oil",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office",
+    "raw": [
+      "petal-bloom-oil",
+      "sable-barrier-balm",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched": [
+      "petal-bloom-oil",
+      "sable-barrier-balm",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "petal-bloom-oil",
+      "petal-gentle-gel",
+      "lumenlab-night-retinal"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ normal (boost)"
+    ]
+  },
+  {
+    "query": "Is there an effective nighttime oil that contains rosehip oil and can be applied quickly before bed?",
+    "gold": "petal-bloom-oil",
+    "category": "skincare.facial",
+    "tag": "night_routine",
+    "raw": [
+      "petal-bloom-oil",
+      "lumenlab-night-retinal",
+      "sable-rich-night"
+    ],
+    "enriched": [
+      "petal-bloom-oil",
+      "lumenlab-night-retinal",
+      "sable-rich-night"
+    ],
+    "enriched_sql": [
+      "petal-bloom-oil",
+      "lumenlab-night-retinal",
+      "sable-rich-night"
+    ],
+    "filters": []
+  },
+  {
+    "query": "I want a hydrating facial treatment with a light scent to use on my dry skin at night.",
+    "gold": "petal-bloom-oil",
+    "category": "skincare.facial",
+    "tag": "very_dry_skin",
+    "raw": [
+      "petal-rosewater-mist",
+      "clearfield-aha-night",
+      "sable-rich-night"
+    ],
+    "enriched": [
+      "sable-rich-night",
+      "clearfield-aha-night",
+      "petal-rosewater-mist"
+    ],
+    "enriched_sql": [
+      "sable-rich-night",
+      "petal-rosewater-mist",
+      "petal-bloom-oil"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ dry (boost)"
+    ]
+  },
+  {
+    "query": "Can you suggest a vegan facial oil for dry skin that is suitable for sensitive skin and pregnancy?",
+    "gold": "petal-bloom-oil",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office",
+    "raw": [
+      "petal-bloom-oil",
+      "petal-gentle-gel",
+      "sable-barrier-balm"
+    ],
+    "enriched": [
+      "petal-bloom-oil",
+      "sable-barrier-balm",
+      "sable-rich-night"
+    ],
+    "enriched_sql": [
+      "petal-bloom-oil",
+      "sable-barrier-balm",
+      "sable-cream-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ sensitive (boost)"
+    ]
+  },
+  {
+    "query": "Looking for a nourishing oil-based treatment for dry skin that absorbs well and can fit into a 2-minute night routine.",
+    "gold": "petal-bloom-oil",
+    "category": "skincare.facial",
+    "tag": "night_routine",
+    "raw": [
+      "sable-rich-night",
+      "petal-bloom-oil",
+      "sable-barrier-balm"
+    ],
+    "enriched": [
+      "petal-bloom-oil",
+      "sable-rich-night",
+      "lumenlab-night-retinal"
+    ],
+    "enriched_sql": [
+      "petal-bloom-oil",
+      "sable-rich-night",
+      "lumenlab-night-retinal"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ dry (boost)",
+      "tags ∈ {night_routine} (boost)"
+    ]
+  },
+  {
+    "query": "I'm looking for a gentle moisturizer that I can use quickly in the morning before applying sunscreen.",
+    "gold": "petal-gentle-gel",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf",
+    "raw": [
+      "sable-barrier-balm",
+      "petal-gentle-gel",
+      "sable-rich-night"
+    ],
+    "enriched": [
+      "sable-rich-night",
+      "petal-gentle-gel",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched_sql": [
+      "sable-rich-night",
+      "petal-gentle-gel",
+      "lumenlab-clarity-gel"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "Do you have any fragrance-free, vegan moisturizers suitable for sensitive skin that absorb quickly?",
+    "gold": "petal-gentle-gel",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste",
+    "raw": [
+      "sable-barrier-balm",
+      "petal-gentle-gel",
+      "sable-rich-night"
+    ],
+    "enriched": [
+      "sable-barrier-balm",
+      "sable-rich-night",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "sable-barrier-balm",
+      "petal-gentle-gel",
+      "sable-cream-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true",
+      "skin_type ~ sensitive (boost)"
+    ]
+  },
+  {
+    "query": "I need a lightweight gel-cream moisturizer that won’t clog my pores and works well under SPF.",
+    "gold": "petal-gentle-gel",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "petal-gentle-gel",
+      "clearfield-mattifying-spf",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched": [
+      "petal-gentle-gel",
+      "clearfield-mattifying-spf",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched_sql": [
+      "petal-gentle-gel",
+      "clearfield-mattifying-spf",
+      "lumenlab-clarity-gel"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "Can you recommend a refillable moisturizer that’s safe to use during pregnancy?",
+    "gold": "petal-gentle-gel",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf",
+    "raw": [
+      "fifth-refill-moisturiser",
+      "petal-gentle-gel",
+      "sable-barrier-balm"
+    ],
+    "enriched": [
+      "fifth-refill-moisturiser",
+      "petal-gentle-gel",
+      "petal-rosewater-mist"
+    ],
+    "enriched_sql": [
+      "fifth-refill-moisturiser",
+      "petal-gentle-gel",
+      "petal-rosewater-mist"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {refillable_low_waste} (boost)"
+    ]
+  },
+  {
+    "query": "What’s a good low-waste facial moisturizer for combination skin with hydrating ingredients like glycerin?",
+    "gold": "petal-gentle-gel",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste",
+    "raw": [
+      "petal-gentle-gel",
+      "lumenlab-clarity-gel",
+      "fifth-refill-moisturiser"
+    ],
+    "enriched": [
+      "petal-gentle-gel",
+      "petal-rosewater-mist",
+      "lumenlab-reset-cleanser"
+    ],
+    "enriched_sql": [
+      "petal-gentle-gel",
+      "petal-rosewater-mist",
+      "lumenlab-reset-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ combination (boost)",
+      "tags ∈ {refillable_low_waste} (boost)"
+    ]
+  },
+  {
+    "query": "I want a moisturizer with a clean formula that fits into a morning routine under 5 minutes.",
+    "gold": "petal-gentle-gel",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "petal-gentle-gel",
+      "fifth-refill-moisturiser",
+      "sable-rich-night"
+    ],
+    "enriched": [
+      "fifth-refill-moisturiser",
+      "petal-gentle-gel",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched_sql": [
+      "fifth-refill-moisturiser",
+      "petal-gentle-gel",
+      "lumenlab-clarity-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {morning_routine_under_5min, night_routine} (boost)"
+    ]
+  },
+  {
+    "query": "Is there a calming, vegan moisturizer with panthenol that won’t irritate my normal skin?",
+    "gold": "petal-gentle-gel",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf",
+    "raw": [
+      "petal-gentle-gel",
+      "sable-calm-serum",
+      "sable-barrier-balm"
+    ],
+    "enriched": [
+      "sable-calm-serum",
+      "petal-bloom-oil",
+      "sable-barrier-balm"
+    ],
+    "enriched_sql": [
+      "petal-bloom-oil",
+      "petal-gentle-gel",
+      "fifth-refill-moisturiser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ normal (boost)"
+    ]
+  },
+  {
+    "query": "Can you find me a moisturizer with a pH close to skin’s natural level, suitable for sensitive skin and fragrance-free?",
+    "gold": "petal-gentle-gel",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste",
+    "raw": [
+      "petal-gentle-gel",
+      "sable-barrier-balm",
+      "fifth-refill-moisturiser"
+    ],
+    "enriched": [
+      "petal-gentle-gel",
+      "sable-barrier-balm",
+      "sable-cream-cleanser"
+    ],
+    "enriched_sql": [
+      "petal-gentle-gel",
+      "sable-barrier-balm",
+      "sable-cream-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true",
+      "skin_type ~ sensitive (boost)"
+    ]
+  },
+  {
+    "query": "What’s a quick, fragrance-free serum to reduce dark spots in my oily skin routine?",
+    "gold": "fifth-vitc-serum",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "clearfield-spot-gel",
+      "clearfield-aha-night",
+      "lumenlab-clarity-serum"
+    ],
+    "enriched": [
+      "clearfield-spot-gel",
+      "clearfield-aha-night",
+      "lumenlab-clarity-serum"
+    ],
+    "enriched_sql": [
+      "lumenlab-night-retinal",
+      "clearfield-foam-wash",
+      "clearfield-bha-toner"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true",
+      "skin_type ~ oily (boost)",
+      "tags ∈ {night_routine} (boost)"
+    ]
+  },
+  {
+    "query": "I need a vegan-friendly morning serum safe for pregnancy that works well under sunscreen.",
+    "gold": "fifth-vitc-serum",
+    "category": "skincare.facial",
+    "tag": "hyperpigmentation",
+    "raw": [
+      "fifth-vitc-serum",
+      "clearfield-mattifying-spf",
+      "lumenlab-dawn-spf50"
+    ],
+    "enriched": [
+      "fifth-vitc-serum",
+      "lumenlab-clarity-serum",
+      "sable-rich-night"
+    ],
+    "enriched_sql": [
+      "fifth-vitc-serum",
+      "sable-rich-night",
+      "clearfield-mattifying-spf"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {beginner_friendly} (boost)"
+    ]
+  },
+  {
+    "query": "Can you recommend a lightweight vitamin C serum that won’t clog combination skin?",
+    "gold": "fifth-vitc-serum",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf",
+    "raw": [
+      "fifth-vitc-serum",
+      "lumenlab-clarity-serum",
+      "sable-calm-serum"
+    ],
+    "enriched": [
+      "fifth-vitc-serum",
+      "lumenlab-clarity-serum",
+      "sable-calm-serum"
+    ],
+    "enriched_sql": [
+      "fifth-vitc-serum",
+      "clearfield-bha-toner",
+      "lumenlab-clarity-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ combination (boost)"
+    ]
+  },
+  {
+    "query": "Looking for a serum with strong antioxidants to brighten my skin without fragrance.",
+    "gold": "fifth-vitc-serum",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "lumenlab-clarity-serum",
+      "clearfield-aha-night",
+      "fifth-vitc-serum"
+    ],
+    "enriched": [
+      "fifth-vitc-serum",
+      "sable-calm-serum",
+      "lumenlab-clarity-serum"
+    ],
+    "enriched_sql": [
+      "fifth-vitc-serum",
+      "clearfield-bha-toner",
+      "clearfield-foam-wash"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true"
+    ]
+  },
+  {
+    "query": "What serum can I add to my 5-minute skincare routine to target hyperpigmentation?",
+    "gold": "fifth-vitc-serum",
+    "category": "skincare.facial",
+    "tag": "hyperpigmentation",
+    "raw": [
+      "fifth-vitc-serum",
+      "lumenlab-night-retinal",
+      "fifth-peptide-eye"
+    ],
+    "enriched": [
+      "fifth-vitc-serum",
+      "lumenlab-night-retinal",
+      "fifth-peptide-eye"
+    ],
+    "enriched_sql": [
+      "lumenlab-night-retinal",
+      "fifth-vitc-serum",
+      "petal-bloom-oil"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {night_routine} (boost)"
+    ]
+  },
+  {
+    "query": "Are there any pregnancy-safe serums with ferulic acid for oily, sensitive skin?",
+    "gold": "fifth-vitc-serum",
+    "category": "skincare.facial",
+    "tag": "layerable_under_spf",
+    "raw": [
+      "fifth-vitc-serum",
+      "clearfield-aha-night",
+      "sable-calm-serum"
+    ],
+    "enriched": [
+      "fifth-vitc-serum",
+      "clearfield-aha-night",
+      "sable-calm-serum"
+    ],
+    "enriched_sql": [
+      "fifth-vitc-serum",
+      "sable-barrier-balm",
+      "fifth-peptide-eye"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ sensitive (boost)"
+    ]
+  },
+  {
+    "query": "I want a low-comedogenic serum with l-ascorbic acid for normal skin that layers well under SPF.",
+    "gold": "fifth-vitc-serum",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "lumenlab-clarity-serum",
+      "clearfield-aha-night",
+      "lumenlab-dawn-spf50"
+    ],
+    "enriched": [
+      "lumenlab-clarity-serum",
+      "clearfield-aha-night",
+      "fifth-vitc-serum"
+    ],
+    "enriched_sql": [
+      "fifth-vitc-serum",
+      "petal-bloom-oil",
+      "petal-gentle-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ normal (boost)"
+    ]
+  },
+  {
+    "query": "Is there a vegan serum with a serum-like texture that works quickly in the morning routine?",
+    "gold": "fifth-vitc-serum",
+    "category": "skincare.facial",
+    "tag": "hyperpigmentation",
+    "raw": [
+      "lumenlab-clarity-serum",
+      "sable-calm-serum",
+      "sable-rich-night"
+    ],
+    "enriched": [
+      "lumenlab-clarity-serum",
+      "sable-rich-night",
+      "petal-bloom-oil"
+    ],
+    "enriched_sql": [
+      "sable-rich-night",
+      "petal-bloom-oil",
+      "petal-gentle-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {morning_routine_under_5min, night_routine} (boost)"
+    ]
+  },
+  {
+    "query": "I need a quick morning eye treatment that won’t irritate my sensitive skin.",
+    "gold": "fifth-peptide-eye",
+    "category": "skincare.facial",
+    "tag": "fine_lines",
+    "raw": [
+      "lumenlab-night-retinal",
+      "fifth-peptide-eye",
+      "sable-cream-cleanser"
+    ],
+    "enriched": [
+      "fifth-peptide-eye",
+      "sable-cream-cleanser",
+      "sable-rich-night"
+    ],
+    "enriched_sql": [
+      "fifth-peptide-eye",
+      "sable-cream-cleanser",
+      "petal-gentle-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ sensitive (boost)"
+    ]
+  },
+  {
+    "query": "Looking for a fragrance-free gel to reduce fine lines around my eyes during travel.",
+    "gold": "fifth-peptide-eye",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "petal-gentle-gel",
+      "clearfield-spot-gel",
+      "clearfield-aha-night"
+    ],
+    "enriched": [
+      "clearfield-spot-gel",
+      "clearfield-aha-night",
+      "fifth-peptide-eye"
+    ],
+    "enriched_sql": [
+      "fifth-peptide-eye",
+      "lumenlab-night-retinal",
+      "lumenlab-reset-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true",
+      "tags ∈ {travel_cabin_size} (boost)"
+    ]
+  },
+  {
+    "query": "What’s a good vegan eye care product safe for pregnancy with caffeine to wake up tired eyes?",
+    "gold": "fifth-peptide-eye",
+    "category": "skincare.facial",
+    "tag": "travel_cabin_size",
+    "raw": [
+      "fifth-peptide-eye",
+      "lumenlab-night-retinal",
+      "sable-cream-cleanser"
+    ],
+    "enriched": [
+      "fifth-peptide-eye",
+      "lumenlab-night-retinal",
+      "sable-rich-night"
+    ],
+    "enriched_sql": [
+      "fifth-peptide-eye",
+      "lumenlab-night-retinal",
+      "sable-rich-night"
+    ],
+    "filters": []
+  },
+  {
+    "query": "Can you find a compact eye cream that's gentle on dry skin and works well in under five minutes?",
+    "gold": "fifth-peptide-eye",
+    "category": "skincare.facial",
+    "tag": "fine_lines",
+    "raw": [
+      "fifth-peptide-eye",
+      "petal-gentle-gel",
+      "sable-rich-night"
+    ],
+    "enriched": [
+      "fifth-peptide-eye",
+      "sable-rich-night",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "fifth-peptide-eye",
+      "sable-rich-night",
+      "sable-cream-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ dry (boost)"
+    ]
+  },
+  {
+    "query": "I want a non-comedogenic eye treatment that’s easy to use daily and comes in a small size for my carry-on.",
+    "gold": "fifth-peptide-eye",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "clearfield-spot-gel",
+      "petal-gentle-gel",
+      "clearfield-aha-night"
+    ],
+    "enriched": [
+      "clearfield-spot-gel",
+      "fifth-peptide-eye",
+      "clearfield-aha-night"
+    ],
+    "enriched_sql": [
+      "fifth-peptide-eye",
+      "lumenlab-night-retinal",
+      "clearfield-mattifying-spf"
+    ],
+    "filters": []
+  },
+  {
+    "query": "Is there a lightweight eye gel that targets fine lines and is suitable for combination skin?",
+    "gold": "fifth-peptide-eye",
+    "category": "skincare.facial",
+    "tag": "travel_cabin_size",
+    "raw": [
+      "fifth-peptide-eye",
+      "clearfield-spot-gel",
+      "petal-gentle-gel"
+    ],
+    "enriched": [
+      "clearfield-spot-gel",
+      "fifth-peptide-eye",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "fifth-peptide-eye",
+      "petal-gentle-gel",
+      "lumenlab-clarity-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ combination (boost)"
+    ]
+  },
+  {
+    "query": "I’m searching for a sensitive-skin friendly eye product with peptides that I can apply quickly in the morning.",
+    "gold": "fifth-peptide-eye",
+    "category": "skincare.facial",
+    "tag": "fine_lines",
+    "raw": [
+      "fifth-peptide-eye",
+      "sable-rich-night",
+      "lumenlab-night-retinal"
+    ],
+    "enriched": [
+      "fifth-peptide-eye",
+      "sable-rich-night",
+      "sable-calm-serum"
+    ],
+    "enriched_sql": [
+      "halcyon-meander",
+      "vela-halo-breeze",
+      "kestrel-drift-3"
+    ],
+    "filters": [
+      "category = footwear.running",
+      "tags ∈ {beginner_friendly} (boost)"
+    ]
+  },
+  {
+    "query": "What’s an effective fragrance-free, caffeine-infused eye treatment under $60 for my travel skincare kit?",
+    "gold": "fifth-peptide-eye",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "fifth-peptide-eye",
+      "clearfield-aha-night",
+      "petal-gentle-gel"
+    ],
+    "enriched": [
+      "fifth-peptide-eye",
+      "clearfield-aha-night",
+      "clearfield-spot-gel"
+    ],
+    "enriched_sql": [
+      "fifth-peptide-eye",
+      "clearfield-foam-wash",
+      "sable-cream-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "price <= SGD 60",
+      "fragrance_free = true",
+      "tags ∈ {travel_cabin_size} (boost)"
+    ]
+  },
+  {
+    "query": "I need a quick morning moisturizer that won't clog my skin and is safe to use during pregnancy.",
+    "gold": "fifth-refill-moisturiser",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office",
+    "raw": [
+      "lumenlab-clarity-gel",
+      "sable-rich-night",
+      "sable-barrier-balm"
+    ],
+    "enriched": [
+      "sable-rich-night",
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "sable-rich-night",
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "Looking for a fragrance-free lotion that works well for dry and combination skin in an air-conditioned office.",
+    "gold": "fifth-refill-moisturiser",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel",
+      "sable-barrier-balm"
+    ],
+    "enriched": [
+      "lumenlab-clarity-gel",
+      "sable-barrier-balm",
+      "lumenlab-dawn-spf50"
+    ],
+    "enriched_sql": [
+      "lumenlab-clarity-gel",
+      "sable-barrier-balm",
+      "lumenlab-dawn-spf50"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true",
+      "skin_type ~ combination (boost)",
+      "tags ∈ {air_conditioned_office} (boost)"
+    ]
+  },
+  {
+    "query": "Can you help me find a refillable moisturizer with hydrating ingredients like squalane and ceramides?",
+    "gold": "fifth-refill-moisturiser",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste",
+    "raw": [
+      "sable-barrier-balm",
+      "fifth-refill-moisturiser",
+      "sable-rich-night"
+    ],
+    "enriched": [
+      "sable-barrier-balm",
+      "sable-rich-night",
+      "fifth-refill-moisturiser"
+    ],
+    "enriched_sql": [
+      "sable-rich-night",
+      "fifth-refill-moisturiser",
+      "sable-barrier-balm"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {refillable_low_waste} (boost)"
+    ]
+  },
+  {
+    "query": "What's a low-waste, vegan facial lotion suitable for someone with normal skin who wants a 5-minute routine?",
+    "gold": "fifth-refill-moisturiser",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office",
+    "raw": [
+      "petal-gentle-gel",
+      "lumenlab-reset-cleanser",
+      "fifth-refill-moisturiser"
+    ],
+    "enriched": [
+      "lumenlab-reset-cleanser",
+      "fifth-refill-moisturiser",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "lumenlab-reset-cleanser",
+      "fifth-refill-moisturiser",
+      "petal-gentle-gel"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "skin_type ~ normal (boost)",
+      "tags ∈ {night_routine, refillable_low_waste} (boost)"
+    ]
+  },
+  {
+    "query": "I want a lightweight moisturizer that absorbs quickly and keeps my skin balanced throughout the day.",
+    "gold": "fifth-refill-moisturiser",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "petal-gentle-gel",
+      "lumenlab-clarity-gel",
+      "sable-barrier-balm"
+    ],
+    "enriched": [
+      "lumenlab-clarity-gel",
+      "fifth-refill-moisturiser",
+      "sable-rich-night"
+    ],
+    "enriched_sql": [
+      "lumenlab-clarity-gel",
+      "fifth-refill-moisturiser",
+      "sable-rich-night"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "Is there a pregnancy-safe, fragrance-free lotion that I can use daily without worrying about breakouts?",
+    "gold": "fifth-refill-moisturiser",
+    "category": "skincare.facial",
+    "tag": "refillable_low_waste",
+    "raw": [
+      "lumenlab-clarity-gel",
+      "petal-gentle-gel",
+      "lumenlab-dawn-spf50"
+    ],
+    "enriched": [
+      "clearfield-foam-wash",
+      "lumenlab-clarity-gel",
+      "lumenlab-dawn-spf50"
+    ],
+    "enriched_sql": [
+      "clearfield-foam-wash",
+      "lumenlab-clarity-gel",
+      "lumenlab-dawn-spf50"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "fragrance_free = true"
+    ]
+  },
+  {
+    "query": "I'm searching for a vegan moisturizer with a gentle pH around 5.5 that's easy to apply before heading out.",
+    "gold": "fifth-refill-moisturiser",
+    "category": "skincare.facial",
+    "tag": "air_conditioned_office",
+    "raw": [
+      "petal-gentle-gel",
+      "fifth-refill-moisturiser",
+      "sable-barrier-balm"
+    ],
+    "enriched": [
+      "fifth-refill-moisturiser",
+      "fifth-vitc-serum",
+      "petal-gentle-gel"
+    ],
+    "enriched_sql": [
+      "fifth-refill-moisturiser",
+      "fifth-vitc-serum",
+      "petal-gentle-gel"
+    ],
+    "filters": [
+      "category = skincare.facial"
+    ]
+  },
+  {
+    "query": "Do you have any refillable, low-comedogenic moisturizers that hydrate well without feeling greasy?",
+    "gold": "fifth-refill-moisturiser",
+    "category": "skincare.facial",
+    "tag": "morning_routine_under_5min",
+    "raw": [
+      "fifth-refill-moisturiser",
+      "petal-gentle-gel",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched": [
+      "petal-gentle-gel",
+      "fifth-refill-moisturiser",
+      "lumenlab-clarity-gel"
+    ],
+    "enriched_sql": [
+      "petal-gentle-gel",
+      "fifth-refill-moisturiser",
+      "lumenlab-reset-cleanser"
+    ],
+    "filters": [
+      "category = skincare.facial",
+      "tags ∈ {refillable_low_waste} (boost)"
+    ]
+  }
+]

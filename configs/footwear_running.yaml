@@ -1,0 +1,39 @@
+category: footwear.running
+label: Running shoes
+required_numeric: [weight_g, heel_drop_mm, stack_height_mm]
+required_categorical: [surface, arch_support, width, closure]
+situational_vocabulary:
+  - humid_climate
+  - tropical_training
+  - road_long_distance
+  - race_day
+  - recovery_run
+  - beginner_friendly
+  - high_mileage_week
+  - treadmill_indoor
+  - wet_road_grip
+  - travel_light_packing
+persona_axes: [experience_level, weekly_mileage, foot_shape, budget_sensitivity]
+common_exclusions: [wide_feet, overpronation, trail_use, heavy_runner]
+
+# Retrieval hints: how a shopper's words map onto filterable constraints.
+# Used by the hybrid retriever to build the SQL pre-filter.
+# Only these keys are allowed to ELIMINATE a product. Everything else in
+# constraint_synonyms becomes a ranking boost. A shoe for the wrong surface is
+# wrong; a neutral shoe for a mild pronator is merely less preferred.
+hard_filter_keys: [surface, width]
+
+# Words that say "this question is about my category". Without these, a query
+# like "training for my first half marathon" never names a shoe and the
+# retriever cannot tell which catalogue it belongs to.
+category_cues: [run, runs, running, runner, jog, jogging, marathon, half marathon,
+                5k, 10k, race, racing, trainer, trainers, shoe, shoes, sneaker,
+                sneakers, footwear, mileage, pace, treadmill, foot, feet]
+
+constraint_synonyms:
+  surface: {road: [road, pavement, tarmac, street, treadmill], trail: [trail, offroad, off-road, gravel, mountain], track: [track, spikes]}
+  arch_support: {stability: [flat feet, flat-footed, overpronation, overpronate, pronation, arch collapse, stability], neutral: [neutral, normal arch], motion_control: [severe overpronation, motion control, pronation control, clinical advice, orthotic]}
+  width: {wide: [wide feet, wide foot, e width, 2e, 4e, roomy toe box], standard: [standard width, normal width], narrow: [narrow feet, narrow foot]}
+numeric_intents:
+  weight_g: {lighter: below, light: below, lightweight: below, heavier: above}
+  heel_drop_mm: {low_drop: below, zero_drop: below}

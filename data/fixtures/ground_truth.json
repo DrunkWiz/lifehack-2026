@@ -1,0 +1,2009 @@
+{
+  "kestrel-drift-3": {
+    "category": "footwear.running",
+    "title": "Kestrel Drift 3",
+    "brand": "Kestrel",
+    "price": 179,
+    "numeric": {
+      "weight_g": 258,
+      "heel_drop_mm": 8,
+      "stack_height_mm": 34
+    },
+    "categorical": {
+      "surface": [
+        "road"
+      ],
+      "arch_support": [
+        "neutral"
+      ],
+      "width": [
+        "standard"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "balanced"
+      ],
+      "plate": [
+        "none"
+      ],
+      "breathability": [
+        "high"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "daily",
+    "best_for": [
+      "daily_training",
+      "humid_climate",
+      "beginner_friendly"
+    ],
+    "not_for": [
+      "wide_feet",
+      "trail_use"
+    ],
+    "spec_level": "full"
+  },
+  "kestrel-drift-3-wide": {
+    "category": "footwear.running",
+    "title": "Kestrel Drift 3 Wide",
+    "brand": "Kestrel",
+    "price": 179,
+    "numeric": {
+      "weight_g": 266,
+      "heel_drop_mm": 8,
+      "stack_height_mm": 34
+    },
+    "categorical": {
+      "surface": [
+        "road"
+      ],
+      "arch_support": [
+        "neutral"
+      ],
+      "width": [
+        "wide"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "balanced"
+      ],
+      "plate": [
+        "none"
+      ],
+      "breathability": [
+        "high"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "daily",
+    "best_for": [
+      "daily_training",
+      "wide_feet",
+      "humid_climate"
+    ],
+    "not_for": [
+      "narrow_feet",
+      "trail_use"
+    ],
+    "spec_level": "full"
+  },
+  "kestrel-vapourline": {
+    "category": "footwear.running",
+    "title": "Kestrel Vapourline Racer",
+    "brand": "Kestrel",
+    "price": 329,
+    "numeric": {
+      "weight_g": 192,
+      "heel_drop_mm": 6,
+      "stack_height_mm": 38
+    },
+    "categorical": {
+      "surface": [
+        "road"
+      ],
+      "arch_support": [
+        "neutral"
+      ],
+      "width": [
+        "narrow"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "firm"
+      ],
+      "plate": [
+        "carbon"
+      ],
+      "breathability": [
+        "high"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "race",
+    "best_for": [
+      "race_day",
+      "road_long_distance",
+      "tempo"
+    ],
+    "not_for": [
+      "beginner_runner",
+      "daily_training",
+      "heavy_runner"
+    ],
+    "spec_level": "full"
+  },
+  "kestrel-cloudstep-2": {
+    "category": "footwear.running",
+    "title": "Kestrel Cloudstep 2",
+    "brand": "Kestrel",
+    "price": 219,
+    "numeric": {
+      "weight_g": 298,
+      "heel_drop_mm": 10,
+      "stack_height_mm": 40
+    },
+    "categorical": {
+      "surface": [
+        "road"
+      ],
+      "arch_support": [
+        "neutral"
+      ],
+      "width": [
+        "standard"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "plush"
+      ],
+      "plate": [
+        "none"
+      ],
+      "breathability": [
+        "medium"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "recovery",
+    "best_for": [
+      "recovery_run",
+      "high_mileage_week",
+      "heavier_runner"
+    ],
+    "not_for": [
+      "race_day",
+      "tempo"
+    ],
+    "spec_level": "partial"
+  },
+  "meridian-atlas-stability": {
+    "category": "footwear.running",
+    "title": "Meridian Atlas Stability",
+    "brand": "Meridian",
+    "price": 209,
+    "numeric": {
+      "weight_g": 302,
+      "heel_drop_mm": 10,
+      "stack_height_mm": 36
+    },
+    "categorical": {
+      "surface": [
+        "road"
+      ],
+      "arch_support": [
+        "stability"
+      ],
+      "width": [
+        "wide"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "balanced"
+      ],
+      "plate": [
+        "none"
+      ],
+      "breathability": [
+        "medium"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "stability",
+    "best_for": [
+      "overpronation",
+      "flat_feet",
+      "daily_training",
+      "heavier_runner"
+    ],
+    "not_for": [
+      "race_day",
+      "narrow_feet"
+    ],
+    "spec_level": "full"
+  },
+  "meridian-atlas-gt": {
+    "category": "footwear.running",
+    "title": "Meridian Atlas GT",
+    "brand": "Meridian",
+    "price": 239,
+    "numeric": {
+      "weight_g": 288,
+      "heel_drop_mm": 8,
+      "stack_height_mm": 35
+    },
+    "categorical": {
+      "surface": [
+        "road"
+      ],
+      "arch_support": [
+        "stability"
+      ],
+      "width": [
+        "standard"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "firm"
+      ],
+      "plate": [
+        "nylon"
+      ],
+      "breathability": [
+        "high"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "stability",
+    "best_for": [
+      "overpronation",
+      "tempo",
+      "humid_climate"
+    ],
+    "not_for": [
+      "max_cushion_seekers",
+      "trail_use"
+    ],
+    "spec_level": "full"
+  },
+  "meridian-fathom-mc": {
+    "category": "footwear.running",
+    "title": "Meridian Fathom Motion Control",
+    "brand": "Meridian",
+    "price": 249,
+    "numeric": {
+      "weight_g": 336,
+      "heel_drop_mm": 12,
+      "stack_height_mm": 33
+    },
+    "categorical": {
+      "surface": [
+        "road"
+      ],
+      "arch_support": [
+        "motion_control"
+      ],
+      "width": [
+        "wide"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "firm"
+      ],
+      "plate": [
+        "none"
+      ],
+      "breathability": [
+        "low"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "stability",
+    "best_for": [
+      "severe_overpronation",
+      "heavier_runner",
+      "walking"
+    ],
+    "not_for": [
+      "race_day",
+      "fast_running",
+      "humid_climate"
+    ],
+    "spec_level": "partial"
+  },
+  "northbound-ridgeline": {
+    "category": "footwear.running",
+    "title": "Northbound Ridgeline Trail",
+    "brand": "Northbound",
+    "price": 229,
+    "numeric": {
+      "weight_g": 312,
+      "heel_drop_mm": 6,
+      "stack_height_mm": 32
+    },
+    "categorical": {
+      "surface": [
+        "trail"
+      ],
+      "arch_support": [
+        "neutral"
+      ],
+      "width": [
+        "standard"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "balanced"
+      ],
+      "plate": [
+        "none"
+      ],
+      "breathability": [
+        "medium"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "trail",
+    "best_for": [
+      "trail_use",
+      "wet_road_grip",
+      "hiking_crossover"
+    ],
+    "not_for": [
+      "road_long_distance",
+      "race_day"
+    ],
+    "spec_level": "full"
+  },
+  "northbound-ridgeline-gtx": {
+    "category": "footwear.running",
+    "title": "Northbound Ridgeline GTX",
+    "brand": "Northbound",
+    "price": 279,
+    "numeric": {
+      "weight_g": 334,
+      "heel_drop_mm": 6,
+      "stack_height_mm": 32
+    },
+    "categorical": {
+      "surface": [
+        "trail"
+      ],
+      "arch_support": [
+        "neutral"
+      ],
+      "width": [
+        "standard"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "balanced"
+      ],
+      "plate": [
+        "none"
+      ],
+      "breathability": [
+        "low"
+      ]
+    },
+    "waterproof": true,
+    "archetype": "trail",
+    "best_for": [
+      "trail_use",
+      "wet_weather",
+      "cold_climate"
+    ],
+    "not_for": [
+      "humid_climate",
+      "road_long_distance"
+    ],
+    "spec_level": "full"
+  },
+  "northbound-scree-lite": {
+    "category": "footwear.running",
+    "title": "Northbound Scree Lite",
+    "brand": "Northbound",
+    "price": 189,
+    "numeric": {
+      "weight_g": 254,
+      "heel_drop_mm": 4,
+      "stack_height_mm": 26
+    },
+    "categorical": {
+      "surface": [
+        "trail"
+      ],
+      "arch_support": [
+        "neutral"
+      ],
+      "width": [
+        "narrow"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "firm"
+      ],
+      "plate": [
+        "none"
+      ],
+      "breathability": [
+        "high"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "trail",
+    "best_for": [
+      "trail_use",
+      "race_day",
+      "travel_light_packing"
+    ],
+    "not_for": [
+      "heavy_runner",
+      "long_distance_comfort",
+      "beginner_runner"
+    ],
+    "spec_level": "partial"
+  },
+  "vela-aero-9": {
+    "category": "footwear.running",
+    "title": "Vela Aero 9",
+    "brand": "Vela",
+    "price": 199,
+    "numeric": {
+      "weight_g": 236,
+      "heel_drop_mm": 7,
+      "stack_height_mm": 32
+    },
+    "categorical": {
+      "surface": [
+        "road"
+      ],
+      "arch_support": [
+        "neutral"
+      ],
+      "width": [
+        "standard"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "firm"
+      ],
+      "plate": [
+        "nylon"
+      ],
+      "breathability": [
+        "high"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "tempo",
+    "best_for": [
+      "tempo",
+      "humid_climate",
+      "road_long_distance"
+    ],
+    "not_for": [
+      "recovery_run",
+      "overpronation"
+    ],
+    "spec_level": "full"
+  },
+  "vela-aero-9-elite": {
+    "category": "footwear.running",
+    "title": "Vela Aero 9 Elite",
+    "brand": "Vela",
+    "price": 309,
+    "numeric": {
+      "weight_g": 188,
+      "heel_drop_mm": 5,
+      "stack_height_mm": 39
+    },
+    "categorical": {
+      "surface": [
+        "road"
+      ],
+      "arch_support": [
+        "neutral"
+      ],
+      "width": [
+        "narrow"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "firm"
+      ],
+      "plate": [
+        "carbon"
+      ],
+      "breathability": [
+        "high"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "race",
+    "best_for": [
+      "race_day",
+      "tropical_training",
+      "tempo"
+    ],
+    "not_for": [
+      "daily_training",
+      "beginner_runner",
+      "wide_feet"
+    ],
+    "spec_level": "full"
+  },
+  "vela-halo-max": {
+    "category": "footwear.running",
+    "title": "Vela Halo Max",
+    "brand": "Vela",
+    "price": 259,
+    "numeric": {
+      "weight_g": 311,
+      "heel_drop_mm": 9,
+      "stack_height_mm": 42
+    },
+    "categorical": {
+      "surface": [
+        "road"
+      ],
+      "arch_support": [
+        "neutral"
+      ],
+      "width": [
+        "wide"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "plush"
+      ],
+      "plate": [
+        "none"
+      ],
+      "breathability": [
+        "medium"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "recovery",
+    "best_for": [
+      "recovery_run",
+      "high_mileage_week",
+      "wide_feet",
+      "heavier_runner"
+    ],
+    "not_for": [
+      "race_day",
+      "trail_use"
+    ],
+    "spec_level": "full"
+  },
+  "vela-halo-breeze": {
+    "category": "footwear.running",
+    "title": "Vela Halo Breeze",
+    "brand": "Vela",
+    "price": 189,
+    "numeric": {
+      "weight_g": 244,
+      "heel_drop_mm": 8,
+      "stack_height_mm": 33
+    },
+    "categorical": {
+      "surface": [
+        "road"
+      ],
+      "arch_support": [
+        "neutral"
+      ],
+      "width": [
+        "standard"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "balanced"
+      ],
+      "plate": [
+        "none"
+      ],
+      "breathability": [
+        "high"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "daily",
+    "best_for": [
+      "humid_climate",
+      "daily_training",
+      "treadmill_indoor"
+    ],
+    "not_for": [
+      "trail_use",
+      "overpronation"
+    ],
+    "spec_level": "sparse"
+  },
+  "terrafirma-anchor": {
+    "category": "footwear.running",
+    "title": "Terrafirma Anchor Daily",
+    "brand": "Terrafirma",
+    "price": 149,
+    "numeric": {
+      "weight_g": 276,
+      "heel_drop_mm": 10,
+      "stack_height_mm": 31
+    },
+    "categorical": {
+      "surface": [
+        "road"
+      ],
+      "arch_support": [
+        "neutral"
+      ],
+      "width": [
+        "standard"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "balanced"
+      ],
+      "plate": [
+        "none"
+      ],
+      "breathability": [
+        "medium"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "daily",
+    "best_for": [
+      "budget_daily",
+      "beginner_friendly",
+      "treadmill_indoor"
+    ],
+    "not_for": [
+      "race_day",
+      "high_mileage_week"
+    ],
+    "spec_level": "sparse"
+  },
+  "terrafirma-anchor-plus": {
+    "category": "footwear.running",
+    "title": "Terrafirma Anchor Plus",
+    "brand": "Terrafirma",
+    "price": 169,
+    "numeric": {
+      "weight_g": 294,
+      "heel_drop_mm": 10,
+      "stack_height_mm": 33
+    },
+    "categorical": {
+      "surface": [
+        "road"
+      ],
+      "arch_support": [
+        "stability"
+      ],
+      "width": [
+        "wide"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "balanced"
+      ],
+      "plate": [
+        "none"
+      ],
+      "breathability": [
+        "medium"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "stability",
+    "best_for": [
+      "overpronation",
+      "beginner_friendly",
+      "budget_daily"
+    ],
+    "not_for": [
+      "race_day",
+      "narrow_feet"
+    ],
+    "spec_level": "partial"
+  },
+  "terrafirma-loop-treadmill": {
+    "category": "footwear.running",
+    "title": "Terrafirma Loop Indoor",
+    "brand": "Terrafirma",
+    "price": 139,
+    "numeric": {
+      "weight_g": 262,
+      "heel_drop_mm": 9,
+      "stack_height_mm": 30
+    },
+    "categorical": {
+      "surface": [
+        "road"
+      ],
+      "arch_support": [
+        "neutral"
+      ],
+      "width": [
+        "standard"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "balanced"
+      ],
+      "plate": [
+        "none"
+      ],
+      "breathability": [
+        "high"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "daily",
+    "best_for": [
+      "treadmill_indoor",
+      "gym_crossover",
+      "budget_daily"
+    ],
+    "not_for": [
+      "trail_use",
+      "road_long_distance"
+    ],
+    "spec_level": "sparse"
+  },
+  "halcyon-zephyr-lt": {
+    "category": "footwear.running",
+    "title": "Halcyon Zephyr LT",
+    "brand": "Halcyon",
+    "price": 219,
+    "numeric": {
+      "weight_g": 228,
+      "heel_drop_mm": 6,
+      "stack_height_mm": 30
+    },
+    "categorical": {
+      "surface": [
+        "road"
+      ],
+      "arch_support": [
+        "neutral"
+      ],
+      "width": [
+        "narrow"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "firm"
+      ],
+      "plate": [
+        "none"
+      ],
+      "breathability": [
+        "high"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "tempo",
+    "best_for": [
+      "tempo",
+      "travel_light_packing",
+      "humid_climate"
+    ],
+    "not_for": [
+      "heavier_runner",
+      "recovery_run",
+      "wide_feet"
+    ],
+    "spec_level": "full"
+  },
+  "halcyon-meander": {
+    "category": "footwear.running",
+    "title": "Halcyon Meander Easy",
+    "brand": "Halcyon",
+    "price": 199,
+    "numeric": {
+      "weight_g": 289,
+      "heel_drop_mm": 11,
+      "stack_height_mm": 38
+    },
+    "categorical": {
+      "surface": [
+        "road"
+      ],
+      "arch_support": [
+        "neutral"
+      ],
+      "width": [
+        "standard"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "plush"
+      ],
+      "plate": [
+        "none"
+      ],
+      "breathability": [
+        "medium"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "recovery",
+    "best_for": [
+      "recovery_run",
+      "walking",
+      "beginner_friendly"
+    ],
+    "not_for": [
+      "race_day",
+      "tempo"
+    ],
+    "spec_level": "partial"
+  },
+  "halcyon-crossover-gym": {
+    "category": "footwear.running",
+    "title": "Halcyon Crossover Gym",
+    "brand": "Halcyon",
+    "price": 159,
+    "numeric": {
+      "weight_g": 271,
+      "heel_drop_mm": 6,
+      "stack_height_mm": 26
+    },
+    "categorical": {
+      "surface": [
+        "road"
+      ],
+      "arch_support": [
+        "neutral"
+      ],
+      "width": [
+        "standard"
+      ],
+      "closure": [
+        "lace"
+      ],
+      "cushioning": [
+        "firm"
+      ],
+      "plate": [
+        "none"
+      ],
+      "breathability": [
+        "medium"
+      ]
+    },
+    "waterproof": false,
+    "archetype": "daily",
+    "best_for": [
+      "gym_crossover",
+      "treadmill_indoor",
+      "short_runs"
+    ],
+    "not_for": [
+      "road_long_distance",
+      "high_mileage_week"
+    ],
+    "spec_level": "sparse"
+  },
+  "lumenlab-clarity-gel": {
+    "category": "skincare.facial",
+    "title": "Lumen Lab Clarity Oil-Control Gel Moisturiser",
+    "brand": "Lumen Lab",
+    "price": 42,
+    "numeric": {
+      "volume_ml": 50,
+      "routine_time_min": 1,
+      "ph": 5.5
+    },
+    "categorical": {
+      "skin_type": [
+        "oily",
+        "combination"
+      ],
+      "key_actives": [
+        "niacinamide 5%",
+        "zinc PCA 1%"
+      ],
+      "fragrance_free": [
+        "true"
+      ],
+      "comedogenic_rating": [
+        "1"
+      ],
+      "product_type": [
+        "moisturiser"
+      ],
+      "texture": [
+        "gel"
+      ],
+      "pregnancy_safe": [
+        "true"
+      ],
+      "vegan": [
+        "true"
+      ],
+      "refillable": [
+        "false"
+      ]
+    },
+    "archetype": "moisturiser",
+    "best_for": [
+      "oily_skin_humid_climate",
+      "morning_routine_under_5min",
+      "layerable_under_spf"
+    ],
+    "not_for": [
+      "dry_skin",
+      "mature_skin"
+    ],
+    "spec_level": "full"
+  },
+  "lumenlab-clarity-serum": {
+    "category": "skincare.facial",
+    "title": "Lumen Lab Clarity Niacinamide Serum",
+    "brand": "Lumen Lab",
+    "price": 38,
+    "numeric": {
+      "volume_ml": 30,
+      "routine_time_min": 1,
+      "ph": 5.8
+    },
+    "categorical": {
+      "skin_type": [
+        "oily",
+        "combination",
+        "normal"
+      ],
+      "key_actives": [
+        "niacinamide 10%",
+        "zinc PCA 1%"
+      ],
+      "fragrance_free": [
+        "true"
+      ],
+      "comedogenic_rating": [
+        "0"
+      ],
+      "product_type": [
+        "serum"
+      ],
+      "texture": [
+        "watery serum"
+      ],
+      "pregnancy_safe": [
+        "true"
+      ],
+      "vegan": [
+        "true"
+      ],
+      "refillable": [
+        "false"
+      ]
+    },
+    "archetype": "serum",
+    "best_for": [
+      "oily_skin_humid_climate",
+      "maskne_prone",
+      "layerable_under_spf"
+    ],
+    "not_for": [
+      "fragrance_sensitivity_severe",
+      "dry_skin"
+    ],
+    "spec_level": "full"
+  },
+  "lumenlab-dawn-spf50": {
+    "category": "skincare.facial",
+    "title": "Lumen Lab Dawn Fluid SPF50 PA++++",
+    "brand": "Lumen Lab",
+    "price": 46,
+    "numeric": {
+      "volume_ml": 50,
+      "routine_time_min": 1,
+      "ph": 6.0
+    },
+    "categorical": {
+      "skin_type": [
+        "oily",
+        "combination",
+        "normal",
+        "sensitive"
+      ],
+      "key_actives": [
+        "zinc oxide 12%"
+      ],
+      "fragrance_free": [
+        "true"
+      ],
+      "comedogenic_rating": [
+        "1"
+      ],
+      "product_type": [
+        "sunscreen"
+      ],
+      "texture": [
+        "fluid"
+      ],
+      "spf": [
+        "50"
+      ],
+      "pregnancy_safe": [
+        "true"
+      ],
+      "vegan": [
+        "true"
+      ],
+      "refillable": [
+        "false"
+      ]
+    },
+    "archetype": "sunscreen",
+    "best_for": [
+      "morning_routine_under_5min",
+      "oily_skin_humid_climate",
+      "layerable_under_spf"
+    ],
+    "not_for": [
+      "very_dry_skin"
+    ],
+    "spec_level": "full"
+  },
+  "lumenlab-reset-cleanser": {
+    "category": "skincare.facial",
+    "title": "Lumen Lab Reset Gel Cleanser",
+    "brand": "Lumen Lab",
+    "price": 28,
+    "numeric": {
+      "volume_ml": 150,
+      "routine_time_min": 1,
+      "ph": 5.5
+    },
+    "categorical": {
+      "skin_type": [
+        "oily",
+        "combination",
+        "normal"
+      ],
+      "key_actives": [
+        "glycerin"
+      ],
+      "fragrance_free": [
+        "true"
+      ],
+      "comedogenic_rating": [
+        "0"
+      ],
+      "product_type": [
+        "cleanser"
+      ],
+      "texture": [
+        "gel"
+      ],
+      "pregnancy_safe": [
+        "true"
+      ],
+      "vegan": [
+        "true"
+      ],
+      "refillable": [
+        "true"
+      ]
+    },
+    "archetype": "cleanser",
+    "best_for": [
+      "oily_skin_humid_climate",
+      "morning_routine_under_5min",
+      "refillable_low_waste"
+    ],
+    "not_for": [
+      "dry_skin",
+      "sensitive_barrier_repair"
+    ],
+    "spec_level": "partial"
+  },
+  "lumenlab-night-retinal": {
+    "category": "skincare.facial",
+    "title": "Lumen Lab Night Retinal 0.05%",
+    "brand": "Lumen Lab",
+    "price": 68,
+    "numeric": {
+      "volume_ml": 30,
+      "routine_time_min": 2,
+      "ph": 5.5
+    },
+    "categorical": {
+      "skin_type": [
+        "normal",
+        "combination",
+        "oily"
+      ],
+      "key_actives": [
+        "retinal 0.05%",
+        "ceramide NP"
+      ],
+      "fragrance_free": [
+        "true"
+      ],
+      "comedogenic_rating": [
+        "1"
+      ],
+      "product_type": [
+        "treatment"
+      ],
+      "texture": [
+        "cream"
+      ],
+      "pregnancy_safe": [
+        "false"
+      ],
+      "vegan": [
+        "true"
+      ],
+      "refillable": [
+        "false"
+      ]
+    },
+    "archetype": "treatment",
+    "best_for": [
+      "night_routine",
+      "fine_lines",
+      "texture_refining"
+    ],
+    "not_for": [
+      "pregnancy",
+      "sensitive_barrier_repair",
+      "active_retinoid_use"
+    ],
+    "spec_level": "full"
+  },
+  "sable-barrier-balm": {
+    "category": "skincare.facial",
+    "title": "Sable & Co Barrier Repair Balm",
+    "brand": "Sable & Co",
+    "price": 54,
+    "numeric": {
+      "volume_ml": 50,
+      "routine_time_min": 2,
+      "ph": 5.2
+    },
+    "categorical": {
+      "skin_type": [
+        "dry",
+        "sensitive"
+      ],
+      "key_actives": [
+        "ceramide complex 3%",
+        "cholesterol",
+        "squalane"
+      ],
+      "fragrance_free": [
+        "true"
+      ],
+      "comedogenic_rating": [
+        "2"
+      ],
+      "product_type": [
+        "moisturiser"
+      ],
+      "texture": [
+        "balm"
+      ],
+      "pregnancy_safe": [
+        "true"
+      ],
+      "vegan": [
+        "false"
+      ],
+      "refillable": [
+        "false"
+      ]
+    },
+    "archetype": "moisturiser",
+    "best_for": [
+      "sensitive_barrier_repair",
+      "air_conditioned_office",
+      "post_procedure_recovery",
+      "night_routine"
+    ],
+    "not_for": [
+      "oily_skin_humid_climate",
+      "acne_prone"
+    ],
+    "spec_level": "full"
+  },
+  "sable-calm-serum": {
+    "category": "skincare.facial",
+    "title": "Sable & Co Calm Centella Serum",
+    "brand": "Sable & Co",
+    "price": 48,
+    "numeric": {
+      "volume_ml": 30,
+      "routine_time_min": 1,
+      "ph": 5.5
+    },
+    "categorical": {
+      "skin_type": [
+        "sensitive",
+        "dry",
+        "normal"
+      ],
+      "key_actives": [
+        "centella asiatica 5%",
+        "panthenol 3%"
+      ],
+      "fragrance_free": [
+        "true"
+      ],
+      "comedogenic_rating": [
+        "1"
+      ],
+      "product_type": [
+        "serum"
+      ],
+      "texture": [
+        "serum"
+      ],
+      "pregnancy_safe": [
+        "true"
+      ],
+      "vegan": [
+        "true"
+      ],
+      "refillable": [
+        "false"
+      ]
+    },
+    "archetype": "serum",
+    "best_for": [
+      "sensitive_barrier_repair",
+      "post_procedure_recovery",
+      "redness"
+    ],
+    "not_for": [
+      "oily_skin_humid_climate",
+      "strong_actives_seekers"
+    ],
+    "spec_level": "full"
+  },
+  "sable-cream-cleanser": {
+    "category": "skincare.facial",
+    "title": "Sable & Co Milk Cream Cleanser",
+    "brand": "Sable & Co",
+    "price": 36,
+    "numeric": {
+      "volume_ml": 150,
+      "routine_time_min": 1,
+      "ph": 5.5
+    },
+    "categorical": {
+      "skin_type": [
+        "dry",
+        "sensitive"
+      ],
+      "key_actives": [
+        "oat lipid",
+        "glycerin"
+      ],
+      "fragrance_free": [
+        "true"
+      ],
+      "comedogenic_rating": [
+        "2"
+      ],
+      "product_type": [
+        "cleanser"
+      ],
+      "texture": [
+        "cream"
+      ],
+      "pregnancy_safe": [
+        "true"
+      ],
+      "vegan": [
+        "false"
+      ],
+      "refillable": [
+        "false"
+      ]
+    },
+    "archetype": "cleanser",
+    "best_for": [
+      "sensitive_barrier_repair",
+      "night_routine",
+      "air_conditioned_office"
+    ],
+    "not_for": [
+      "oily_skin_humid_climate",
+      "maskne_prone"
+    ],
+    "spec_level": "partial"
+  },
+  "sable-rich-night": {
+    "category": "skincare.facial",
+    "title": "Sable & Co Rich Overnight Cream",
+    "brand": "Sable & Co",
+    "price": 62,
+    "numeric": {
+      "volume_ml": 50,
+      "routine_time_min": 2,
+      "ph": 5.4
+    },
+    "categorical": {
+      "skin_type": [
+        "dry"
+      ],
+      "key_actives": [
+        "shea butter",
+        "ceramide NP",
+        "squalane"
+      ],
+      "fragrance_free": [
+        "true"
+      ],
+      "comedogenic_rating": [
+        "3"
+      ],
+      "product_type": [
+        "moisturiser"
+      ],
+      "texture": [
+        "cream"
+      ],
+      "pregnancy_safe": [
+        "true"
+      ],
+      "vegan": [
+        "false"
+      ],
+      "refillable": [
+        "false"
+      ]
+    },
+    "archetype": "moisturiser",
+    "best_for": [
+      "night_routine",
+      "air_conditioned_office",
+      "very_dry_skin"
+    ],
+    "not_for": [
+      "oily_skin_humid_climate",
+      "acne_prone",
+      "morning_routine_under_5min"
+    ],
+    "spec_level": "partial"
+  },
+  "clearfield-bha-toner": {
+    "category": "skincare.facial",
+    "title": "Clearfield Clarifying BHA 2% Toner",
+    "brand": "Clearfield",
+    "price": 34,
+    "numeric": {
+      "volume_ml": 100,
+      "routine_time_min": 1,
+      "ph": 3.6
+    },
+    "categorical": {
+      "skin_type": [
+        "oily",
+        "combination"
+      ],
+      "key_actives": [
+        "salicylic acid 2%"
+      ],
+      "fragrance_free": [
+        "true"
+      ],
+      "comedogenic_rating": [
+        "0"
+      ],
+      "product_type": [
+        "treatment"
+      ],
+      "texture": [
+        "liquid"
+      ],
+      "pregnancy_safe": [
+        "false"
+      ],
+      "vegan": [
+        "true"
+      ],
+      "refillable": [
+        "false"
+      ]
+    },
+    "archetype": "treatment",
+    "best_for": [
+      "maskne_prone",
+      "oily_skin_humid_climate",
+      "blackheads"
+    ],
+    "not_for": [
+      "pregnancy",
+      "sensitive_barrier_repair",
+      "dry_skin"
+    ],
+    "spec_level": "full"
+  },
+  "clearfield-aha-night": {
+    "category": "skincare.facial",
+    "title": "Clearfield Resurfacing AHA 8% Night Fluid",
+    "brand": "Clearfield",
+    "price": 44,
+    "numeric": {
+      "volume_ml": 30,
+      "routine_time_min": 2,
+      "ph": 3.8
+    },
+    "categorical": {
+      "skin_type": [
+        "normal",
+        "combination",
+        "oily"
+      ],
+      "key_actives": [
+        "glycolic acid 8%"
+      ],
+      "fragrance_free": [
+        "true"
+      ],
+      "comedogenic_rating": [
+        "1"
+      ],
+      "product_type": [
+        "treatment"
+      ],
+      "texture": [
+        "fluid"
+      ],
+      "pregnancy_safe": [
+        "true"
+      ],
+      "vegan": [
+        "true"
+      ],
+      "refillable": [
+        "false"
+      ]
+    },
+    "archetype": "treatment",
+    "best_for": [
+      "night_routine",
+      "texture_refining",
+      "hyperpigmentation"
+    ],
+    "not_for": [
+      "sensitive_barrier_repair",
+      "active_retinoid_use",
+      "dry_skin"
+    ],
+    "spec_level": "full"
+  },
+  "clearfield-foam-wash": {
+    "category": "skincare.facial",
+    "title": "Clearfield Deep Clean Foaming Wash",
+    "brand": "Clearfield",
+    "price": 26,
+    "numeric": {
+      "volume_ml": 200,
+      "routine_time_min": 1,
+      "ph": 5.0
+    },
+    "categorical": {
+      "skin_type": [
+        "oily"
+      ],
+      "key_actives": [
+        "salicylic acid 0.5%"
+      ],
+      "fragrance_free": [
+        "true"
+      ],
+      "comedogenic_rating": [
+        "0"
+      ],
+      "product_type": [
+        "cleanser"
+      ],
+      "texture": [
+        "foam"
+      ],
+      "pregnancy_safe": [
+        "false"
+      ],
+      "vegan": [
+        "true"
+      ],
+      "refillable": [
+        "false"
+      ]
+    },
+    "archetype": "cleanser",
+    "best_for": [
+      "oily_skin_humid_climate",
+      "maskne_prone",
+      "morning_routine_under_5min"
+    ],
+    "not_for": [
+      "dry_skin",
+      "sensitive_barrier_repair",
+      "pregnancy"
+    ],
+    "spec_level": "sparse"
+  },
+  "clearfield-spot-gel": {
+    "category": "skincare.facial",
+    "title": "Clearfield Targeted Spot Gel",
+    "brand": "Clearfield",
+    "price": 22,
+    "numeric": {
+      "volume_ml": 15,
+      "routine_time_min": 1,
+      "ph": 4.5
+    },
+    "categorical": {
+      "skin_type": [
+        "oily",
+        "combination"
+      ],
+      "key_actives": [
+        "benzoyl peroxide 2.5%"
+      ],
+      "fragrance_free": [
+        "true"
+      ],
+      "comedogenic_rating": [
+        "0"
+      ],
+      "product_type": [
+        "treatment"
+      ],
+      "texture": [
+        "gel"
+      ],
+      "pregnancy_safe": [
+        "true"
+      ],
+      "vegan": [
+        "true"
+      ],
+      "refillable": [
+        "false"
+      ]
+    },
+    "archetype": "treatment",
+    "best_for": [
+      "maskne_prone",
+      "travel_cabin_size",
+      "night_routine"
+    ],
+    "not_for": [
+      "dry_skin",
+      "sensitive_barrier_repair"
+    ],
+    "spec_level": "partial"
+  },
+  "clearfield-mattifying-spf": {
+    "category": "skincare.facial",
+    "title": "Clearfield Matte Shield SPF30",
+    "brand": "Clearfield",
+    "price": 32,
+    "numeric": {
+      "volume_ml": 40,
+      "routine_time_min": 1,
+      "ph": 6.2
+    },
+    "categorical": {
+      "skin_type": [
+        "oily",
+        "combination"
+      ],
+      "key_actives": [
+        "octocrylene",
+        "silica"
+      ],
+      "fragrance_free": [
+        "false"
+      ],
+      "comedogenic_rating": [
+        "2"
+      ],
+      "product_type": [
+        "sunscreen"
+      ],
+      "texture": [
+        "fluid"
+      ],
+      "spf": [
+        "30"
+      ],
+      "pregnancy_safe": [
+        "true"
+      ],
+      "vegan": [
+        "true"
+      ],
+      "refillable": [
+        "false"
+      ]
+    },
+    "archetype": "sunscreen",
+    "best_for": [
+      "oily_skin_humid_climate",
+      "morning_routine_under_5min",
+      "travel_cabin_size"
+    ],
+    "not_for": [
+      "fragrance_sensitivity",
+      "dry_skin",
+      "sensitive_barrier_repair"
+    ],
+    "spec_level": "sparse"
+  },
+  "petal-rosewater-mist": {
+    "category": "skincare.facial",
+    "title": "Petal Theory Rosewater Hydrating Mist",
+    "brand": "Petal Theory",
+    "price": 30,
+    "numeric": {
+      "volume_ml": 100,
+      "routine_time_min": 1,
+      "ph": 5.5
+    },
+    "categorical": {
+      "skin_type": [
+        "normal",
+        "dry",
+        "combination"
+      ],
+      "key_actives": [
+        "rose water",
+        "glycerin"
+      ],
+      "fragrance_free": [
+        "false"
+      ],
+      "comedogenic_rating": [
+        "1"
+      ],
+      "product_type": [
+        "treatment"
+      ],
+      "texture": [
+        "mist"
+      ],
+      "pregnancy_safe": [
+        "true"
+      ],
+      "vegan": [
+        "true"
+      ],
+      "refillable": [
+        "true"
+      ]
+    },
+    "archetype": "treatment",
+    "best_for": [
+      "air_conditioned_office",
+      "refillable_low_waste",
+      "morning_routine_under_5min"
+    ],
+    "not_for": [
+      "fragrance_sensitivity",
+      "acne_prone",
+      "strong_actives_seekers"
+    ],
+    "spec_level": "sparse"
+  },
+  "petal-bloom-oil": {
+    "category": "skincare.facial",
+    "title": "Petal Theory Bloom Facial Oil",
+    "brand": "Petal Theory",
+    "price": 58,
+    "numeric": {
+      "volume_ml": 30,
+      "routine_time_min": 2
+    },
+    "categorical": {
+      "skin_type": [
+        "dry",
+        "normal"
+      ],
+      "key_actives": [
+        "rosehip oil",
+        "vitamin E"
+      ],
+      "fragrance_free": [
+        "false"
+      ],
+      "comedogenic_rating": [
+        "3"
+      ],
+      "product_type": [
+        "treatment"
+      ],
+      "texture": [
+        "oil"
+      ],
+      "pregnancy_safe": [
+        "true"
+      ],
+      "vegan": [
+        "true"
+      ],
+      "refillable": [
+        "false"
+      ]
+    },
+    "archetype": "treatment",
+    "best_for": [
+      "night_routine",
+      "very_dry_skin",
+      "air_conditioned_office"
+    ],
+    "not_for": [
+      "oily_skin_humid_climate",
+      "acne_prone",
+      "fragrance_sensitivity"
+    ],
+    "spec_level": "sparse"
+  },
+  "petal-gentle-gel": {
+    "category": "skincare.facial",
+    "title": "Petal Theory Gentle Everyday Gel Cream",
+    "brand": "Petal Theory",
+    "price": 38,
+    "numeric": {
+      "volume_ml": 50,
+      "routine_time_min": 1,
+      "ph": 5.6
+    },
+    "categorical": {
+      "skin_type": [
+        "normal",
+        "combination",
+        "sensitive"
+      ],
+      "key_actives": [
+        "glycerin",
+        "panthenol 2%"
+      ],
+      "fragrance_free": [
+        "true"
+      ],
+      "comedogenic_rating": [
+        "1"
+      ],
+      "product_type": [
+        "moisturiser"
+      ],
+      "texture": [
+        "gel-cream"
+      ],
+      "pregnancy_safe": [
+        "true"
+      ],
+      "vegan": [
+        "true"
+      ],
+      "refillable": [
+        "true"
+      ]
+    },
+    "archetype": "moisturiser",
+    "best_for": [
+      "morning_routine_under_5min",
+      "layerable_under_spf",
+      "refillable_low_waste"
+    ],
+    "not_for": [
+      "very_dry_skin",
+      "strong_actives_seekers"
+    ],
+    "spec_level": "partial"
+  },
+  "fifth-vitc-serum": {
+    "category": "skincare.facial",
+    "title": "Fifth Element Stabilised Vitamin C 15% Serum",
+    "brand": "Fifth Element",
+    "price": 56,
+    "numeric": {
+      "volume_ml": 30,
+      "routine_time_min": 1,
+      "ph": 3.4
+    },
+    "categorical": {
+      "skin_type": [
+        "normal",
+        "combination",
+        "oily"
+      ],
+      "key_actives": [
+        "l-ascorbic acid 15%",
+        "ferulic acid"
+      ],
+      "fragrance_free": [
+        "true"
+      ],
+      "comedogenic_rating": [
+        "1"
+      ],
+      "product_type": [
+        "serum"
+      ],
+      "texture": [
+        "serum"
+      ],
+      "pregnancy_safe": [
+        "true"
+      ],
+      "vegan": [
+        "true"
+      ],
+      "refillable": [
+        "false"
+      ]
+    },
+    "archetype": "serum",
+    "best_for": [
+      "morning_routine_under_5min",
+      "hyperpigmentation",
+      "layerable_under_spf"
+    ],
+    "not_for": [
+      "sensitive_barrier_repair",
+      "active_retinoid_use"
+    ],
+    "spec_level": "full"
+  },
+  "fifth-peptide-eye": {
+    "category": "skincare.facial",
+    "title": "Fifth Element Peptide Eye Concentrate",
+    "brand": "Fifth Element",
+    "price": 52,
+    "numeric": {
+      "volume_ml": 15,
+      "routine_time_min": 1,
+      "ph": 5.8
+    },
+    "categorical": {
+      "skin_type": [
+        "normal",
+        "dry",
+        "sensitive",
+        "combination"
+      ],
+      "key_actives": [
+        "peptide complex 3%",
+        "caffeine 1%"
+      ],
+      "fragrance_free": [
+        "true"
+      ],
+      "comedogenic_rating": [
+        "1"
+      ],
+      "product_type": [
+        "treatment"
+      ],
+      "texture": [
+        "gel"
+      ],
+      "pregnancy_safe": [
+        "true"
+      ],
+      "vegan": [
+        "true"
+      ],
+      "refillable": [
+        "false"
+      ]
+    },
+    "archetype": "treatment",
+    "best_for": [
+      "morning_routine_under_5min",
+      "travel_cabin_size",
+      "fine_lines"
+    ],
+    "not_for": [
+      "strong_actives_seekers"
+    ],
+    "spec_level": "partial"
+  },
+  "fifth-refill-moisturiser": {
+    "category": "skincare.facial",
+    "title": "Fifth Element Everyday Moisturiser Refill System",
+    "brand": "Fifth Element",
+    "price": 44,
+    "numeric": {
+      "volume_ml": 75,
+      "routine_time_min": 1,
+      "ph": 5.5
+    },
+    "categorical": {
+      "skin_type": [
+        "normal",
+        "combination",
+        "dry"
+      ],
+      "key_actives": [
+        "glycerin",
+        "squalane",
+        "ceramide NP"
+      ],
+      "fragrance_free": [
+        "true"
+      ],
+      "comedogenic_rating": [
+        "2"
+      ],
+      "product_type": [
+        "moisturiser"
+      ],
+      "texture": [
+        "lotion"
+      ],
+      "pregnancy_safe": [
+        "true"
+      ],
+      "vegan": [
+        "true"
+      ],
+      "refillable": [
+        "true"
+      ]
+    },
+    "archetype": "moisturiser",
+    "best_for": [
+      "refillable_low_waste",
+      "air_conditioned_office",
+      "morning_routine_under_5min"
+    ],
+    "not_for": [
+      "oily_skin_humid_climate",
+      "strong_actives_seekers"
+    ],
+    "spec_level": "full"
+  }
+}
