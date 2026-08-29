@@ -323,13 +323,15 @@ def generate_agent_content(product: dict, cluster_name: str, persona: dict, user
     result = call_llm_json(AGENT_CONTENT_SYSTEM_PROMPT, prompt, temperature=0.4)
     if not isinstance(result, dict):
         result = {}
-    result.setdefault("personas", [])
-    result.setdefault("not_for", [])
-    result.setdefault("use_cases", [])
-    result.setdefault("comparisons", [])
-    result.setdefault("narrative", {})
-    result.setdefault("field_sources", [])
-    result.setdefault("unsupported_claims", [])
+    # Coerce, don't just default-if-missing: the model can return a key with an
+    # explicit null value, which .setdefault() would not catch.
+    result["personas"] = result.get("personas") or []
+    result["not_for"] = result.get("not_for") or []
+    result["use_cases"] = result.get("use_cases") or []
+    result["comparisons"] = result.get("comparisons") or []
+    result["narrative"] = result.get("narrative") or {}
+    result["field_sources"] = result.get("field_sources") or []
+    result["unsupported_claims"] = result.get("unsupported_claims") or []
     return result
 
 

@@ -85,7 +85,7 @@ with tab1:
                 "name": p.get("name", ""),
                 "price": p.get("price", ""),
                 "description": p.get("description", ""),
-                "specs": ", ".join(f"{k}: {v}" for k, v in p.get("specs", {}).items()),
+                "specs": ", ".join(f"{k}: {v}" for k, v in (p.get("specs") or {}).items()),
             }
             for p in st.session_state["products"]
         ])
