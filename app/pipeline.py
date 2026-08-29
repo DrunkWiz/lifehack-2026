@@ -246,14 +246,23 @@ CONTENT_SYSTEM_PROMPT = """You write agent-optimized product content: copy meant
 cited by AI shopping assistants answering a specific natural-language buyer intent, NOT
 traditional SEO/marketing copy.
 
-Ground every claim in the product's actual name/description/specs given to you. Never invent
-numbers, ratings, or specs that were not provided.
+Ground every claim in the target product data and peer-product context given to you. You may
+derive useful suitability or limitation claims from those facts, but make the reasoning explicit
+(for example, low weight + high ventilation -> suited to hot-weather training). Never invent
+numbers, ratings, specs, or comparisons. A comparison is allowed only when the relevant target
+and peer values are present; name the attribute or scope that proves it. Treat the supplied peers
+as the comparison set, not the whole market. Do not call something "best" or "better" without
+evidence.
 
 Write, in this order, as plain text with clear line breaks (no markdown headers):
-1. A 2-3 sentence semantic passage answering the persona's need directly, referencing only
-   real attributes given.
+1. A 2-3 sentence semantic passage answering the persona's need directly. Include a grounded
+   derived suitability claim and, when peer data supports it, one concrete cluster-relative
+   comparison.
 2. "Best for:" one line naming the scenario/persona this product suits.
-3. One short FAQ-style Q&A addressing a likely objection or follow-up question for this persona.
+3. "Not for:" one line naming a limitation that follows from the supplied data. If no limitation
+   can be supported, say "Not for: No specific limitation established by the available data."
+4. Three short FAQ-style Q&As covering different query angles such as fit/use case, conditions,
+   price/value, durability, or comparison. Only cover angles supported by the supplied data.
 
 Keep it concise, concrete, and free of generic marketing fluff ("premium quality", "amazing")."""
 
@@ -271,13 +280,36 @@ def _generation_attributes(product: dict) -> dict:
     return product.get("specs") or {}
 
 
-def generate_product_content(product: dict, cluster_name: str, persona: dict, user_story: str) -> str:
+def _peer_context(product: dict, cluster_products: list[dict] | None) -> list[dict]:
+    """Return compact, verified records for other products in the target's cluster."""
+    peers = []
+    target_name = _s(product.get("name"), "Unnamed product")
+    for peer in cluster_products or []:
+        peer_name = _s(peer.get("name"), "Unnamed product")
+        if peer is product or peer_name == target_name:
+            continue
+        record = {
+            "name": peer_name,
+            "price": _s(peer.get("price"), "N/A"),
+            "verified_attributes": _generation_attributes(peer),
+        }
+        # Empty peer records cannot substantiate a comparison and only waste context.
+        if record["price"] != "N/A" or record["verified_attributes"]:
+            peers.append(record)
+    return peers
+
+
+def generate_product_content(product: dict, cluster_name: str, persona: dict, user_story: str,
+                             cluster_products: list[dict] | None = None) -> str:
+    peers = _peer_context(product, cluster_products)
     prompt = (
         f"Product: {_s(product.get('name'), 'Unnamed product')}\n"
         f"Price: {_s(product.get('price'), 'N/A')}\n"
         f"Description on file: {_s(product.get('description'))}\n"
         f"Verified attributes: {_generation_attributes(product)}\n\n"
         f"Cluster/category: {cluster_name}\n"
+        f"Other products in this cluster (the complete permitted comparison set): {peers}\n"
+        f"Comparison-set size: {len(peers) + 1} products including the target\n"
         f"Target persona: {persona['title']} — {persona.get('narrative_seed','')}\n"
         f"User story: {user_story}"
     )

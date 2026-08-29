@@ -9,6 +9,7 @@ from normalization import normalize_cluster
 from fit import generate_fit_criteria, evaluate_fit
 import gaps
 import export
+from ui import RunLog
 from retrieval import (
     build_index,
     product_to_raw_text,
@@ -65,25 +66,30 @@ with tab1:
     uploaded_file = st.file_uploader("Upload catalog (PDF, CSV, XLSX, or JSON)", type=["pdf", "csv", "xlsx", "xls", "json"])
 
     if uploaded_file is not None and st.button("Extract products", type="primary"):
-        progress_bar = st.progress(0.0, text="Starting extraction...")
+        log = RunLog(f"Extracting from {uploaded_file.name}")
+        log.step(0.02, f"Reading {uploaded_file.name}")
 
         def progress_cb(done, total, mode):
-            progress_bar.progress(done / total, text=f"Page {done}/{total} (using {mode} extraction)...")
+            reason = "image-only page, reading it visually" if mode == "vision" else "selectable text"
+            log.step(done / total, f"Page {done}/{total} — {reason}")
 
-        with st.spinner("Extracting products..."):
-            try:
-                if uploaded_file.name.lower().endswith(".pdf"):
-                    products = load_catalog_file(uploaded_file, progress_callback=progress_cb)
-                else:
-                    products = load_catalog_file(uploaded_file)
-                st.session_state["products"] = products
-                # reset downstream state since catalog changed
-                st.session_state["clusters"] = None
-                st.session_state["cluster_data"] = {}
-                st.session_state["analysis_done"] = False
-                progress_bar.progress(1.0, text="Done.")
-            except Exception as e:
-                st.error(f"Extraction failed: {e}")
+        try:
+            if uploaded_file.name.lower().endswith(".pdf"):
+                products = load_catalog_file(uploaded_file, progress_callback=progress_cb)
+            else:
+                products = load_catalog_file(uploaded_file)
+            st.session_state["products"] = products
+            st.session_state["clusters"] = None
+            st.session_state["cluster_data"] = {}
+            st.session_state["analysis_done"] = False
+            modes = {}
+            for p in products:
+                m = p.get("extraction_mode", "table")
+                modes[m] = modes.get(m, 0) + 1
+            log.note(f"Found {len(products)} products ({', '.join(f'{v} via {k}' for k, v in modes.items())})")
+            log.done(f"Extracted {len(products)} products")
+        except Exception as e:
+            log.fail(str(e))
 
     if st.session_state["products"]:
         st.subheader("Extracted products — review & edit before analysis")
@@ -133,35 +139,60 @@ with tab1:
                 })
             st.session_state["products"] = rebuilt
 
-            with st.spinner("Clustering products by similarity..."):
-                clusters = cluster_products(rebuilt)
-                st.session_state["clusters"] = clusters
+            log = RunLog(f"Analyzing {len(rebuilt)} products")
+            log.step(0.03, f"Clustering {len(rebuilt)} products by similarity")
+            clusters = cluster_products(rebuilt)
+            st.session_state["clusters"] = clusters
+            log.note(f"Found {len(clusters)} clusters: " +
+                     ", ".join(f"{c['cluster_name']} ({len(c['product_indices'])})" for c in clusters))
 
             cluster_data = {}
-            norm_bar = st.progress(0.0, text="Building structured knowledge layer...")
-            with st.spinner("Normalizing attributes, analyzing gaps, generating personas..."):
-                for c_idx, c in enumerate(clusters):
+            SPAN, BASE = 0.92, 0.05
+            for c_idx, c in enumerate(clusters):
                     name = c["cluster_name"]
                     members = [rebuilt[i] for i in c["product_indices"] if i < len(rebuilt)]
+                    slot = SPAN / max(len(clusters), 1)
+                    start = BASE + c_idx * slot
+                    log.step(start, f"[{name}] inferring attribute schema")
 
-                    def _norm_progress(done, total_batches, cluster_name, _c=c_idx):
-                        frac = (_c + (done / max(total_batches, 1))) / max(len(clusters), 1)
-                        norm_bar.progress(min(frac, 1.0), text=f"Normalizing {cluster_name}...")
+                    def _norm_progress(done, total_batches, cluster_name, _s=start, _sl=slot):
+                        log.step(_s + _sl * 0.15 + (_sl * 0.45) * (done / max(total_batches, 1)),
+                                 f"[{cluster_name}] normalizing batch {done + 1}/{total_batches}")
 
                     norm_stats = normalize_cluster(name, members, progress=_norm_progress)
+                    if norm_stats["schema"]:
+                        log.note(f"[{name}] schema: {', '.join(norm_stats['schema'])}")
+                        log.note(f"[{name}] normalized {norm_stats['normalized_count']}/{norm_stats['total']}"
+                                 + (f", dropped {norm_stats['rejected_values']} unverifiable value(s)"
+                                    if norm_stats["rejected_values"] else "")
+                                 + (f", {norm_stats['failed_batches']} batch(es) failed - raw specs kept"
+                                    if norm_stats["failed_batches"] else ""))
+                    else:
+                        log.note(f"[{name}] normalization skipped - falling back to raw specs")
 
                     # The inferred schema IS the expected-attribute list. If normalization
                     # was skipped, fall back to asking for expected attributes the old way.
                     expected_attrs = norm_stats["schema"] or determine_expected_attributes(name, members)
                     avg_completeness, per_product, missing_counts = attribute_completeness(members, expected_attrs)
+                    log.note(f"[{name}] attribute completeness {avg_completeness}%")
+
+                    log.step(start + slot * 0.65, f"[{name}] generating persona candidates")
                     personas = suggest_personas(name, expected_attrs, per_product)
 
                     # Turn each persona's stated need into machine-checkable criteria, then
                     # evaluate every product in plain Python. Splits the old single rating
                     # into coverage (a content problem) and fit (a merchandising one).
-                    for persona in personas:
+                    for p_idx, persona in enumerate(personas):
+                        log.step(start + slot * (0.75 + 0.2 * (p_idx / max(len(personas), 1))),
+                                 f"[{name}] fit criteria for '{persona.get('title','?')}'")
                         criteria = generate_fit_criteria(persona, expected_attrs, members)
                         persona["fit"] = evaluate_fit(criteria, members) if criteria else None
+                        if persona["fit"]:
+                            pf = persona["fit"]
+                            log.note(f"[{name}] '{persona.get('title','?')}' - coverage {pf['coverage_pct']}%, "
+                                     f"fit {pf['fit_pct']}% ({pf['qualifying']}/{pf['total']} qualify)")
+                        else:
+                            log.note(f"[{name}] '{persona.get('title','?')}' - no criteria generated")
 
                     cluster_data[name] = {
                         "product_indices": c["product_indices"],
@@ -176,9 +207,9 @@ with tab1:
                         "user_story": None,
                         "content": {},
                     }
-            norm_bar.progress(1.0, text="Done.")
             st.session_state["cluster_data"] = cluster_data
             st.session_state["analysis_done"] = True
+            log.done(f"Analyzed {len(rebuilt)} products across {len(clusters)} clusters")
             st.success("Analysis complete — see the Dashboard and Personas tabs.")
 
 # ---------------------------------------------------------------------------
@@ -324,19 +355,21 @@ with tab_ask:
                 icon="⚖️",
             )
             if st.button(f"Generate content for the remaining {total - covered} products"):
-                bar = st.progress(0.0, text="Starting...")
+                log = RunLog(f"Generating content for {total - covered} products")
 
                 def _progress(done, total_clusters, cluster_name):
-                    bar.progress(done / max(total_clusters, 1),
-                                 text=f"Cluster {done + 1}/{total_clusters}: {cluster_name}")
+                    log.step(done / max(total_clusters, 1),
+                             f"Cluster {done + 1}/{total_clusters} — {cluster_name}")
 
                 try:
                     _generate_all(cd, progress=_progress)
-                    bar.progress(1.0, text="Done.")
+                    now_covered, now_total = _coverage(cd)
+                    log.note(f"Coverage now {now_covered}/{now_total} products")
+                    log.done(f"Generated content — {now_covered}/{now_total} products covered")
                     st.session_state["index_signature"] = None   # force a rebuild
                     st.rerun()
                 except Exception as e:
-                    st.error(f"Generation failed: {e}")
+                    log.fail(str(e))
         elif has_content:
             st.caption(f"Comparing all {total} products in the catalog.")
 
@@ -358,24 +391,34 @@ with tab_ask:
             if not query:
                 st.error("Enter a question first.")
             else:
-                signature = _content_signature(cd)
-                if signature != st.session_state["index_signature"]:
-                    with st.spinner("Indexing catalog (original + generated content)..."):
+                log = RunLog("Running query")
+                try:
+                    signature = _content_signature(cd)
+                    if signature != st.session_state["index_signature"]:
+                        log.step(0.1, "Embedding the catalog twice (original + generated content)")
                         raw_index, optimized_index = _build_indexes(cd)
                         st.session_state["raw_index"] = raw_index
                         st.session_state["optimized_index"] = optimized_index
                         st.session_state["index_signature"] = signature
+                        log.note(f"Indexed {len(raw_index['entries'])} products on each side")
+                    else:
+                        log.step(0.1, "Reusing cached embeddings — catalog unchanged")
 
-                with st.spinner("Retrieving and ranking..."):
-                    try:
-                        st.session_state["query_result"] = run_query(
-                            st.session_state["raw_index"],
-                            st.session_state["optimized_index"],
-                            query,
-                        )
-                    except Exception as e:
-                        st.error(f"Query failed: {e}")
-                        st.session_state["query_result"] = None
+                    log.step(0.35, "Embedding the query")
+                    log.step(0.5, "Searching both indexes and ranking with citations")
+                    result = run_query(
+                        st.session_state["raw_index"],
+                        st.session_state["optimized_index"],
+                        query,
+                    )
+                    st.session_state["query_result"] = result
+                    moved = [m for m in result["movement"] if m["before"] != m["after"]]
+                    log.note(f"{len(result['raw'])} hits before, {len(result['optimized'])} after; "
+                             f"{len(moved)} product(s) changed rank")
+                    log.done("Query complete")
+                except Exception as e:
+                    st.session_state["query_result"] = None
+                    log.fail(str(e))
 
         result = st.session_state.get("query_result")
         if result:
@@ -419,6 +462,45 @@ with tab2:
 
         st.metric("Overall Catalog Readiness Score", f"{overall}%",
                    help="30% attribute completeness + 70% rating of the selected persona, averaged across clusters.")
+
+        st.divider()
+        head = gaps.headline(cd)
+        st.subheader("What your catalog can't answer")
+        st.caption(
+            "Generated content is grounded in verified attributes, so it can never invent a value "
+            "nobody supplied. For genuinely missing data the fix isn't better copy — it's this list, "
+            "handed to whoever owns the product data."
+        )
+        if head["attributes_needed"] == 0:
+            st.success("Nothing missing — every product carries its full category schema.")
+        else:
+            worst = head["worst"]
+            st.markdown(
+                f"**{head['attributes_needed']} attributes** need supplying across "
+                f"**{head['products_affected']} of {head['total_products']} products**. "
+                f"Biggest single gap: `{worst['attribute']}`, missing on "
+                f"{worst['missing_count']}/{worst['total_products']} in {worst['cluster']}."
+            )
+            attr_rows = gaps.attribute_requests(cd)
+            prod_rows = gaps.product_requests(cd)
+            st.dataframe(
+                pd.DataFrame(attr_rows)[["cluster", "attribute", "missing_count",
+                                          "missing_pct", "needed_because"]],
+                use_container_width=True, hide_index=True,
+            )
+            d1, d2 = st.columns(2)
+            with d1:
+                st.download_button(
+                    "Download data request (by attribute)",
+                    pd.DataFrame(attr_rows).to_csv(index=False),
+                    file_name="data_request_by_attribute.csv", mime="text/csv",
+                )
+            with d2:
+                st.download_button(
+                    "Download data request (by product)",
+                    pd.DataFrame(prod_rows).to_csv(index=False),
+                    file_name="data_request_by_product.csv", mime="text/csv",
+                )
 
         st.divider()
         st.subheader("Per-cluster breakdown")
@@ -551,20 +633,27 @@ with tab3:
                 st.write(f"**Still missing:** {', '.join(chosen_persona.get('missing_attributes', [])) or 'none'}")
 
             if st.button(f"Generate story & content for '{name}'", key=f"generate_{name}", type="primary"):
-                with st.spinner("Generating user story..."):
+                log = RunLog(f"Writing content for {name}")
+                try:
+                    log.step(0.05, f"Writing the user story for '{chosen_persona['title']}'")
                     story = generate_user_story(name, chosen_persona)
-                data["selected_persona"] = chosen_persona
-                data["user_story"] = story
+                    data["selected_persona"] = chosen_persona
+                    data["user_story"] = story
+                    log.note(f"Story: {story}")
 
-                with st.spinner(f"Generating content for {len(data['members'])} products..."):
                     content_map = {}
-                    for product in data["members"]:
-                        content_map[product["name"]] = generate_product_content(
-                            product, name, chosen_persona, story
-                        )
+                    total = len(data["members"])
+                    for i, product in enumerate(data["members"]):
+                        pname = str(product.get("name", "Unnamed product"))
+                        grounded = "verified attributes" if product.get("specs_normalized") else "raw specs"
+                        log.step(0.1 + 0.9 * (i / max(total, 1)),
+                                 f"{i + 1}/{total} — {pname} (from {grounded})")
+                        content_map[pname] = generate_product_content(product, name, chosen_persona, story)
                     data["content"] = content_map
-
-                st.success("Story + content generated — see the Generated Content tab.")
+                    log.done(f"Wrote content for {total} products in {name}")
+                    st.success("Story + content generated — see the Generated Content tab.")
+                except Exception as e:
+                    log.fail(str(e))
 
             if data["user_story"]:
                 st.markdown(f"**Current user story:** _{data['user_story']}_")
@@ -584,6 +673,38 @@ with tab4:
         if not any_content:
             st.info("No content generated yet — pick a persona and click Generate in the Personas tab.")
         else:
+            st.subheader("Export")
+            st.caption(
+                "Three formats. JSON-LD is the one to point a brand at — schema.org `Product` markup "
+                "drops straight into a product page, so the verified attributes become machine-readable "
+                "at the source instead of living in this app."
+            )
+            detected = export.detect_currency(cd)
+            currency = st.text_input(
+                "Currency code for JSON-LD offers",
+                value=detected or "SGD",
+                help="Detected from your price strings where possible; schema.org Offer needs an "
+                     "ISO code, which most catalog exports don't carry.",
+            ).strip().upper() or None
+
+            e1, e2, e3 = st.columns(3)
+            with e1:
+                st.download_button("CSV", export.to_csv(cd),
+                                   file_name="agent_optimized_catalog.csv", mime="text/csv")
+            with e2:
+                st.download_button("JSON", export.to_json(cd),
+                                   file_name="agent_optimized_catalog.json", mime="application/json")
+            with e3:
+                st.download_button("schema.org JSON-LD", export.to_jsonld(cd, currency),
+                                   file_name="agent_optimized_catalog.jsonld",
+                                   mime="application/ld+json")
+
+            with st.expander("Preview the JSON-LD for one product"):
+                st.code(json.dumps(
+                    json.loads(export.to_jsonld(cd, currency))["@graph"][0], indent=2
+                ), language="json")
+
+            st.divider()
             for name, data in cd.items():
                 if not data["content"]:
                     continue

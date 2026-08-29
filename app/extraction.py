@@ -154,7 +154,7 @@ def extract_products_from_table(df: pd.DataFrame) -> list[dict]:
 
         products.append({
             "name": str(name) if name is not None else "Unnamed product",
-            "price": str(price) if price is not None else None,
+            "price": price,
             "description": str(desc) if desc else "",
             "specs": {str(k): str(v) for k, v in specs.items()},
             "image_description": None,
@@ -284,6 +284,13 @@ def extract_products_from_json(uploaded_file) -> list[dict]:
 
 def load_catalog_file(uploaded_file, progress_callback=None) -> list[dict]:
     """Dispatch based on file extension. Returns a flat list of raw product dicts."""
+    # Streamlit keeps the SAME UploadedFile object across reruns, and every reader below
+    # consumes the stream. Without this rewind, a second click of Extract reads zero bytes -
+    # PDFs raise "No /Root object! - Is this really a PDF?" and CSVs raise EmptyDataError.
+    try:
+        uploaded_file.seek(0)
+    except (AttributeError, OSError):
+        pass
     name = uploaded_file.name.lower()
     if name.endswith(".pdf"):
         pdf_bytes = uploaded_file.read()
