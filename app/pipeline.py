@@ -258,12 +258,25 @@ Write, in this order, as plain text with clear line breaks (no markdown headers)
 Keep it concise, concrete, and free of generic marketing fluff ("premium quality", "amazing")."""
 
 
+def _generation_attributes(product: dict) -> dict:
+    """Prefer the normalized knowledge layer over raw catalog fields.
+
+    Raw specs on a real export are mostly noise - Handle, Published, Variant SKU, Image Src,
+    SEO Title - plus whatever delimited blob the brand's attributes were buried in. Feeding
+    that to the writer produces vaguer copy and invites it to treat junk as a product fact.
+    Normalized attributes are clean, verified against the source, and consistently named."""
+    normalized = product.get("specs_normalized") or {}
+    if normalized:
+        return {k: v for k, v in normalized.items() if v is not None and _s(v).strip()}
+    return product.get("specs") or {}
+
+
 def generate_product_content(product: dict, cluster_name: str, persona: dict, user_story: str) -> str:
     prompt = (
         f"Product: {_s(product.get('name'), 'Unnamed product')}\n"
         f"Price: {_s(product.get('price'), 'N/A')}\n"
         f"Description on file: {_s(product.get('description'))}\n"
-        f"Specs on file: {product.get('specs') or {}}\n\n"
+        f"Verified attributes: {_generation_attributes(product)}\n\n"
         f"Cluster/category: {cluster_name}\n"
         f"Target persona: {persona['title']} — {persona.get('narrative_seed','')}\n"
         f"User story: {user_story}"

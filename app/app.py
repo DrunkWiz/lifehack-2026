@@ -7,6 +7,8 @@ import pandas as pd
 from extraction import load_catalog_file
 from normalization import normalize_cluster
 from fit import generate_fit_criteria, evaluate_fit
+import gaps
+import export
 from retrieval import (
     build_index,
     product_to_raw_text,
