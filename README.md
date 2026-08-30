@@ -4,7 +4,7 @@
 
 ### 🔗 Live demo: **https://agentshopper.streamlit.app/**
 
-**Challenge:** LifeHack 2026 — Rezolve AI
+**Challenge:** Consumerism (LifeHack 2026: Rezolve AI)
 
 ---
 
@@ -12,7 +12,7 @@
 
 - **Nathan Quek** — Engineering, AI Reasoning, Algo Checker
 - **Vibu Vignesh** — Full-Stack Development, UI/UX Engineering, Architecture
-- **Mingyu** — Data Pipeline, Product Strategy
+- **Ng Ming Yu** — Data Pipeline, Product Strategy
 
 ---
 
