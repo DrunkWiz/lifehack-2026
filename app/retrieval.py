@@ -145,6 +145,10 @@ Rules:
 - Use only these operators: eq, contains, exists, lt, lte, gt, gte.
 - Subjective words without a threshold, such as "lightweight", are relative preferences rather
   than binary pass/fail constraints.
+- "Excellent support" does not mean "stability support" or "stability shoes". Only produce a
+  categorical value such as stability when that value is explicitly present in the request.
+- Never invent a numeric boundary for qualitative terms such as "low drop". If the shopper did
+  not state a number, preserve it as a relative preference and note the ambiguity.
 - Derived needs must state what explicit task/context they came from. For example, humid weather
   can imply a need for ventilation. Keep them separate from the shopper's explicit constraints.
 - Do not add product claims.
@@ -179,7 +183,72 @@ def parse_shopper_intent(query: str, available_attributes: dict[str, list[str]])
                                if isinstance(result.get("derived_needs"), list) else [])
     result["ambiguities"] = (result.get("ambiguities")
                              if isinstance(result.get("ambiguities"), list) else [])
+    result["constraints"] = _sanitize_constraints(result["constraints"], query, result["ambiguities"])
     return result
+
+
+def _sanitize_constraints(constraints: list[dict], query: str, ambiguities: list[str]) -> list[dict]:
+    """Remove invented precision and semantic duplicates from model-parsed constraints."""
+    query_lower = query.lower()
+    clean = []
+    seen = set()
+    for raw in constraints:
+        if not isinstance(raw, dict):
+            continue
+        item = dict(raw)
+        operator = _s(item.get("operator"), "eq").lower()
+        value = item.get("value")
+        value_text = _s(value).strip().lower()
+        numeric_value = value is not None and re.fullmatch(r"-?\d+(?:\.\d+)?", value_text)
+
+        # A model-selected category (for example stability) must be named by the shopper.
+        if operator in {"eq", "contains"} and value_text and not numeric_value \
+                and value_text not in query_lower:
+            item.update({"operator": "exists", "value": None, "unit": None,
+                         "strength": "preference"})
+            attribute_label = _s(item.get("normalized_attribute"), "product attribute").replace("_", " ")
+            item["requirement"] = f"preferred {attribute_label}"
+            ambiguities.append(
+                f"'{value_text}' was not explicitly requested, so it was not used as a hard constraint."
+            )
+
+        # Numeric comparison boundaries must appear literally in the shopper's request.
+        if operator in {"lt", "lte", "gt", "gte"} and numeric_value \
+                and not re.search(rf"(?<!\d){re.escape(value_text)}(?!\d)", query_lower):
+            item.update({"operator": "exists", "value": None, "unit": None,
+                         "strength": "preference"})
+            ambiguities.append(
+                f"No numeric threshold was supplied for '{_s(item.get('requirement'))}', so it is ranked relatively."
+            )
+
+        # `exists` can prove only that an attribute is present. It cannot prove an
+        # unquantified quality such as low, lightweight, excellent, or extra.
+        item_text = " ".join([
+            _s(item.get("requirement")), _s(item.get("source_text")), value_text
+        ]).lower()
+        relative_terms = {
+            "low", "lower", "high", "higher", "light", "lighter", "lightweight",
+            "heavy", "heavier", "excellent", "good", "better", "best", "extra",
+            "strong", "stronger", "fast", "faster", "affordable", "budget",
+        }
+        has_relative_term = any(
+            re.search(rf"\b{re.escape(term)}\b", item_text) for term in relative_terms
+        )
+        if _s(item.get("operator"), operator).lower() == "exists" \
+                and item.get("strength") == "hard" and has_relative_term:
+            item["strength"] = "preference"
+            ambiguities.append(
+                f"'{_s(item.get('requirement'))}' has no objective threshold, so it is ranked relatively."
+            )
+
+        key = (
+            _s(item.get("normalized_attribute")).lower(), _s(item.get("operator")).lower(),
+            _s(item.get("value")).lower(), _s(item.get("strength")).lower(),
+        )
+        if key not in seen:
+            seen.add(key)
+            clean.append(item)
+    return clean
 
 
 def _number(value) -> float | None:
@@ -195,7 +264,7 @@ def _number(value) -> float | None:
 
 
 def _constraint_check(constraint: dict, attributes: dict) -> dict:
-    requirement = _s(constraint.get("source_text") or constraint.get("requirement"), "Requirement")
+    requirement = _s(constraint.get("requirement") or constraint.get("source_text"), "Requirement")
     attribute_name = _s(constraint.get("normalized_attribute"))
     operator = _s(constraint.get("operator"), "eq").lower()
     operator = {"=": "eq", "==": "eq", "<": "lt", "<=": "lte",
@@ -265,6 +334,37 @@ def _same_requirement(left: str, right: str) -> bool:
                            if len(token) > 2 and token not in stopwords}
     return bool(tokens(left) & tokens(right))
 
+
+def _task_context_evidence_gaps(query: str, hit: dict) -> list[str]:
+    """Deterministic guardrails for common task/context claims the reranker may overstate."""
+    query_text = query.lower()
+    product_text = (
+        json.dumps(hit.get("attributes") or {}, ensure_ascii=False) + " " + _s(hit.get("text"))
+    ).lower()
+    gaps = []
+
+    climate_request = any(term in query_text for term in (
+        "humid", "humidity", "hot weather", "warm weather", "tropical", "heat"
+    ))
+    climate_evidence = any(term in product_text for term in (
+        "ventilation", "ventilated", "breathable", "breathability", "airflow",
+        "moisture wicking", "moisture-wicking", "quick dry", "quick-dry"
+    ))
+    if climate_request and not climate_evidence:
+        gaps.append("suitability for the requested hot or humid conditions")
+
+    endurance_request = any(term in query_text for term in (
+        "half marathon", "marathon", "long-distance", "long distance", "distance race"
+    ))
+    endurance_evidence = any(term in product_text for term in (
+        "half marathon", "marathon", "long-distance", "long distance", "endurance",
+        "distance running", "racing shoe", "racing shoes", "tempo running", "tempo shoe",
+        "tempo"
+    ))
+    if endurance_request and not endurance_evidence:
+        gaps.append("suitability for the requested distance-running task")
+    return gaps
+
 RERANK_SYSTEM_PROMPT = """You are the recommendation step of an AI shopping assistant.
 A shopper request has already been decomposed into an authoritative intent structure. You are
 given candidate products and, for each, the ONLY content available about it.
@@ -330,6 +430,13 @@ def rerank(query: str, intent: dict, hits: list[dict], limit: int = TOP_K) -> li
     # Hard constraints are a gate. Generated prose and model judgment cannot override it.
     hits = eligible if eligible else evaluated
 
+    # Task and context evidence must shape the candidate pool before the model selects
+    # its top results. Applying this only afterwards lets cheap/light but unsuitable
+    # products consume the highest-ranked slots.
+    context_eligible = [hit for hit in hits if not _task_context_evidence_gaps(query, hit)]
+    if context_eligible:
+        hits = context_eligible
+
     candidates = "\n\n".join(
         f"[candidate_id: {candidate_id}]\nName: {h['name']}\n"
         f"Verified hard-constraint checks: {json.dumps(h.get('constraint_checks', []), ensure_ascii=False)}\n"
@@ -381,6 +488,14 @@ def rerank(query: str, intent: dict, hits: list[dict], limit: int = TOP_K) -> li
             hit["failed_requirements"] = list(dict.fromkeys(
                 hit["failed_requirements"] + failed))
             hit["unanswered"] = list(dict.fromkeys(hit["unanswered"] + unknown))
+        evidence_gaps = _task_context_evidence_gaps(query, hit)
+        if evidence_gaps:
+            hit["recommend"] = False
+            hit["unanswered"] = list(dict.fromkeys(hit["unanswered"] + evidence_gaps))
+            hit["reason"] = (
+                "Not recommended because the available content does not establish "
+                + " or ".join(evidence_gaps) + "."
+            )
         ordered.append(hit)
         if len(ordered) >= limit:
             break
@@ -398,6 +513,9 @@ def rerank(query: str, intent: dict, hits: list[dict], limit: int = TOP_K) -> li
                 "unanswered": [],
             })
             ordered.append(extra)
+    ordered.sort(key=lambda hit: not hit.get("recommend", False))
+    for position, hit in enumerate(ordered, 1):
+        hit["final_rank"] = position
     return ordered
 
 

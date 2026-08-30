@@ -18,6 +18,7 @@ from retrieval import (
     run_query,
 )
 from pipeline import (
+    AGENT_CONTENT_SCHEMA_VERSION,
     cluster_products,
     determine_expected_attributes,
     attribute_completeness,
@@ -73,8 +74,65 @@ DEMO_CATALOGS = {
 }
 
 
+def _source_product_id(product: dict) -> str:
+    candidates = {str(k).strip().lower(): v for k, v in (product.get("specs") or {}).items()}
+    for key in ("variant sku", "sku", "handle", "product id", "id"):
+        value = str(candidates.get(key) or "").strip()
+        if value:
+            return value
+    return ""
+
+
+def _ensure_product_ids(products: list[dict]) -> None:
+    """Attach a session-stable, unique identifier without relying on display names."""
+    used = set()
+    for position, product in enumerate(products):
+        existing = str(product.get("product_id") or _source_product_id(product)).strip()
+        base = existing or hashlib.sha256(
+            f"{position}|{product.get('name')}|{product.get('description')}".encode("utf-8")
+        ).hexdigest()[:16]
+        product_id = base
+        suffix = 2
+        while product_id in used:
+            product_id = f"{base}-{suffix}"
+            suffix += 1
+        product["product_id"] = product_id
+        used.add(product_id)
+
+
+def _migrate_session_ids() -> None:
+    """Keep an active pre-upgrade Streamlit session usable after switching map keys."""
+    products = st.session_state.get("products") or []
+    _ensure_product_ids(products)
+    for data in (st.session_state.get("cluster_data") or {}).values():
+        members = data.get("members") or []
+        _ensure_product_ids(members)
+        name_to_ids = {}
+        for product in members:
+            name_to_ids.setdefault(str(product.get("name") or "Unnamed product"), []).append(
+                str(product["product_id"])
+            )
+        for field in ("content", "agent_content"):
+            old = data.get(field) or {}
+            if old and not all(key in {str(p["product_id"]) for p in members} for key in old):
+                migrated = {}
+                for key, value in old.items():
+                    ids = name_to_ids.get(str(key), [])
+                    if len(ids) == 1:
+                        migrated[ids[0]] = value
+                data[field] = migrated
+        per_product = data.get("per_product") or []
+        for position, record in enumerate(per_product):
+            if not record.get("product_id") and position < len(members):
+                record["product_id"] = str(members[position]["product_id"])
+
+
+_migrate_session_ids()
+
+
 def _set_extracted_products(products: list[dict]) -> None:
     """Install a newly loaded catalog and clear results belonging to the previous one."""
+    _ensure_product_ids(products)
     st.session_state["products"] = products
     st.session_state["clusters"] = None
     st.session_state["cluster_data"] = {}
@@ -107,7 +165,7 @@ with tab1:
             with st.container(border=True):
                 st.markdown(f"**{demo_name}**")
                 st.caption("20 products · Shopify CSV")
-                if st.button(f"Load {demo_name} demo", key=f"demo_{demo_name}", use_container_width=True):
+                if st.button(f"Load {demo_name} demo", key=f"demo_{demo_name}", width="stretch"):
                     log = RunLog(f"Loading {demo_name} demo")
                     try:
                         with demo_path.open("rb") as demo_file:
@@ -153,6 +211,7 @@ with tab1:
 
         df = pd.DataFrame([
             {
+                "product_id": p.get("product_id", ""),
                 "name": p.get("name", ""),
                 "price": p.get("price", ""),
                 "description": p.get("description", ""),
@@ -162,7 +221,10 @@ with tab1:
             }
             for p in st.session_state["products"]
         ])
-        edited_df = st.data_editor(df, num_rows="dynamic", use_container_width=True, key="edit_products")
+        edited_df = st.data_editor(
+            df, num_rows="dynamic", width="stretch", key="edit_products",
+            column_config={"product_id": None},
+        )
 
         if st.button("Confirm & run clustering + gap analysis", type="primary"):
             def clean_str(val):
@@ -186,11 +248,13 @@ with tab1:
                                 k, v = pair.split(":", 1)
                                 specs[k.strip()] = v.strip()
                 rebuilt.append({
+                    "product_id": clean_str(row.get("product_id")) or None,
                     "name": clean_str(row["name"]) or "Unnamed product",
                     "price": clean_str(row["price"]) or None,
                     "description": clean_str(row["description"]),
                     "specs": specs,
                 })
+            _ensure_product_ids(rebuilt)
             st.session_state["products"] = rebuilt
             st.session_state["suggested_queries"] = None
 
@@ -270,8 +334,8 @@ with tab1:
                         "personas": personas,
                         "selected_persona": None,
                         "user_story": None,
-                        "agent_content": {},   # product_name -> structured dict from generate_agent_content
-                        "content": {},         # product_name -> rendered copy-pastable text
+                        "agent_content": {},   # product_id -> structured dict
+                        "content": {},         # product_id -> rendered copy-pastable text
                     }
             st.session_state["cluster_data"] = cluster_data
             st.session_state["analysis_done"] = True
@@ -300,12 +364,12 @@ def _content_signature(cluster_data: dict) -> str:
     """Changes whenever the catalog or the generated content changes, so the cached
     embeddings are rebuilt instead of silently going stale."""
     # Bump when index text construction changes so active sessions do not reuse stale vectors.
-    parts = ["index-v4-deterministic-constraint-facts"]
+    parts = ["index-v6-evidence-backed-derived-insights"]
     for cluster_name, data in cluster_data.items():
         for product in data.get("members", []):
-            parts.append(f"{cluster_name}|{product.get('name')}|{len(str(product.get('specs') or {}))}")
-        for product_name, text in (data.get("content") or {}).items():
-            parts.append(f"{cluster_name}|{product_name}|gen{len(text)}")
+            parts.append(f"{cluster_name}|{product.get('product_id')}|{len(str(product.get('specs') or {}))}")
+        for product_id, text in (data.get("content") or {}).items():
+            parts.append(f"{cluster_name}|{product_id}|gen{len(text)}")
     return hashlib.sha256("||".join(parts).encode("utf-8")).hexdigest()
 
 
@@ -317,16 +381,17 @@ def _build_indexes(cluster_data: dict):
     Before side would search the whole catalog while the After side searched a subset,
     and the After side would be forced to return whatever it had regardless of fit."""
     raw_entries, optimized_entries = [], []
-    indexed_names = set()
+    indexed_ids = set()
     for cluster_name, data in cluster_data.items():
         content_map = data.get("content") or {}
         for product in data.get("members", []):
             name = str(product.get("name") or "Unnamed product")
-            generated = content_map.get(name)
-            if not generated or name in indexed_names:
+            product_id = str(product.get("product_id") or "")
+            generated = content_map.get(product_id)
+            if not generated or product_id in indexed_ids:
                 continue  # excluded from BOTH sides, never just one
-            indexed_names.add(name)
-            key = f"{cluster_name}::{name}"
+            indexed_ids.add(product_id)
+            key = product_id
             facts = dict(product.get("specs_normalized") or {})
             facts["price"] = product.get("price")
             facts["category"] = cluster_name
@@ -354,8 +419,15 @@ def _generate_all(cluster_data: dict, progress=None):
     """Fill in content for every cluster that doesn't have it yet, so a query can be run
     against the whole catalog. Uses each cluster's selected persona, or its highest-rated
     candidate if none was chosen by hand."""
-    pending = [(n, d) for n, d in cluster_data.items()
-               if len(d.get("content") or {}) < len(d.get("members", []))]
+    pending = [
+        (name, data) for name, data in cluster_data.items()
+        if any(
+            (data.get("agent_content") or {}).get(str(product.get("product_id")), {}).get(
+                "schema_version"
+            ) != AGENT_CONTENT_SCHEMA_VERSION
+            for product in data.get("members", [])
+        )
+    ]
     for done, (cluster_name, data) in enumerate(pending):
         if progress:
             progress(done, len(pending), cluster_name)
@@ -371,7 +443,8 @@ def _generate_all(cluster_data: dict, progress=None):
         content = dict(data.get("content") or {})
         agent_content = dict(data.get("agent_content") or {})
         for product in data.get("members", []):
-            if product.get("name") in content:
+            product_id = str(product.get("product_id") or "")
+            if agent_content.get(product_id, {}).get("schema_version") == AGENT_CONTENT_SCHEMA_VERSION:
                 continue
             structured = generate_agent_content(
                 product,
@@ -380,8 +453,8 @@ def _generate_all(cluster_data: dict, progress=None):
                 data["user_story"],
                 competitors_for(product, data.get("members", [])),
             )
-            agent_content[product["name"]] = structured
-            content[product["name"]] = render_passage(structured)
+            agent_content[product_id] = structured
+            content[product_id] = render_passage(structured)
         data["agent_content"] = agent_content
         data["content"] = content
 
@@ -485,7 +558,7 @@ with tab_ask:
                         key=f"demo_query_{i}",
                         on_click=_set_query,
                         args=(example,),
-                        use_container_width=True,
+                        width="stretch",
                     )
 
         if st.session_state.get("suggested_queries") is None:
@@ -508,7 +581,7 @@ with tab_ask:
                         key=f"smart_query_{i}",
                         on_click=_set_query,
                         args=(example,),
-                        use_container_width=True,
+                        width="stretch",
                     )
 
         if st.button("Run query", type="primary", disabled=not has_content):
@@ -561,15 +634,16 @@ with tab_ask:
             def _intent_text(items, primary_key, fallback="Not stated"):
                 values = [str(item.get(primary_key) or item.get("source_text") or "").strip()
                           for item in items]
-                return " · ".join(value for value in values if value) or fallback
+                unique_values = list(dict.fromkeys(value for value in values if value))
+                return " · ".join(unique_values) or fallback
 
             st.markdown("#### Query understanding")
             intent_cols = st.columns(5)
             summaries = [
                 ("Task", task.get("source_text") or task.get("goal") or "Not identified"),
                 ("Context", _intent_text(contexts, "value")),
-                ("Hard constraints", _intent_text(hard_constraints, "source_text", "None")),
-                ("Preferences", _intent_text(preferences, "source_text", "None")),
+                ("Hard constraints", _intent_text(hard_constraints, "requirement", "None")),
+                ("Preferences", _intent_text(preferences, "requirement", "None")),
                 ("Derived needs", _intent_text(derived_needs, "need", "None")),
             ]
             for col, (label, value) in zip(intent_cols, summaries):
@@ -608,16 +682,16 @@ with tab2:
     else:
         cd = st.session_state["cluster_data"]
 
-        def _product_completeness_pct(data, product_name):
+        def _product_completeness_pct(data, product_id):
             for p in data["per_product"]:
-                if p["name"] == product_name:
+                if p.get("product_id") == product_id:
                     return p["completeness_pct"]
             return data["avg_completeness"]
 
         def _cluster_score(data):
             scores = []
             for p in data["per_product"]:
-                agent_content = data["agent_content"].get(p["name"])
+                agent_content = data["agent_content"].get(p.get("product_id"))
                 scores.append(readiness_score(p["completeness_pct"], agent_content))
             return round(sum(scores) / len(scores), 1) if scores else 0.0
 
@@ -625,7 +699,8 @@ with tab2:
         overall = round(sum(cluster_scores) / len(cluster_scores), 1) if cluster_scores else 0.0
 
         st.metric("Overall Catalog Readiness Score", f"{overall}%",
-                   help="30% attribute completeness + 70% rating of the selected persona, averaged across clusters.")
+                   help="25% attribute completeness, 20% persona coverage, 15% not-for coverage, "
+                        "15% verified comparison context, and 25% claim grounding; averaged across clusters.")
 
         st.divider()
         head = gaps.headline(cd)
@@ -651,7 +726,7 @@ with tab2:
             st.dataframe(
                 pd.DataFrame(attr_rows)[["cluster", "attribute", "applicable_products", "missing_count",
                                           "missing_pct", "needed_because"]],
-                use_container_width=True, hide_index=True,
+                width="stretch", hide_index=True,
             )
             d1, d2 = st.columns(2)
             with d1:
@@ -811,7 +886,9 @@ with tab3:
                     total = len(data["members"])
                     for i, product in enumerate(data["members"]):
                         pname = str(product.get("name", "Unnamed product"))
-                        grounded = "verified attributes" if product.get("specs_normalized") else "raw specs"
+                        product_id = str(product.get("product_id") or "")
+                        grounded = ("verified attributes" if product.get("specs_normalized")
+                                    else "no verified attributes; copy will be skipped")
                         log.step(0.1 + 0.9 * (i / max(total, 1)),
                                  f"{i + 1}/{total} — {pname} (from {grounded})")
                         structured = generate_agent_content(
@@ -821,8 +898,8 @@ with tab3:
                             story,
                             competitors_for(product, data["members"]),
                         )
-                        agent_content_map[pname] = structured
-                        content_map[pname] = render_passage(structured)
+                        agent_content_map[product_id] = structured
+                        content_map[product_id] = render_passage(structured)
                     data["agent_content"] = agent_content_map
                     data["content"] = content_map
                     log.done(f"Wrote content for {total} products in {name}")
@@ -887,18 +964,41 @@ with tab4:
                 if data["user_story"]:
                     st.caption(f"Persona story: {data['user_story']}")
 
-                for product_name, text in data["content"].items():
-                    ac = data["agent_content"].get(product_name, {})
+                products_by_id = {str(p.get("product_id")): p for p in data["members"]}
+                for product_id, text in data["content"].items():
+                    product = products_by_id.get(product_id, {})
+                    product_name = str(product.get("name") or "Unnamed product")
+                    ac = data["agent_content"].get(product_id, {})
                     with st.expander(product_name, expanded=False):
+                        fact_col, insight_col = st.columns(2)
+                        with fact_col:
+                            st.markdown("**Verified facts**")
+                            st.json(product.get("specs_normalized") or {})
+                        with insight_col:
+                            st.markdown("**Evidence-backed derived insights**")
+                            insights = ac.get("derived_insights") or []
+                            if insights:
+                                for insight in insights:
+                                    st.write(f"• {insight.get('claim', '')}")
+                                    st.caption(
+                                        "Evidence: " + ", ".join(
+                                            f"{e.get('attribute')}: {e.get('value')}"
+                                            for e in insight.get("evidence", [])
+                                        )
+                                    )
+                            else:
+                                st.caption("No supported derivations generated.")
                         st.text_area(
                             "Copy-pastable content",
                             value=text,
-                            height=260,
-                            key=f"content_{name}_{product_name}",
+                            height=420,
+                            key=f"content_{name}_{product_id}",
                         )
-                        with st.expander("Structured data (personas, not-for, comparisons)"):
+                        with st.expander("Structured knowledge layer"):
                             st.json({
                                 "personas": ac.get("personas", []),
+                                "derived_insights": ac.get("derived_insights", []),
+                                "query_angles": ac.get("query_angles", []),
                                 "not_for": ac.get("not_for", []),
                                 "use_cases": ac.get("use_cases", []),
                                 "comparisons": ac.get("comparisons", []),

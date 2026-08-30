@@ -51,12 +51,15 @@ streamlit run app.py
 5. **Dashboard** — headline `st.metric` for overall catalog readiness, plus a
    per-cluster breakdown (missing attributes, selected persona, readiness score).
 
-   **Readiness Score = 30% × Attribute Completeness + 70% × Persona Rating**
-   (of the selected persona; 0% before a persona is chosen).
+   **Readiness Score = 25% attribute completeness + 20% persona coverage +
+   15% not-for coverage + 15% verified comparison context + 25% claim grounding.**
+   Product fit is shown separately because it is a merchandising outcome, not a content gap.
 
-6. **Generated Content tab** — final copy-pastable text per product: a semantic
-   passage, a "Best for" line, and a short FAQ — grounded only in real attributes,
-   nothing fabricated.
+6. **Generated Content tab** — final copy-pastable text per product, generated from
+   verified normalized attributes. Comparisons are checked against both products and
+   unsupported claims are quarantined for review rather than published or indexed.
+   The knowledge layer also includes evidence-backed derived insights, several shopper
+   query angles, use cases, and exclusions. Every derivation cites exact verified values.
 
 ## Notes
 

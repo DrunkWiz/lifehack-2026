@@ -46,16 +46,34 @@ def _rows(cluster_data: dict):
         persona = data.get("selected_persona") or {}
         for product in data.get("members", []):
             name = _s(product.get("name"), "Unnamed product")
-            yield cluster_name, data, persona, product, name, content_map.get(name)
+            product_id = _s(product.get("product_id"))
+            yield cluster_name, data, persona, product, product_id, name, content_map.get(product_id)
+
+
+def _availability(product: dict) -> str | None:
+    """Return a schema.org availability URL only when the catalog explicitly proves it."""
+    specs = {str(k).strip().lower(): v for k, v in (product.get("specs") or {}).items()}
+    for key in ("availability", "available", "stock status"):
+        value = _s(specs.get(key)).strip().lower()
+        if value in {"in stock", "instock", "available", "true", "yes"}:
+            return "https://schema.org/InStock"
+        if value in {"out of stock", "outofstock", "unavailable", "false", "no"}:
+            return "https://schema.org/OutOfStock"
+    for key in ("variant inventory qty", "inventory quantity", "inventory_quantity", "stock"):
+        match = re.search(r"-?\d+(?:\.\d+)?", _s(specs.get(key)).replace(",", ""))
+        if match:
+            return "https://schema.org/InStock" if float(match.group()) > 0 else "https://schema.org/OutOfStock"
+    return None
 
 
 def to_csv(cluster_data: dict) -> str:
     import pandas as pd
     records = []
-    for cluster_name, data, persona, product, name, generated in _rows(cluster_data):
+    for cluster_name, data, persona, product, product_id, name, generated in _rows(cluster_data):
         normalized = product.get("specs_normalized") or {}
         records.append({
             "cluster": cluster_name,
+            "product_id": product_id,
             "product": name,
             "price": _s(product.get("price")),
             "persona": _s(persona.get("title")),
@@ -72,8 +90,10 @@ def to_csv(cluster_data: dict) -> str:
 def to_json(cluster_data: dict) -> str:
     """Full structured payload, knowledge layer included."""
     out = []
-    for cluster_name, data, persona, product, name, generated in _rows(cluster_data):
+    for cluster_name, data, persona, product, product_id, name, generated in _rows(cluster_data):
+        knowledge = (data.get("agent_content") or {}).get(product_id) or {}
         out.append({
+            "id": product_id,
             "cluster": cluster_name,
             "name": name,
             "price": _s(product.get("price")) or None,
@@ -86,6 +106,14 @@ def to_json(cluster_data: dict) -> str:
                 "user_story": _s(data.get("user_story")) or None,
             },
             "agent_optimized_content": _s(generated) or None,
+            "knowledge_layer": {
+                "derived_insights": knowledge.get("derived_insights") or [],
+                "query_angles": knowledge.get("query_angles") or [],
+                "use_cases": knowledge.get("use_cases") or [],
+                "not_for": knowledge.get("not_for") or [],
+                "comparisons": knowledge.get("comparisons") or [],
+                "unsupported_claims": knowledge.get("unsupported_claims") or [],
+            },
         })
     return json.dumps({"products": out}, indent=2, ensure_ascii=False)
 
@@ -96,17 +124,21 @@ def to_jsonld(cluster_data: dict, currency: str | None = None) -> str:
     Verified attributes become additionalProperty/PropertyValue entries - the standard way to
     expose attributes a crawler or shopping agent can read without parsing prose."""
     graph = []
-    for cluster_name, data, persona, product, name, generated in _rows(cluster_data):
+    for cluster_name, data, persona, product, product_id, name, generated in _rows(cluster_data):
         normalized = product.get("specs_normalized") or {}
         node = {
             "@type": "Product",
+            "identifier": product_id,
             "name": name,
             "category": cluster_name,
             "description": _s(generated) or _s(product.get("description")),
         }
         price = _price_number(product.get("price"))
         if price:
-            offer = {"@type": "Offer", "price": price, "availability": "https://schema.org/InStock"}
+            offer = {"@type": "Offer", "price": price}
+            availability = _availability(product)
+            if availability:
+                offer["availability"] = availability
             if currency:
                 offer["priceCurrency"] = currency
             node["offers"] = offer
