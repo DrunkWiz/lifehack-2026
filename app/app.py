@@ -64,7 +64,7 @@ if "api_usage_baseline" not in st.session_state:
         for key in ("calls", "cached", "usd", "input_tokens", "output_tokens")
     }
 
-st.title("🧭 Brand Enabler")
+st.title("🛒 Agent Shopper")
 st.caption("Upload a product catalog → find AI-recommendation gaps → generate persona-driven, agent-optimized content.")
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
