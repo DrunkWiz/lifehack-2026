@@ -36,7 +36,7 @@ from pipeline import (
 )
 from llm_utils import get_spend_summary
 
-st.set_page_config(page_title="Brand Enabler", layout="wide")
+st.set_page_config(page_title="AgentShopper", layout="wide")
 
 # ---------------------------------------------------------------------------
 # Session state defaults

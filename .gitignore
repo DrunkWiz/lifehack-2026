@@ -1,6 +1,11 @@
-# Streamlit secrets
-streamlit/secrets.toml
-_pycahce_/
+# Streamlit secrets — the ** prefix matches at any depth, not just the repo root.
+# (The old anchored rule missed app/.streamlit/secrets.toml, which is how a key
+# ended up committed. Do not remove the ** without checking that case again.)
+**/.streamlit/secrets.toml
+
+# Python
+__pycache__/
 *.pyc
-.streamlit/secrets.toml
+
+# LLM response cache + spend ledger
 .cache/

@@ -1,4 +1,4 @@
-# Agent Readiness Copilot
+# AgentShopper
 
 Upload a product catalog → cluster similar products → find attribute & persona gaps →
 pick a persona per cluster → generate agent-optimized, copy-pastable product content.
